@@ -1,0 +1,59 @@
+
+{ "mainmenu": [ { "name": "Whakataukī", "url": "whakatauki.html"} ,
+{ "name": "Waiata", "url": "waiata.html"} ,
+{ "name": "Mōteatea", "url": "moteatea.html"} ,
+{ "name": "Haka", "url": "haka.html"} ,
+{ "name": "Karakia", "url": "karakia.html"} ,
+{ "name": "Karapīpiti", "url": "karapipiti.html"} ],
+  "whakatauki" : [
+    { "name" : "Whakataukī1", "url" : "whakatauki1.html" },
+    { "name" : "Whakataukī2", "url" : "whakatauki2.html" },
+    { "name" : "Whakataukī3", "url" : "whakatauki3.html" }
+  ] ,
+  "waiata": [
+    { "name" : "Waiata1", "url" : "waiata1.html" },
+    { "name" : "Waiata2", "url" : "waiata2.html" },
+    { "name" : "Waiata3", "url" : "waiata3.html" }
+  ] ,
+  "moteatea": [
+    { "name" : "E Pā Tō Hau", "url" : "e_pa_to_hau.html" },
+    { "name" : "Mōteatea2", "url" : "moteatea2.html" },
+    { "name" : "Mōteatea4", "url" : "moteatea3.html" }
+  ] ,
+  "haka": [
+    { "name" : "Haka1", "url" : "haka1.html" },
+    { "name" : "Haka2", "url" : "haka2.html" },
+    { "name" : "Haka4", "url" : "haka3.html" }
+  ],
+  "karakia": [
+    { "name" : "Karakia Kai", "url" : "karakia-kai.html" },
+    { "name" : "Tūwhera", "url" : "karakia-tuwhera.html" },
+    { "name" : "Whakakapī", "url" : "karakia-whakakapi.html" },
+    { "name" : "Īnoi", "url" : "karakia-inoi.html" }
+  ] ,
+  "karapipiti": [
+    { "name" : "Karapīpiti1", "url" : "karapipiti1.html" },
+    { "name" : "Karapīpiti2", "url" : "karapipiti2.html" },
+    { "name" : "Karapīpiti3", "url" : "karapipiti3.html" }
+  ]  ,
+  "karakia-kai": [
+    { "name" : "Karakia Kai1", "url" : "karakia-kai1.html" },
+    { "name" : "Karakia Kai2", "url" : "karakia-kai2.html" },
+    { "name" : "Karakia Kai3", "url" : "karakia-kai3.html" }
+  ],
+  "karakia-tuwhera": [
+    { "name" : "Karakia Tūwhera1", "url" : "karakia-tuwhera1.html" },
+    { "name" : "Karakia Tūwhera2", "url" : "karakia-tuwhera2.html" },
+    { "name" : "Karakia Tūwhera3", "url" : "karakia-tuwhera3.html" }
+  ],
+  "karakia-whakakapi": [
+    { "name" : "Karakia Whakakapī1", "url" : "karakia-whakakapi1.html" },
+    { "name" : "Karakia Whakakapī2", "url" : "karakia-whakakapi2.html" },
+    { "name" : "Karakia Whakakapī3", "url" : "karakia-whakakapi3.html" }
+  ],
+  "karakia-inoi": [
+    { "name" : "Karakia Īnoi1", "url" : "karakia-inoi1.html" },
+    { "name" : "Karakia Īnoi2", "url" : "karakia-inoi2.html" },
+    { "name" : "Karakia Īnoi3", "url" : "karakia-inoi3.html" }
+  ]
+}
