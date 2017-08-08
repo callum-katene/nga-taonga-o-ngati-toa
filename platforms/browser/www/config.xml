@@ -6,11 +6,11 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>helloworld</name>
+    <name>Ngā Taonga O Ngāti Toa</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Ngā Taonga O Ngāti Toa
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
+    <author email="admin@katene.nz" href="http://katene.nz">
         PhoneGap Team
     </author>
     <content src="index.html" />

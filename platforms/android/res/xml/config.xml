@@ -62,11 +62,11 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>helloworld</name>
+    <name>Ngā Taonga O Ngāti Toa</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Ngā Taonga O Ngāti Toa
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
+    <author email="admin@katene.nz" href="http://katene.nz">
         PhoneGap Team
     </author>
     <content src="index.html" />

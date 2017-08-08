@@ -71,26 +71,46 @@ angApp.controller("controller", function($scope, $http, $location) {
 angApp.controller("player", function($scope, $http) {
     $scope.nowPlaying = false ;
     $scope.audio = $("audio") ;
+    $("#header_image").css("display","none") ;
+    //
+    // init_audio is designed to be called after the
+    // song phrases have been loaded. uses an ng-init
+    // in the ul
+    $scope.init_audio = function(first_file) {
+        console.log("First song file: " + first_file);
+        if(first_file) {
+            $scope.audio.attr("src", first_file) ;
+            $scope.audio[0].load() ;
+        }
+    } ;
+    //
+    // function to set the audio source to the first selected phrase
+    // IF audio is not currently playing
+    $scope.setSourceToFirst = function() {
+        console.log("setSourceToFirst") ;
+        // $scope.audio.attr("src", null) ;
+        var list = $("li.phrase") ;
+        console.log("List size: " + list.length) ;
+        list.each(function() {
+            // console.log("This: " + $(this)) ;
+            if(!$(this).hasClass("unselected_phrase")) {
+                console.log("Found a selected phrase. File is " + $(this).attr("file")) ;
+                $scope.audio.attr("src",$(this).attr("file")) ;
+                return false ;
+            }
+            else {
+                // console.log("Else: " + $(this)) ;
+            }
+        }) ;
+        console.log("Finish") ;
+        $scope.audio[0].load() ;
+    } ;
     $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
-    //
-    // function to set the audio source to the first selected phrase
-    // IF audio is not currently playing
-    $scope.setSourceToFirst = function() {
-        $scope.audio.attr("src", null) ;
-        $("li.phrase").each(function() {
-            if(!$(this).hasClass("unselected_phrase")) {
-                console.log("Found selected phrase. File is " + $(this).attr("file")) ;
-                $scope.audio.attr("src",$(this).attr("file")) ;
-                return false ;
-            }
-        }) ;
-        $scope.audio[0].load() ;
-    } ;
     //
     // function to set audio source to next
     $scope.setSourceToNext = function(current_rec) {
@@ -171,8 +191,17 @@ angApp.controller("player", function($scope, $http) {
     .on("playing", function () {
             console.log("Player playing");
             $scope.nowPlaying = true;
+            var now_playing = $(this).attr("src") ;
+            $("li.phrase").each(function() {
+                if($(this).attr("file") === now_playing) {
+                    console.log("Found playing phrase") ;
+                    $(this).css("border","2px solid lightgrey") ;
+                }
+                else {
+                    $(this).css("border","none") ;
+                }
+            }) ;
     })
     .show();
-    $("#header_image").css("display","none") ;
-    $scope.setSourceToFirst() ;
+
 }) ;

@@ -44,7 +44,7 @@ angApp.config(function($routeProvider) {
         .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
-        .when("/e_pa_to_hau.html", { templateUrl: "lyrics.html", controller: "e_pa_to_hau" })
+        .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
@@ -61,18 +61,44 @@ angApp.controller("controller", function($scope, $http, $location) {
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
         $location.path(url) ;
-    }
+    } ;
+    // if this controller loads it is because we're on a menu page, so
+    // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
     $("audio").hide() ;
 }) ;
 
-angApp.controller("e_pa_to_hau", function($scope, $http) {
+angApp.controller("player", function($scope, $http) {
+    $scope.nowPlaying = false ;
+    $scope.audio = $("audio") ;
     $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
-        $scope.menuitems = v.data.e_pa_to_hau ;
+        $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
+    //
+    // function to set the audio source to the first selected phrase
+    // IF audio is not currently playing
+    $scope.setSourceToFirst = function() {
+        $scope.audio.attr("src", null) ;
+        $("li.phrase").each(function() {
+            if(!$(this).hasClass("unselected_phrase")) {
+                console.log("Found selected phrase. File is " + $(this).attr("file")) ;
+                $scope.audio.attr("src",$(this).attr("file")) ;
+                return false ;
+            }
+        }) ;
+        $scopr.audio.load() ;
+    } ;
+    //
+    // function to set audio source to next
+    $scope.setSourceToNext = function() {
+
+    } ;
+    //
+    // doToggle function adds or removes the unselected_phrase class
+    // from a phrase.
     $scope.doToggle = function(val) {
         var myEl = $("ul li").eq(val) ;
         if(myEl.hasClass("unselected_phrase")) {
@@ -83,7 +109,22 @@ angApp.controller("e_pa_to_hau", function($scope, $http) {
             myEl.addClass("unselected_phrase") ;
             console.log("Selected element does not have unselected class so adding ...") ;
         }
-    }
+        if(!$scope.nowPlaying) {
+            $scope.setSourceToFirst() ;
+        }
+    } ;
+    $("audio").on("ended", function() {
+        console.log("Player ended. ")
+    })
+    .on("pause", function () {
+        console.log("Player paused");
+            $scope.nowPlaying = false;
+    })
+    .on("playing", function () {
+            console.log("Player playing");
+            $scope.nowPlaying = true;
+    })
+    .show();
     $("#header_image").css("display","none") ;
-    $("audio").show() ;
+
 }) ;
