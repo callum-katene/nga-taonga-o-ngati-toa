@@ -65,7 +65,16 @@ angApp.controller("controller", function($scope, $http, $location) {
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
-    $("audio").hide() ;
+    //
+    // if this controller is active then we are on a menu page
+    // so the audio player needs to be paused, hidden, and event
+    // listeners disabled
+    $("audio")
+        .off("ended")
+        .off("playing")
+        .off("paused")
+        .hide()
+        [0].pause() ;
 }) ;
 
 angApp.controller("player", function($scope, $http) {
@@ -84,11 +93,14 @@ angApp.controller("player", function($scope, $http) {
         }
     } ;
     //
+    // stop playing and disable audio event listeners when
+    // leaving page
+    //
     // function to set the audio source to the first selected phrase
     // IF audio is not currently playing
     $scope.setSourceToFirst = function() {
         console.log("setSourceToFirst") ;
-        // $scope.audio.attr("src", null) ;
+        $scope.audio.attr("src", null) ;
         var list = $("li.phrase") ;
         console.log("List size: " + list.length) ;
         list.each(function() {
@@ -131,14 +143,13 @@ angApp.controller("player", function($scope, $http) {
             console.log("Current recording " + current_rec + " not found in list! This should not happen") ;
         }
         else {
-            console.log("List size is " + list.length) ;
             // now we loop through to find the next selected phrase
             // start at current position plus one
             var newx = x ;
             do {
                 newx += 1;
                 newx = (newx == list.length ? 0 : newx) ;
-                console.log('newx: ' + newx) ;
+                // console.log('newx: ' + newx) ;
                 if(!list.eq(newx).hasClass("unselected_phrase")) {
                     console.log("Found selected phrase at " + newx) ;
                     ret = list.eq(newx).attr("file") ;
@@ -150,6 +161,7 @@ angApp.controller("player", function($scope, $http) {
         }
 
         $scope.audio.attr("src",ret) ;
+        console.log("audio player loading: " + ret) ;
         $scope.audio[0].load() ;
         if(ret) {
             console.log("Playing new rec: " + ret) ;
@@ -178,10 +190,21 @@ angApp.controller("player", function($scope, $http) {
         }
     } ;
     //
-    // audio player event listeners
-    $("audio").on("ended", function() {
+    // audio player event listeners. We first make sure there are no other
+    // event listeners in place before setting our  own
+    $scope.audio
+        .off("ended")
+        .off("pause")
+        .off("playing")
+        .on("ended", function() {
         var current_rec = $(this).attr("src") ;
         console.log("Player ended. " + current_rec) ;
+        $("li.phrase").each(function() {
+            if($(this).attr("file") === current_rec) {
+                console.log("Found just finished phrase") ;
+                $(this).css("border","none") ;
+            }
+        }) ;
         $scope.setSourceToNext(current_rec) ;
     })
     .on("pause", function () {
