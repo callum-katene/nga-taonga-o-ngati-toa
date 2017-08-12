@@ -190,7 +190,8 @@ angApp.controller("player", function($scope, $http) {
         }
     } ;
     //
-    // audio player event listeners
+    // audio player event listeners. We first make sure there are no other
+    // event listeners in place before setting our  own
     $scope.audio
         .off("ended")
         .off("pause")

@@ -65,7 +65,10 @@ angApp.controller("controller", function($scope, $http, $location) {
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
-
+    //
+    // if this controller is active then we are on a menu page
+    // so the audio player needs to be paused, hidden, and event
+    // listeners disabled
     $("audio")
         .off("ended")
         .off("playing")
@@ -187,7 +190,8 @@ angApp.controller("player", function($scope, $http) {
         }
     } ;
     //
-    // audio player event listeners
+    // audio player event listeners. We first make sure there are no other
+    // event listeners in place before setting our  own
     $scope.audio
         .off("ended")
         .off("pause")

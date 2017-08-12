@@ -28,7 +28,7 @@ var app = {
         // $(".listening").css('display', 'none') ;
         setInterval(function() {
             $("p.listening").css("display",'none') ;
-        }, 50000) ;
+        }, 5000) ;
         console.log('Received Event: ' + id);
     }
 };
