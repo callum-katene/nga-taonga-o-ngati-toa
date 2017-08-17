@@ -1,6 +1,24 @@
-{ "e_pa_to_hau":[ { "lyric" : "E pā tō hau he wini raro, He hōmai aroha,", "file" : "audio/e_pa_to_hau1.m4a"},
+{ "e_pa_to_hau":
+ [ { "lyric" : "E pā tō hau he wini raro, He hōmai aroha,", "file" : "audio/e_pa_to_hau1.m4a"},
   { "lyric" : "Kia tangi atu au i konei, He aroha ki te iwi,", "file" : "audio/e_pa_to_hau2.m4a"},
   { "lyric" : "Ka momotu ki tawhiti ki Paerau, Ko wai e kite atu?", "file" : "audio/e_pa_to_hau3.m4a"},
   { "lyric" : "Kei whea aku hoa i mua rā, I te tōnuitanga?", "file" : "audio/e_pa_to_hau4.m4a"},
   { "lyric" : "Ka haramai tēnei ka tauwehe, Ka raungaiti au, e.", "file" : "audio/e_pa_to_hau5.m4a"}
-] }
+]  ,
+"tera_ia_nga_tai_o_honipaka" : [
+  { "lyric" : "Tērā ia nga tai o Honipaka, Ka wehe koe i ahau e", "file" : "audio/tera_ia_nga_tai_o_honipaka_1.mp3"},
+  { "lyric" : "He whakamaunga atu nāku, Te ao ka takawe, Na runga mai o te motu", "file" : "audio/tera_ia_nga_tai_o_honipaka_2.mp3"},
+  { "lyric" : "E tū noa mai rā koe i ahau, e", "file" : "audio/tera_ia_nga_tai_o_honipaka_3.mp3"},
+  { "lyric" : "Nāku ia rā koe i waiho i taku whenua iti", "file" : "audio/tera_ia_nga_tai_o_honipaka_4.mp3"},
+  { "lyric" : "Te rokohanga, te Taranga i a tāua", "file" : "audio/tera_ia_nga_tai_o_honipaka_5.mp3"},
+  { "lyric" : "Ka mihi mamao au ki te iwi rā ia", "file" : "audio/tera_ia_nga_tai_o_honipaka_6.mp3"},
+  { "lyric" : "Moe noa mai i te moenga roa", "file" : "audio/tera_ia_nga_tai_o_honipaka_7.mp3"},
+  { "lyric" : "Ka paria e te tai, piki tū, piki rere, piki takina mai rā", "file" : "audio/tera_ia_nga_tai_o_honipaka_8.mp3"},
+  { "lyric" : "Te kawea au e te tere Te Kawau i Muriwhenua", "file" : "audio/tera_ia_nga_tai_o_honipaka_9.mp3"},
+  { "lyric" : "Tēnā taku manu, he manu ka ōngā noa", "file" : "audio/tera_ia_nga_tai_o_honipaka_10.mp3"},
+  { "lyric" : "Runa ki te whare, te hau o Matariki", "file" : "audio/tera_ia_nga_tai_o_honipaka_11.mp3"},
+  { "lyric" : "Mā te whare-po-rutu-e", "file" : "audio/tera_ia_nga_tai_o_honipaka_12.mp3"},
+  { "lyric" : "Mā te rahi Ati Awa, E kautere mai rā", "file" : "audio/tera_ia_nga_tai_o_honipaka_13.mp3"},
+  { "lyric" : "Whakaurupā taku aroha, nā i", "file" : "audio/tera_ia_nga_tai_o_honipaka_13.mp3"}
+]
+}
