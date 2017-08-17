@@ -45,6 +45,7 @@ angApp.config(function($routeProvider) {
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
         .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
+        .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
