@@ -26,7 +26,7 @@
     <title>Ngā Taonga O Ngāti Toa</title>
 </head>
 
-<body   ng-app="nga-taonga-o-ngati-toa" ng-controller="controller">
+<body id="appBody" ng-controller="controller">
 <!--
 These are the templates that will be injected into the <ng-view> region below. They are referenced by id by the
 routeProvider in the controller defined in the accompanying javascript file
@@ -62,6 +62,8 @@ routeProvider in the controller defined in the accompanying javascript file
         <div class="navigation_bar">
             <div class="navigation_entry" id="navigate_home"><h3>Home</h3></div>
             <div class="navigation_entry" id="navigate_back"><h3>Back</h3></div>
+            <div class="navigation_entry" id="player_all"><h3>All</h3></div>
+            <div class="navigation_entry" id="player_none"><h3>None</h3></div>
         </div>
     </footer>
     <script type="text/javascript" src="cordova.js"></script>

@@ -23,14 +23,13 @@
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
 
-
-
     <title>Ngā Taonga O Ngāti Toa</title>
 </head>
 
 <body   ng-app="nga-taonga-o-ngati-toa" ng-controller="controller">
 <!--
-These are the templates that will be injected into the <ng-view> region below
+These are the templates that will be injected into the <ng-view> region below. They are referenced by id by the
+routeProvider in the controller defined in the accompanying javascript file
 -->
 <script type="text/ng-template" id="top.html">
     <ul class="menu"><li ng-repeat="x in menuitems.mainmenu" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
@@ -51,13 +50,15 @@ These are the templates that will be injected into the <ng-view> region below
 ***** menu templates finished *****
 -->
     <header>
-        <img src="img/kapiti.jpg">
+        <img id="header_image" src="img/logo-kapiti.png">
     </header>
     <ng-view></ng-view>
 
 
 <p class="event listening">Connecting to Device</p>
     <footer>
+        <div><audio controls style="width:100%">
+        </audio></div>
         <div class="navigation_bar">
             <div class="navigation_entry" id="navigate_home"><h3>Home</h3></div>
             <div class="navigation_entry" id="navigate_back"><h3>Back</h3></div>
@@ -67,6 +68,14 @@ These are the templates that will be injected into the <ng-view> region below
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+        $("#navigate_home").click(function() {
+            window.location.href = 'index.html' ;
+        });
+
+        $("#navigate_back").click(function() {
+            window.location.href = 'javascript: window.history.back() ' ;
+        });
+
     </script>
 
 </body>
