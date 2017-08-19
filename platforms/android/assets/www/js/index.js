@@ -108,6 +108,7 @@ angApp.controller("player", function($scope, $http, $window) {
             if(! $(this).hasClass("unselected_phrase")) {
                 $(this).addClass("unselected_phrase") ;
             }
+            $(this).css("border","none") ;
         });
         $scope.audio.attr("src", null) ;
         $scope.audio[0].load() ;
@@ -215,7 +216,7 @@ angApp.controller("player", function($scope, $http, $window) {
             $("li.phrase").each(function() {
                 if($(this).attr("file") === now_playing) {
                     console.log("Found playing phrase") ;
-                    $(this).css("border","2px solid lightgrey") ;
+                    $(this).css("border","1px solid lightgrey") ;
                 }
                 else {
                     $(this).css("border","none") ;
