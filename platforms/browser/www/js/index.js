@@ -108,10 +108,12 @@ angApp.controller("player", function($scope, $http, $window) {
             if(! $(this).hasClass("unselected_phrase")) {
                 $(this).addClass("unselected_phrase") ;
             }
-            $(this).css("border","none") ;
+            // $(this).css("border","none") ;
         });
-        $scope.audio.attr("src", null) ;
-        $scope.audio[0].load() ;
+        if(! $scope.nowPlaying) {
+            $scope.audio.attr("src", null) ;
+            $scope.audio[0].load() ;
+        }
     } ;
     // hide the All and None buttons
     $("#player_all").show().click(function() {
