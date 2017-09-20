@@ -11,6 +11,10 @@ angApp.config(function($routeProvider) {
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
         .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
+        .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
+        .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
+        .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
+        .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
