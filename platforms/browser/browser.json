@@ -86,7 +86,7 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-insomnia": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+            "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
         }
     },
     "dependent_plugins": {},

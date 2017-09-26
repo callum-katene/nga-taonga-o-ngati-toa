@@ -15,6 +15,7 @@ angApp.config(function($routeProvider) {
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
         .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
@@ -22,8 +23,9 @@ angApp.config(function($routeProvider) {
 // contained in the main_menu.json file, and the templateUrl specifies which
 // menu to present
 angApp.controller("controller", function($scope, $http, $window, $location) {
+    console.log("controller controller") ;
     $http.get("res/main_menu.json").then(function (v) {
-        console.log("JSON loaded successfully") ;
+        console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
@@ -51,6 +53,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
 }) ;
 
 angApp.controller("player", function($scope, $http, $window) {
+    console.log("player controller") ;
     $scope.nowPlaying = false ;
     $scope.audio = $("audio") ;
     $window.plugins.insomnia.keepAwake() ;
@@ -88,7 +91,7 @@ angApp.controller("player", function($scope, $http, $window) {
         console.log("Finish") ;
         $scope.audio[0].load() ;
     } ;
-    $http.get("res/lyrics.json").then(function (v) {
+    $http.get("res/lyrics2.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {

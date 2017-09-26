@@ -1,38 +1,3 @@
-// app is used by the cordova initialization
-var app = {
-    // Application Constructor
-    initialize: function() {
-        console.log("Initialising") ;
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        console.log("Binding to events") ;
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        console.log("deviceReady event received") ;
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-
-        $(".listening").text("Device ready")  ;
-        // $(".listening").css('display', 'none') ;
-        setInterval(function() {
-            $("p.listening").css("display",'none') ;
-        }, 5000) ;
-        console.log('Received Event: ' + id);
-    }
-};
-
 
 var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]);
 // routeProvider is configured to control application routing. For eaach pattern it specifies
@@ -46,6 +11,10 @@ angApp.config(function($routeProvider) {
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
         .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
+        .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
+        .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
+        .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
+        .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
@@ -53,12 +22,15 @@ angApp.config(function($routeProvider) {
 // contained in the main_menu.json file, and the templateUrl specifies which
 // menu to present
 angApp.controller("controller", function($scope, $http, $window, $location) {
+    console.log("controller controller") ;
     $http.get("res/main_menu.json").then(function (v) {
-        console.log("JSON loaded successfully") ;
+        console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
+    $("#player_all").hide() ;
+    $("#player_none").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
@@ -80,6 +52,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
 }) ;
 
 angApp.controller("player", function($scope, $http, $window) {
+    console.log("player controller") ;
     $scope.nowPlaying = false ;
     $scope.audio = $("audio") ;
     $window.plugins.insomnia.keepAwake() ;
@@ -95,10 +68,7 @@ angApp.controller("player", function($scope, $http, $window) {
             $scope.audio[0].load() ;
         }
     } ;
-    //
-    // stop playing and disable audio event listeners when
-    // leaving page
-    //
+
     // function to set the audio source to the first selected phrase
     // IF audio is not currently playing
     $scope.setSourceToFirst = function() {
@@ -125,6 +95,39 @@ angApp.controller("player", function($scope, $http, $window) {
         $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
+    }) ;
+    //
+    // select all phrases
+    $scope.selectAllPhrases = function() {
+        console.log("selecting all phrases") ;
+        $("li.phrase").each(function () {
+            if($(this).hasClass("unselected_phrase")) {
+                $(this).removeClass("unselected_phrase") ;
+            }
+        });
+    } ;
+    //
+    // deselect all phrases
+    $scope.unselectAllPhrases = function() {
+        console.log("de-selecting all phrases") ;
+        $("li.phrase").each(function () {
+            if(! $(this).hasClass("unselected_phrase")) {
+                $(this).addClass("unselected_phrase") ;
+            }
+            // $(this).css("border","none") ;
+        });
+        if(! $scope.nowPlaying) {
+            $scope.audio.attr("src", null) ;
+            $scope.audio[0].load() ;
+        }
+    } ;
+    // hide the All and None buttons
+    $("#player_all").show().click(function() {
+        $scope.selectAllPhrases() ;
+        $scope.setSourceToFirst() ;
+    }) ;
+    $("#player_none").show().click(function() {
+        $scope.unselectAllPhrases() ;
     }) ;
     //
     // function to set audio source to next
@@ -221,7 +224,7 @@ angApp.controller("player", function($scope, $http, $window) {
             $("li.phrase").each(function() {
                 if($(this).attr("file") === now_playing) {
                     console.log("Found playing phrase") ;
-                    $(this).css("border","2px solid lightgrey") ;
+                    $(this).css("border","1px solid lightgrey") ;
                 }
                 else {
                     $(this).css("border","none") ;
@@ -231,3 +234,43 @@ angApp.controller("player", function($scope, $http, $window) {
     .show();
 
 }) ;
+
+// app is used by the cordova initialization
+var app = {
+    // Application Constructor
+    initialize: function() {
+        console.log("Initialising") ;
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        console.log("Binding to events") ;
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        console.log("deviceReady event received") ;
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+
+        $(".listening").text("Device ready")  ;
+        // $(".listening").css('display', 'none') ;
+        setInterval(function() {
+            $("p.listening").css("display",'none') ;
+        }, 5000) ;
+        // document is now ready. need to activate angular now. We
+        // do this so that controllers ( and therefore plugins )
+        // are not accessed until after the ready event is received
+        angular.bootstrap(document.body, [ 'nga-taonga-o-ngati-toa' ]) ;
+        console.log('Received Event: ' + id);
+    }
+};
+

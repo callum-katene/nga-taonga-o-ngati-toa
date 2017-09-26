@@ -11,6 +11,10 @@ angApp.config(function($routeProvider) {
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
         .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
+        .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
+        .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
+        .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
+        .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
         .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
 }) ;
 //
@@ -18,8 +22,9 @@ angApp.config(function($routeProvider) {
 // contained in the main_menu.json file, and the templateUrl specifies which
 // menu to present
 angApp.controller("controller", function($scope, $http, $window, $location) {
+    console.log("controller controller") ;
     $http.get("res/main_menu.json").then(function (v) {
-        console.log("JSON loaded successfully") ;
+        console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {
         console.log("error: " + v);
@@ -47,6 +52,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
 }) ;
 
 angApp.controller("player", function($scope, $http, $window) {
+    console.log("player controller") ;
     $scope.nowPlaying = false ;
     $scope.audio = $("audio") ;
     $window.plugins.insomnia.keepAwake() ;
