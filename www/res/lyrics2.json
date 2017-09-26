@@ -105,6 +105,56 @@
     { "lyric" : "Ūhia mai rā te manaakitanga a ngā tūpuna kua wehe ki te pō", "file" : "audio/tau_mai_e_kapiti_26.mp3"},
     { "lyric" : "hei mauri whakakaha i te hinengaro", "file" : "audio/tau_mai_e_kapiti_27.mp3"},
     { "lyric" : "o Tama, o Hine e pae nei", "file" : "audio/tau_mai_e_kapiti_28.mp3"}
+  ],
+  "ka_oho_te_wairua" : [
+    { "lyric" : "Ka oho te wairua, ka matara te tinana", "file" : "audio/ka_oho_te_wairua_1.mp3"},
+    { "lyric" : "He aroha ki te aroha, ka rama te rama", "file" : "audio/ka_oho_te_wairua_2.mp3"},
+    { "lyric" : "Ka oho te wairua, ka matara te tinana", "file" : "audio/ka_oho_te_wairua_3.mp3"},
+    { "lyric" : "He aroha ki te aroha, ka rama te rama", "file" : "audio/ka_oho_te_wairua_4.mp3"},
+    { "lyric" : "He aroha ki te aroha, ka kaa te rama", "file" : "audio/ka_oho_te_wairua_5.mp3"}
+  ] ,
+  "he_hokioi" : [
+    { "lyric" : "Kaea: He hokioi i runga, he hokioi i runga, hu!", "file" : "audio/he_hokioi_1.mp3"},
+    { "lyric" : "Katoa: E kei te āputa nā o te rangi e noho ana te hoa moenga nō Whaititiri-mā-takataka", "file" : "audio/he_hokioi_2.mp3"},
+    { "lyric" : "Kaea: Ā he aha tēra?", "file" : "audio/he_hokioi_3.mp3"},
+    { "lyric" : "Katoa: Ā he aha tēra?", "file" : "audio/he_hokioi_4.mp3"},
+    { "lyric" : "Kaea: He tararua mārire", "file" : "audio/he_hokioi_5.mp3"},
+    { "lyric" : "Katoa: ōna hikumārō rua mārō tonu ōna hakikau e huhu nei", "file" : "audio/he_hokioi_6.mp3"},
+    { "lyric" : "Kaea: I runga te rangi!", "file" : "audio/he_hokioi_7.mp3"},
+    { "lyric" : "Katoa: Hokioi, hokioi, hu!", "file" : "audio/he_hokioi_8.mp3"}
+  ] ,
+  "kikiki_kakaka" : [
+    { "lyric" : "Kīkiki kākaka kau ana kei waniwani a taku tara", "file" : "audio/kikiki_kakaka_1.mp3"},
+    { "lyric" : "Kei tara wāhia kei te rua i te kerokero", "file" : "audio/kikiki_kakaka_2.mp3"},
+    { "lyric" : "He pounga rāhui te uira", "file" : "audio/kikiki_kakaka_3.mp3"},
+    { "lyric" : "kararapa ketekete kau ana", "file" : "audio/kikiki_kakaka_4.mp3"},
+    { "lyric" : "tō peru kei riri mau au e koro e", "file" : "audio/kikiki_kakaka_5.mp3"},
+    { "lyric" : "Hī! Hā!", "file" : "audio/kikiki_kakaka_6.mp3"},
+    { "lyric" : "Ka wehi au ka matakana", "file" : "audio/kikiki_kakaka_7.mp3"},
+    { "lyric" : "Ko wai te tangata kia rere ure tirohanga", "file" : "audio/kikiki_kakaka_8.mp3"},
+    { "lyric" : "ngā rua rerarera", "file" : "audio/kikiki_kakaka_9.mp3"},
+    { "lyric" : "Ngā rua kurī kaka nui raro āhaha! A", "file" : "audio/kikiki_kakaka_10.mp3"},
+    { "lyric" : "", "file" : "audio/kikiki_kakaka_11.mp3"},
+    { "lyric" : "Ka mate, ka mate", "file" : "audio/kikiki_kakaka_12.mp3"},
+    { "lyric" : "ka ora, ka ora", "file" : "audio/kikiki_kakaka_13.mp3"},
+    { "lyric" : "ka mate, ka mate", "file" : "audio/kikiki_kakaka_14.mp3"},
+    { "lyric" : "ka ora, ka ora", "file" : "audio/kikiki_kakaka_15.mp3"},
+    { "lyric" : "Tēnei te tangata pūhuruhuru", "file" : "audio/kikiki_kakaka_16.mp3"},
+    { "lyric" : "nāna nei tiki mai whakawhiti te rā", "file" : "audio/kikiki_kakaka_17.mp3"},
+    { "lyric" : "A hūpane a hūpane", "file" : "audio/kikiki_kakaka_18.mp3"},
+    { "lyric" : "A hūpane kaupane", "file" : "audio/kikiki_kakaka_19.mp3"},
+    { "lyric" : "Whiti te rā!", "file" : "audio/kikiki_kakaka_20.mp3"}
+  ] ,
+  "ka_tukituki" : [
+    { "lyric" : "Ka tuki-tuki", "file" : "audio/ka_tukituki_1.mp3"},
+    { "lyric" : "Ka tuki-tuki", "file" : "audio/ka_tukituki_2.mp3"},
+    { "lyric" : "Ka tukituki tonu toku Manawa", "file" : "audio/ka_tukituki_3.mp3"},
+    { "lyric" : "He uira ki te rangi", "file" : "audio/ka_tukituki_4.mp3"},
+    { "lyric" : "He kanapu ki raro ki te whenua", "file" : "audio/ka_tukituki_5.mp3"},
+    { "lyric" : "ko te rite o nga iwi ka eke", "file" : "audio/ka_tukituki_6.mp3"},
+    { "lyric" : "ka ngarue te whenua ka whaoko te tangata", "file" : "audio/ka_tukituki_7.mp3"},
+    { "lyric" : "ko te ritenga oo te aitanga aa", "file" : "audio/ka_tukituki_8.mp3"},
+    { "lyric" : "Tiki, tiki, tiki hai haa.", "file" : "audio/ka_tukituki_9.mp3"}
   ]
 }
 
