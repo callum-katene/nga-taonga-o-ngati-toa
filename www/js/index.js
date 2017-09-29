@@ -16,7 +16,7 @@ angApp.config(function($routeProvider) {
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
         .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
-        .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
+        .otherwise({  template: "<h2>Under development</h2>" }) ;
 }) ;
 //
 // controller is the menu controller for all the menu pages. All menu items are
