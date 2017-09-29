@@ -12,7 +12,6 @@ angApp.config(function($routeProvider) {
         .when("/haka.html", { templateUrl: "haka.html", controller: "controller" })
         .when("/pepeha.html", { templateUrl: "pepeha.html", controller: "controller" })
         .when("/waiata.html", { templateUrl: "waiata.html", controller: "controller" })
-
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
         .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
@@ -102,7 +101,7 @@ angApp.controller("player", function($scope, $http, $window) {
         console.log("Finish") ;
         $scope.audio[0].load() ;
     } ;
-    $http.get("res/lyrics2.json").then(function (v) {
+    $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
         $scope.menuitems = v.data ;
     }, function(v) {
