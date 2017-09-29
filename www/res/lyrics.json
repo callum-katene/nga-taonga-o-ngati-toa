@@ -80,4 +80,44 @@
     { "lyric" : "Ki te makau rā e moea iho", "file" : "moe_hurihuri_11.mp3" } ,
     { "lyric" : "E awhi reinga ana i raro rā", "file" : "moe_hurihuri_12.mp3" } ,
     { "lyric" : "Ka hewa au, e koro kai te ao...i", "file" : "moe_hurihuri_13.mp3" }
-  ]}
+  ],
+"takapuwahia" : [
+  { "lyric" : "Ko Tainui te waka", "file" : "audio/takapuwahia_1.mp3"},
+  { "lyric" : "Ko Whitireia te maunga", "file" : "audio/takapuwahia_2.mp3"},
+  { "lyric" : "Ko Parirua te awa", "file" : "audio/takapuwahia_3.mp3"},
+  { "lyric" : "Ko Raukawakawa te moana", "file" : "audio/takapuwahia_4.mp3"},
+  { "lyric" : "Ko Ngāti Toa Rangatira te iwi", "file" : "audio/takapuwahia_5.mp3"},
+  { "lyric" : "Ko Takapūwāhia te marae", "file" : "audio/takapuwahia_6.mp3"},
+  { "lyric" : "Ko Toarangatira te whare tupuna", "file" : "audio/takapuwahia_7.mp3"}
+  ],
+  "hongoeka" : [
+  { "lyric" : "Ko Tainui te waka", "file" : "audio/Pepeha_8.mp3"},
+  { "lyric" : "Ko Whitireia te maunga", "file" : "audio/Pepeha_9.mp3"},
+  { "lyric" : "Ko Parirua te awa", "file" : "audio/Pepeha_10.mp3"},
+  { "lyric" : "Ko Raukawakawa te moana", "file" : "audio/Pepeha_11.mp3"},
+  { "lyric" : "Ko Ngāti Toa Rangatira te iwi", "file" : "audio/Pepeha_12.mp3"},
+  { "lyric" : "Ko Hongoeka te marae", "file" : "audio/Pepeha_13.mp3"},
+  { "lyric" : "Ko Te Heke Mai Raro te whare tupuna", "file" : "audio/Pepeha_14.mp3"}
+    ],
+  "koata" : [
+  { "lyric" : "Ko Tainui te waka", "file" : "audio/Pepeha_15.mp3"},
+  { "lyric" : "Ko Maungatapu te maunga", "file" : "audio/Pepeha_16.mp3"},
+  { "lyric" : "Ko Maitahi te awa", "file" : "audio/Pepeha_17.mp3"},
+  { "lyric" : "Ko Aorere te moana", "file" : "audio/Pepeha_18.mp3"},
+  { "lyric" : "Ko Ngāti Koata te iwi", "file" : "audio/Pepeha_19.mp3"},
+  { "lyric" : "Ko Whakatu te marae", "file" : "audio/Pepeha_20.mp3"},
+  { "lyric" : "Ko Kakati te whare tupuna", "file" : "audio/Pepeha_21.mp3"},
+  { "lyric" : "Ko Te Rauparaha te tumu whakarae", "file" : "audio/Pepeha_22.mp3"}
+],
+  "ka_tukituki" : [
+    {"lyric" :"Ka tukituki","file" :"audio/ka_tukituki_1.mp3"},
+    {"lyric" :"Ka tukituki","file" :"audio/ka_tukituki_2.mp3"},
+    {"lyric" :"Ka tukituki tonu tōku manawa","file" :"audio/ka_tukituki_3.mp3"},
+    {"lyric" :"He uira ki te rangi","file" :"audio/ka_tukituki_4.mp3"},
+    {"lyric" :"He kanapu ki raro ki te whenua","file" :"audio/ka_tukituki_5.mp3"},
+    {"lyric" :"Ko te rite o nga iwi ka eke","file" :"audio/ka_tukituki_6.mp3"},
+    {"lyric" :"Ka ngarue te whenua ka whaoko te tangata","file" :"audio/ka_tukituki_7.mp3"},
+    {"lyric" :"Ko te ritenga oo te aitanga aa","file" :"audio/ka_tukituki_8.mp3"},
+    {"lyric" :"Tiki, tiki, tiki hai haa.","file" :"audio/ka_tukituki_9.mp3"}
+  ]
+}

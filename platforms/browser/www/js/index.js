@@ -24,6 +24,9 @@ angApp.config(function($routeProvider) {
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
+        .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player" })
+        .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
+        .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
         .otherwise({  template: "<h2>Under development</h2>" }) ;
 }) ;
 //

@@ -31,8 +31,8 @@
     { "name" : "Whakataukī3", "url" : "whakatauki3.html" }
   ],
   "pepeha": [
-    { "name" : "Pepeha1", "url" : "pepeha1.html" },
-    { "name" : "Pepeha2", "url" : "pepeha2.html" },
-    { "name" : "Pepeha3", "url" : "pepeha3.html" }
+    { "name" : "Takapūwāhia", "url" : "takapuwahia.html" },
+    { "name" : "Hongoeka", "url" : "hongoeka.html" },
+    { "name" : "Ngāti Koata", "url" : "koata.html" }
   ]
 }
