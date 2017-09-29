@@ -91,23 +91,23 @@
   { "lyric" : "Ko Toarangatira te whare tupuna", "file" : "audio/takapuwahia_7.mp3"}
   ],
   "hongoeka" : [
-  { "lyric" : "Ko Tainui te waka", "file" : "audio/Pepeha_8.mp3"},
-  { "lyric" : "Ko Whitireia te maunga", "file" : "audio/Pepeha_9.mp3"},
-  { "lyric" : "Ko Parirua te awa", "file" : "audio/Pepeha_10.mp3"},
-  { "lyric" : "Ko Raukawakawa te moana", "file" : "audio/Pepeha_11.mp3"},
-  { "lyric" : "Ko Ngāti Toa Rangatira te iwi", "file" : "audio/Pepeha_12.mp3"},
-  { "lyric" : "Ko Hongoeka te marae", "file" : "audio/Pepeha_13.mp3"},
-  { "lyric" : "Ko Te Heke Mai Raro te whare tupuna", "file" : "audio/Pepeha_14.mp3"}
+  { "lyric" : "Ko Tainui te waka", "file" : "audio/hongoeka_1.mp3"},
+  { "lyric" : "Ko Whitireia te maunga", "file" : "audio/hongoeka_2.mp3"},
+  { "lyric" : "Ko Parirua te awa", "file" : "audio/hongoeka_3.mp3"},
+  { "lyric" : "Ko Raukawakawa te moana", "file" : "audio/hongoeka_4.mp3"},
+  { "lyric" : "Ko Ngāti Toa Rangatira te iwi", "file" : "audio/hongoeka_5.mp3"},
+  { "lyric" : "Ko Hongoeka te marae", "file" : "audio/hongoeka_6.mp3"},
+  { "lyric" : "Ko Te Heke Mai Raro te whare tupuna", "file" : "audio/hongoeka_7.mp3"}
     ],
   "koata" : [
-  { "lyric" : "Ko Tainui te waka", "file" : "audio/Pepeha_15.mp3"},
-  { "lyric" : "Ko Maungatapu te maunga", "file" : "audio/Pepeha_16.mp3"},
-  { "lyric" : "Ko Maitahi te awa", "file" : "audio/Pepeha_17.mp3"},
-  { "lyric" : "Ko Aorere te moana", "file" : "audio/Pepeha_18.mp3"},
-  { "lyric" : "Ko Ngāti Koata te iwi", "file" : "audio/Pepeha_19.mp3"},
-  { "lyric" : "Ko Whakatu te marae", "file" : "audio/Pepeha_20.mp3"},
-  { "lyric" : "Ko Kakati te whare tupuna", "file" : "audio/Pepeha_21.mp3"},
-  { "lyric" : "Ko Te Rauparaha te tumu whakarae", "file" : "audio/Pepeha_22.mp3"}
+  { "lyric" : "Ko Tainui te waka", "file" : "audio/koata_1.mp3"},
+  { "lyric" : "Ko Maungatapu te maunga", "file" : "audio/koata_2.mp3"},
+  { "lyric" : "Ko Maitahi te awa", "file" : "audio/koata_3.mp3"},
+  { "lyric" : "Ko Aorere te moana", "file" : "audio/koata_4.mp3"},
+  { "lyric" : "Ko Ngāti Koata te iwi", "file" : "audio/koata_5.mp3"},
+  { "lyric" : "Ko Whakatu te marae", "file" : "audio/koata_6.mp3"},
+  { "lyric" : "Ko Kakati te whare tupuna", "file" : "audio/koata_7.mp3"},
+  { "lyric" : "Ko Te Rauparaha te tumu whakarae", "file" : "audio/koata_8.mp3"}
 ],
   "ka_tukituki" : [
     {"lyric" :"Ka tukituki","file" :"audio/ka_tukituki_1.mp3"},
