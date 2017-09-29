@@ -9,14 +9,22 @@ angApp.config(function($routeProvider) {
         .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
-        .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
+        .when("/haka.html", { templateUrl: "haka.html", controller: "controller" })
+        .when("/pepeha.html", { templateUrl: "pepeha.html", controller: "controller" })
+        .when("/waiata.html", { templateUrl: "waiata.html", controller: "controller" })
+
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
         .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
         .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
-        .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
+        .when("/ka_oho_te_wairua.html", { templateUrl: "ka_oho_te_wairua.html", controller: "player" })
+        .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player" })
+        .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
+        .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
+        .otherwise({  template: "<h2>Under development</h2>" }) ;
 }) ;
 //
 // controller is the menu controller for all the menu pages. All menu items are
