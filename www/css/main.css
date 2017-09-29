@@ -21,6 +21,15 @@ header > img {
     list-style-type: none;
     padding: 0px;
 }
+
+.lyric_panel {
+    list-style-type: none;
+    padding: 0px;
+    overflow: scroll;
+    margin-top: 0px ;
+    margin-bottom: 0px ;
+}
+
 .menuitem {
     font-family: Verdana, Geneva, sans-serif;
     font-size:18px;
@@ -60,7 +69,6 @@ footer {
     position: absolute;
     bottom:0;
     width:100%;
-    /*height:40px;*/
     /*margin-top: -40px ;*/
     border-top: 2px solid white ;
     border-right: 2px solid white ;
@@ -101,4 +109,5 @@ footer > p.listening {
 .song_title {
     text-align: center;
     border-bottom: 1px solid white;
+    height: 40px;
 }

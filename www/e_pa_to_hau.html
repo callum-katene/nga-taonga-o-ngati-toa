@@ -3,4 +3,4 @@ loop. This is required because the ng-repeat does not happen immediately and so 
 controller does not have access to the li items.
 -->
 <div class="song_title"><h1>E Pa Tō Hau</h1></div>
-<ul class="menu"><li ng-init="$first && init_audio(x.file)" ng-repeat="x in ::menuitems.e_pa_to_hau" file="{{x.file}}" ng-click = "doToggle($index)" class="phrase">{{ x.lyric }}</li></ul>
+<ul class="lyric_panel"><li ng-init="$first && init_audio(x.file)" ng-repeat="x in ::menuitems.e_pa_to_hau" file="{{x.file}}" ng-click = "doToggle($index)" class="phrase">{{ x.lyric }}</li></ul>
