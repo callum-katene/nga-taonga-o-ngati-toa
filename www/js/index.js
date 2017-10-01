@@ -41,7 +41,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
         console.log("error: " + v);
     }) ;
     $scope.footer = $("footer") ;
-    $scope.footer.height(52) ;
+    // $scope.footer.height(52) ;
     $("#player_all").hide() ;
     $("#player_none").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
@@ -70,8 +70,6 @@ angApp.controller("player", function($scope, $http, $window) {
     $scope.audio = $("audio") ;
     $scope.footer = $("footer") ;
     $scope.song_title = $(".song_title") ;
-    var viewport_size = $(window).outerHeight(true) ;
-    console.log("Viewport size: " + viewport_size) ;
     $window.plugins.insomnia.keepAwake() ;
     $("#header_image").css("display","none") ;
     //
@@ -85,13 +83,6 @@ angApp.controller("player", function($scope, $http, $window) {
             $scope.audio[0].load() ;
         }
     } ;
-    $scope.footer.height(90) ;
-    console.log("Footer height is " + $scope.footer.outerHeight(true)) ;
-    console.log("Song title height is " + $scope.song_title.outerHeight(true)) ;
-    console.log("Audio height is " + $scope.audio.outerHeight(true)) ;
-    $scope.max_lyric_panel_height = viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
-    console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
-    $('.lyric_panel').css('max-height', $scope.max_lyric_panel_height) ;
     // function to set the audio source to the first selected phrase
     // IF audio is not currently playing
     $scope.setSourceToFirst = function() {
@@ -110,7 +101,6 @@ angApp.controller("player", function($scope, $http, $window) {
                 // console.log("Else: " + $(this)) ;
             }
         }) ;
-        console.log("Finish") ;
         $scope.audio[0].load() ;
     } ;
     $http.get("res/lyrics.json").then(function (v) {
@@ -256,6 +246,14 @@ angApp.controller("player", function($scope, $http, $window) {
     })
     .show();
 
+    $scope.viewport_size = $(window).outerHeight(true) ;
+    console.log("Viewport size: " + $scope.viewport_size) ;
+    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
+    // resize the lyrics_panel
+    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
+    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+    $('.lyric_panel').css('max-height', $scope.max_lyric_panel_height) ;
 }) ;
 
 // app is used by the cordova initialization
