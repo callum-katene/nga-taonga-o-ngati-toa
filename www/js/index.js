@@ -71,6 +71,7 @@ angApp.controller("player", function($scope, $http, $window) {
     $scope.footer = $("footer") ;
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
+    $scope.lyric_panel = $(".lyric_panel") ;
     $("#header_image").css("display","none") ;
     //
     // init_audio is designed to be called after the
@@ -238,6 +239,25 @@ angApp.controller("player", function($scope, $http, $window) {
                 if($(this).attr("file") === now_playing) {
                     console.log("Found playing phrase") ;
                     $(this).css("border","1px solid lightgrey") ;
+                    // at this stage we need to ensure that the
+                    // current element is visible
+                    var elementRect = $(this)[0].getBoundingClientRect() ;
+
+                    console.log("Bounding rectangle: Top: " + elementRect.top + ", bottom: " + elementRect.bottom) ;
+                    var lyricPanelPosition = $scope.lyric_panel.position() ;
+                    var lyricPanelTop = lyricPanelPosition.top + $scope.lyric_panel.scrollTop() ;
+                    var lyricPanelBottom = lyricPanelTop + $scope.lyric_panel.height() ;
+                    console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
+                    var lyricPanelOffset = $scope.lyric_panel.offset() ;
+                    console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
+                    if(elementRect.top < lyricPanelTop) {
+                        console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
+                        $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+                    }
+                    if(elementRect.bottom > lyricPanelBottom) {
+                        console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
+                        $(this)[0].scrollIntoView(false, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+                    }
                 }
                 else {
                     $(this).css("border","none") ;
@@ -253,7 +273,7 @@ angApp.controller("player", function($scope, $http, $window) {
     $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
     // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
     // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
-    $('.lyric_panel').css('max-height', $scope.max_lyric_panel_height) ;
+    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
 }) ;
 
 // app is used by the cordova initialization
