@@ -130,6 +130,7 @@ angApp.controller("player", function($scope, $http, $window) {
             }
             // $(this).css("border","none") ;
         });
+        console.log("nowPlaying: " + $scope.nowPlaying) ;
         if(! $scope.nowPlaying) {
             $scope.audio.attr("src", null) ;
             $scope.audio[0].load() ;
