@@ -52,6 +52,8 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
+    $('body').addClass('background') ;
+
     //
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
@@ -73,6 +75,8 @@ angApp.controller("player", function($scope, $http, $window) {
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
     $("#header_image").css("display","none") ;
+    $('body').removeClass('background') ;
+
     //
     // init_audio is designed to be called after the
     // song phrases have been loaded. uses an ng-init
@@ -223,7 +227,8 @@ angApp.controller("player", function($scope, $http, $window) {
         $("li.phrase").each(function() {
             if($(this).attr("file") === current_rec) {
                 console.log("Found just finished phrase") ;
-                $(this).css("border","none") ;
+                // $(this).css("border","none").css("font-weight","normal") ;
+                $(this).css("border","none").css("font-weight","normal").css("background-color","black") ;
             }
         }) ;
         $scope.setSourceToNext(current_rec) ;
@@ -239,7 +244,8 @@ angApp.controller("player", function($scope, $http, $window) {
             $("li.phrase").each(function() {
                 if($(this).attr("file") === now_playing) {
                     console.log("Found playing phrase") ;
-                    $(this).css("border","1px solid lightgrey") ;
+                    // $(this).attr("style='border:1px solid white;font-weight:bold;background-color:gray'") ;
+                    $(this).css("border","1px solid white").css("font-weight","bold").css("background-color","#404040") ;
                     // at this stage we need to ensure that the
                     // current element is visible
                     var elementRect = $(this)[0].getBoundingClientRect() ;
