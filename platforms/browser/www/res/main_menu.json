@@ -1,38 +1,38 @@
 
 { "mainmenu": [
-  { "name": "Karakia", "url": "karakia.html"} ,
-  { "name": "Mōteatea", "url": "moteatea.html"} ,
-  { "name": "Waiata", "url": "waiata.html"} ,
-  { "name": "Haka", "url": "haka.html"} ,
-  { "name": "Whakataukī", "url": "whakatauki.html"} ,
-  { "name": "Pepeha", "url": "pepeha.html"}
+  { "name": "Karakia   >", "url": "karakia.html"} ,
+  { "name": "Mōteatea   >", "url": "moteatea.html"} ,
+  { "name": "Waiata   >", "url": "waiata.html"} ,
+  { "name": "Haka   >", "url": "haka.html"} ,
+  { "name": "Whakataukī   >", "url": "whakatauki.html"} ,
+  { "name": "Pepeha   >", "url": "pepeha.html"}
   ] ,
   "karakia": [
-    { "name" : "E Whatoro Ana", "url" : "e_whatoro_ana.html" }
+    { "name" : "E Whatoro Ana >", "url" : "e_whatoro_ana.html" }
   ] ,
   "moteatea": [
-    { "name" : "Te Roa O Te Pō", "url" : "te_roa_o_te_po.html" },
-    { "name" : "Toea Mai Rā", "url" : "toea_mai_ra.html" },
-    { "name" : "Tērā Ia Ngā Tai O Honipaka", "url" : "tera_ia_nga_tai_o_honipaka.html" },
-    { "name" : "Moe Hurihuri", "url" : "moe_hurihuri.html" },
-    { "name" : "Tau Mai E Kapiti", "url" : "tau_mai_e_kapiti.html" }
+    { "name" : "Te Roa O Te Pō   >", "url" : "te_roa_o_te_po.html" },
+    { "name" : "Toea Mai Rā   >", "url" : "toea_mai_ra.html" },
+    { "name" : "Tērā Ia Ngā Tai O Honipaka   >", "url" : "tera_ia_nga_tai_o_honipaka.html" },
+    { "name" : "Moe Hurihuri   >", "url" : "moe_hurihuri.html" },
+    { "name" : "Tau Mai E Kapiti   >", "url" : "tau_mai_e_kapiti.html" }
   ]  ,
   "waiata": [
-    { "name" : "Ka Oho Te Wairua", "url" : "ka_oho_te_wairua.html" }
+    { "name" : "Ka Oho Te Wairua   >", "url" : "ka_oho_te_wairua.html" }
   ] ,
   "haka": [
-    { "name" : "He Hokioi", "url" : "he_hokioi.html" },
-    { "name" : "Kikiki, Kakaka", "url" : "kikiki_kakaka.html" },
-    { "name" : "Ka Tukituki", "url" : "ka_tukituki.html" }
+    { "name" : "He Hokioi   >", "url" : "he_hokioi.html" },
+    { "name" : "Kikiki, Kakaka   >", "url" : "kikiki_kakaka.html" },
+    { "name" : "Ka Tukituki   >", "url" : "ka_tukituki.html" }
   ],
   "whakatauki" : [
-    { "name" : "Whakataukī1", "url" : "whakatauki1.html" },
-    { "name" : "Whakataukī2", "url" : "whakatauki2.html" },
-    { "name" : "Whakataukī3", "url" : "whakatauki3.html" }
+    { "name" : "Whakataukī1   >", "url" : "whakatauki1.html" },
+    { "name" : "Whakataukī2   >", "url" : "whakatauki2.html" },
+    { "name" : "Whakataukī3   >", "url" : "whakatauki3.html" }
   ],
   "pepeha": [
-    { "name" : "Takapūwāhia", "url" : "takapuwahia.html" },
-    { "name" : "Hongoeka", "url" : "hongoeka.html" },
-    { "name" : "Ngāti Koata", "url" : "koata.html" }
+    { "name" : "Takapūwāhia   >", "url" : "takapuwahia.html" },
+    { "name" : "Hongoeka   >", "url" : "hongoeka.html" },
+    { "name" : "Ngāti Koata   >", "url" : "koata.html" }
   ]
 }

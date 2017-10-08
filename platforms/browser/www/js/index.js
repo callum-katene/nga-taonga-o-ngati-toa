@@ -257,13 +257,14 @@ angApp.controller("player", function($scope, $http, $window) {
                     console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
                     var lyricPanelOffset = $scope.lyric_panel.offset() ;
                     console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
-                    if(elementRect.top < lyricPanelTop) {
+                    if(elementRect.top <= lyricPanelTop) {
                         console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
                         $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
                     }
-                    if(elementRect.bottom > lyricPanelBottom) {
+                    console.log("ElementRec:BOTTOM " + elementRect.bottom + ", LyricPanel:BOTTOM " + lyricPanelBottom) ;
+                    if(elementRect.bottom  >= lyricPanelBottom) {
                         console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
-                        $(this)[0].scrollIntoView(false, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+                        $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
                     }
                 }
                 else {

@@ -9,13 +9,24 @@ angApp.config(function($routeProvider) {
         .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
-        .when("/e_pa_to_hau.html", { templateUrl: "e_pa_to_hau.html", controller: "player" })
+        .when("/haka.html", { templateUrl: "haka.html", controller: "controller" })
+        .when("/pepeha.html", { templateUrl: "pepeha.html", controller: "controller" })
+        .when("/waiata.html", { templateUrl: "waiata.html", controller: "controller" })
         .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
         .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
         .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player" })
-        .otherwise({  template: "<h1>What the blazes!!</h1>" }) ;
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
+        .when("/ka_oho_te_wairua.html", { templateUrl: "ka_oho_te_wairua.html", controller: "player" })
+        .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player" })
+        .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
+        .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
+        .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player" })
+        .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
+        .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
+        .otherwise({  template: "<h2>Under development</h2>" }) ;
 }) ;
 //
 // controller is the menu controller for all the menu pages. All menu items are
@@ -29,6 +40,8 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     }, function(v) {
         console.log("error: " + v);
     }) ;
+    $scope.footer = $("footer") ;
+    // $scope.footer.height(52) ;
     $("#player_all").hide() ;
     $("#player_none").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
@@ -39,6 +52,8 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
+    $('body').addClass('background') ;
+
     //
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
@@ -55,8 +70,13 @@ angApp.controller("player", function($scope, $http, $window) {
     console.log("player controller") ;
     $scope.nowPlaying = false ;
     $scope.audio = $("audio") ;
+    $scope.footer = $("footer") ;
+    $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
+    $scope.lyric_panel = $(".lyric_panel") ;
     $("#header_image").css("display","none") ;
+    $('body').removeClass('background') ;
+
     //
     // init_audio is designed to be called after the
     // song phrases have been loaded. uses an ng-init
@@ -68,7 +88,6 @@ angApp.controller("player", function($scope, $http, $window) {
             $scope.audio[0].load() ;
         }
     } ;
-
     // function to set the audio source to the first selected phrase
     // IF audio is not currently playing
     $scope.setSourceToFirst = function() {
@@ -87,7 +106,6 @@ angApp.controller("player", function($scope, $http, $window) {
                 // console.log("Else: " + $(this)) ;
             }
         }) ;
-        console.log("Finish") ;
         $scope.audio[0].load() ;
     } ;
     $http.get("res/lyrics.json").then(function (v) {
@@ -116,6 +134,7 @@ angApp.controller("player", function($scope, $http, $window) {
             }
             // $(this).css("border","none") ;
         });
+        console.log("nowPlaying: " + $scope.nowPlaying) ;
         if(! $scope.nowPlaying) {
             $scope.audio.attr("src", null) ;
             $scope.audio[0].load() ;
@@ -208,7 +227,8 @@ angApp.controller("player", function($scope, $http, $window) {
         $("li.phrase").each(function() {
             if($(this).attr("file") === current_rec) {
                 console.log("Found just finished phrase") ;
-                $(this).css("border","none") ;
+                // $(this).css("border","none").css("font-weight","normal") ;
+                $(this).css("border","none").css("font-weight","normal").css("background-color","black") ;
             }
         }) ;
         $scope.setSourceToNext(current_rec) ;
@@ -224,7 +244,28 @@ angApp.controller("player", function($scope, $http, $window) {
             $("li.phrase").each(function() {
                 if($(this).attr("file") === now_playing) {
                     console.log("Found playing phrase") ;
-                    $(this).css("border","1px solid lightgrey") ;
+                    // $(this).attr("style='border:1px solid white;font-weight:bold;background-color:gray'") ;
+                    $(this).css("border","1px solid white").css("font-weight","bold").css("background-color","#404040") ;
+                    // at this stage we need to ensure that the
+                    // current element is visible
+                    var elementRect = $(this)[0].getBoundingClientRect() ;
+
+                    console.log("Bounding rectangle: Top: " + elementRect.top + ", bottom: " + elementRect.bottom) ;
+                    var lyricPanelPosition = $scope.lyric_panel.position() ;
+                    var lyricPanelTop = lyricPanelPosition.top + $scope.lyric_panel.scrollTop() ;
+                    var lyricPanelBottom = lyricPanelTop + $scope.lyric_panel.height() ;
+                    console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
+                    var lyricPanelOffset = $scope.lyric_panel.offset() ;
+                    console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
+                    if(elementRect.top <= lyricPanelTop) {
+                        console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
+                        $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+                    }
+                    console.log("ElementRec:BOTTOM " + elementRect.bottom + ", LyricPanel:BOTTOM " + lyricPanelBottom) ;
+                    if(elementRect.bottom >= lyricPanelBottom) {
+                        console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
+                        $(this)[0].scrollIntoView(false, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+                    }
                 }
                 else {
                     $(this).css("border","none") ;
@@ -233,6 +274,14 @@ angApp.controller("player", function($scope, $http, $window) {
     })
     .show();
 
+    $scope.viewport_size = $(window).outerHeight(true) ;
+    console.log("Viewport size: " + $scope.viewport_size) ;
+    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
+    // resize the lyrics_panel
+    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
+    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
 }) ;
 
 // app is used by the cordova initialization
