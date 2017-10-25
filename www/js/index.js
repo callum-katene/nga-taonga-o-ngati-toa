@@ -5,7 +5,7 @@ var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]);
 // tempPlateUrl either refers to the ng-templates in the html file, or a specific html file
 angApp.config(function($routeProvider) {
     $routeProvider
-        .when("/", { templateUrl: "top.html" })
+        .when("/", { templateUrl: "top.html", controller: "home_controller" })
         .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
@@ -53,6 +53,41 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     // ensure the header is visible and the audio player is hidden
     $("#header_image").css("display","block") ;
     $('body').addClass('background') ;
+    $('#navigate_back').show() ;
+    //
+    // if this controller is active then we are on a menu page
+    // so the audio player needs to be paused, hidden, and event
+    // listeners disabled
+    $("audio")
+        .off("ended")
+        .off("playing")
+        .off("paused")
+        .hide()
+        [0].pause() ;
+}) ;
+
+angApp.controller("home_controller", function($scope, $http, $window, $location) {
+    console.log("home controller") ;
+    $http.get("res/main_menu.json").then(function (v) {
+        console.log("main_menu JSON loaded successfully") ;
+        $scope.menuitems = v.data ;
+    }, function(v) {
+        console.log("error: " + v);
+    }) ;
+    $scope.footer = $("footer") ;
+    // $scope.footer.height(52) ;
+    $("#player_all").hide() ;
+    $("#player_none").hide() ;
+    $window.plugins.insomnia.allowSleepAgain() ;
+    $scope.goTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+    } ;
+    // if this controller loads it is because we're on a menu page, so
+    // ensure the header is visible and the audio player is hidden
+    $("#header_image").css("display","block") ;
+    $('body').addClass('background') ;
+    $('#navigate_back').hide() ;
 
     //
     // if this controller is active then we are on a menu page
