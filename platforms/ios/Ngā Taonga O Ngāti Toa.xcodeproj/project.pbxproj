@@ -55,6 +55,9 @@
 		465EBF41834F449D94FC6710 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F2417C040648D9A38E2420 /* CDVStatusBar.m */; };
 		88F20880A54B43D1A20BF71E /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 795754E1307345F787F2C539 /* CDVVibration.m */; };
 		0DC50A0888334EB59457B330 /* Insomnia.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A13689EB07463DAAF17E25 /* Insomnia.m */; };
+		59B5B79D71504FFBA5A4AC43 /* NativeAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 894CA554E58A4DE9B2F98CC9 /* NativeAudio.m */; };
+		4FF57B3C1C0249DD995C089F /* NativeAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6DD28175DD4A54AE79672A /* NativeAudioAsset.m */; };
+		E08D063B8633492F8AFC46E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127ECCAAA62947B2AB929FF5 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +165,11 @@
 		D03CE19D5A8F46B3B57D0F58 /* CDVVibration.h */ = {isa = PBXFileReference; name = "CDVVibration.h"; path = "cordova-plugin-vibration/CDVVibration.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		A4A13689EB07463DAAF17E25 /* Insomnia.m */ = {isa = PBXFileReference; name = "Insomnia.m"; path = "cordova-plugin-insomnia/Insomnia.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		D9FD74745A2F45CF906BFB26 /* Insomnia.h */ = {isa = PBXFileReference; name = "Insomnia.h"; path = "cordova-plugin-insomnia/Insomnia.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		894CA554E58A4DE9B2F98CC9 /* NativeAudio.m */ = {isa = PBXFileReference; name = "NativeAudio.m"; path = "cordova-plugin-nativeaudio/NativeAudio.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		BF6DD28175DD4A54AE79672A /* NativeAudioAsset.m */ = {isa = PBXFileReference; name = "NativeAudioAsset.m"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		41CCBAC328A7452EBFB3C4EE /* NativeAudio.h */ = {isa = PBXFileReference; name = "NativeAudio.h"; path = "cordova-plugin-nativeaudio/NativeAudio.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		70B33CD9B398418283EBBDC7 /* NativeAudioAsset.h */ = {isa = PBXFileReference; name = "NativeAudioAsset.h"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		127ECCAAA62947B2AB929FF5 /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,7 @@
 				34616BC909314FB6B851AF72 /* AudioToolbox.framework in Frameworks */,
 				CE9A11EE399847DA9315BDC0 /* SystemConfiguration.framework in Frameworks */,
 				80547928658847BF9ACD13DD /* CoreTelephony.framework in Frameworks */,
+				E08D063B8633492F8AFC46E9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +271,7 @@
 				E515125A530D465E9D4D3654 /* AudioToolbox.framework */,
 				D9314E41674A42658F076559 /* SystemConfiguration.framework */,
 				7E884CDCBECD4348B1D8605E /* CoreTelephony.framework */,
+				127ECCAAA62947B2AB929FF5 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -342,6 +352,10 @@
 				D03CE19D5A8F46B3B57D0F58 /* CDVVibration.h */,
 				A4A13689EB07463DAAF17E25 /* Insomnia.m */,
 				D9FD74745A2F45CF906BFB26 /* Insomnia.h */,
+				894CA554E58A4DE9B2F98CC9 /* NativeAudio.m */,
+				BF6DD28175DD4A54AE79672A /* NativeAudioAsset.m */,
+				41CCBAC328A7452EBFB3C4EE /* NativeAudio.h */,
+				70B33CD9B398418283EBBDC7 /* NativeAudioAsset.h */,
 			);
 			name = Plugins;
 			path = "Ngā Taonga O Ngāti Toa/Plugins";
@@ -483,6 +497,8 @@
 				465EBF41834F449D94FC6710 /* CDVStatusBar.m in Sources */,
 				88F20880A54B43D1A20BF71E /* CDVVibration.m in Sources */,
 				0DC50A0888334EB59457B330 /* Insomnia.m in Sources */,
+				59B5B79D71504FFBA5A4AC43 /* NativeAudio.m in Sources */,
+				4FF57B3C1C0249DD995C089F /* NativeAudioAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

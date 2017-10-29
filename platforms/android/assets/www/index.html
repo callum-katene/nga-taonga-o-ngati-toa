@@ -69,13 +69,17 @@ routeProvider in the controller defined in the accompanying javascript file
 
 <p class="event listening">Connecting to Device</p>
     <footer>
-        <audio controls style="width:100%" type="audio/mp3">
+        <audio controls style="width:100%" type="audio/mp3" id="player1">
+        </audio>
+        <audio controls style="width:100%" type="audio/mp3" id="player2">
         </audio>
         <div class="navigation_bar">
             <div class="navigation_entry" id="navigate_home"><h3>Home</h3></div>
             <div class="navigation_entry" id="navigate_back"><h3>Back</h3></div>
-            <div class="navigation_entry" id="player_all"><h3>All</h3></div>
-            <div class="navigation_entry" id="player_none"><h3>None</h3></div>
+            <div class="navigation_entry player_control" id="player_all"><h3>All</h3></div>
+            <div class="navigation_entry player_control" id="player_none"><h3>None</h3></div>
+            <div class="navigation_entry player_control" id="player_play"><h3>Play</h3></div>
+            <div class="navigation_entry player_control" id="player_pause"><h3>Pause</h3></div>
         </div>
     </footer>
     <script type="text/javascript" src="cordova.js"></script>
