@@ -101,7 +101,7 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
 }) ;
 
 angApp.controller("player-cordova-plugin-media", function($scope, $http, $window) {
-    console.log("player3 controller");
+    console.log("player-cordova-plugin-media controller");
     // this player manages to audio elements.
     // if a phrase is selected/deselected, and an audio is currently playing
     // then the source of the OTHER audio is set to the next file to be played
@@ -116,8 +116,16 @@ angApp.controller("player-cordova-plugin-media", function($scope, $http, $window
     $('body').removeClass('background');
     $scope.play_button = $('#player_play') ;
     $scope.pause_button = $('#player_pause') ;
+    $scope.all_button = $('#player_all') ;
+    $scope.none_button = $('#player_none') ;
     $scope.play_button.show() ;
     $scope.pause_button.hide() ;
+    $scope.all_button.show().click(function() {
+        $('li.phrase.unselected_phrase').removeClass('unselected_phrase') ;
+    }) ;
+    $scope.none_button.show().click(function() {
+        $('li.phrase').not('.unselected_phrase').addClass('unselected_phrase') ;
+    }) ;
     $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully");
         $scope.menuitems = v.data;
@@ -126,48 +134,107 @@ angApp.controller("player-cordova-plugin-media", function($scope, $http, $window
     });
 
     $scope.current_file = null ;
+    $scope.next_file = null ;
     $scope.is_paused = null ;
-    $scope.recordings_file = new Array() ; // an array of the file names loaded
-    $scope.recordings_media = new Array() ; // an array of the media objects loaded
+    $scope.recordings_file = [] ; // an array of the file names loaded
+    $scope.recordings_media = [] ; // an array of the media objects loaded
 
-    $scope.play = function() {
-        console.log('Play ...') ;
-        $scope.is_paused = false ;
-        var file_to_play = null ;
+
+    $scope.$on('$destroy', function() {
+        console.log('$destroy: leaving controller player-cordova-plugin-media') ;
+        $scope.pause() ; // setting is_paused so the media listener doesn't try to restart playing
+        $.each($scope.recordings_media, function(index, value) {
+            console.log('Unloading media at position ' + index) ;
+            value.stop() ;
+            value.release() ;
+        }) ;
+        $scope.play_button.off('click') ;
+        $scope.pause_button.off('click') ;
         $scope.play_button.hide() ;
-        $scope.pause_button.show() ;
-        if($scope.current_file !== null) {
-            console.log('Playing file after current file: ' + $scope.current_file) ;
-            file_to_play = $('li.phrase[file="' + $scope.current_file +'"]').next().attr('file') ;
+        $scope.pause_button.hide() ;
+        $scope.all_button.hide() ;
+        $scope.none_button.hide() ;
+        $scope.all_button.off('click') ;
+        $scope.none_button.off('click') ;
+    }) ;
+
+
+    $scope.get_media = function(file) {
+        return $scope.recordings_media[$scope.recordings_file.indexOf(file)] ;
+    } ;
+
+    $scope.get_li = function(file) {
+        var li = null ;
+        if(file) {
+            li = $('li.phrase[file="' + file +'"]').first() ;
         }
         else {
-            console.log('No current_file so finding first phrase that is not unselected') ;
-            file_to_play = $('li.phrase:not(.unselected_phrase)').first().attr('file') ;
+            li = $('li.phrase').not('.unselected_phrase').first() ;
         }
-        console.log('File to play: ' + file_to_play) ;
-        $scope.audio_plugin.play(file_to_play,
-            function(msg) {
-                console.log('Success: ' + file_to_play) ;
-                $scope.current_file = file_to_play ;
-            }, function(msg) {
-                console.log('Failure: ' + file_to_play + ': ' + msg) ;
-            }, function() {
-                console.log('Playback completed: ') ;
-                // if not paused, trigger a click event on the Play button
-                // if(! $scope.is_paused) {
-                //     console.log('Not paused, so triggering click event on Play button') ;
-                //     $scope.play_button.trigger('click') ;
-                // }
-                // else {
-                //     console.log('Playback now paused so not triggering click event on Play button') ;
-                // }
-            }
-        ) ;
+        console.log('get_li(): Returning: ' + li.attr('file')) ;
+        return li ;
+    } ;
+
+    $scope.get_next_li = function(current_li) {
+        var next_li = null ;
+        console.log('get_next_li(): current_li file: ' + current_li.attr('file')) ;
+        if(current_li) {
+           next_li = current_li.nextAll('li.phrase').not('.unselected_phrase').first() ;
+            console.log('get_next_li(): next_li file: ' + next_li.attr('file')) ;
+        }
+        if(! next_li.length) {
+            console.log('Searching from the top') ;
+            next_li = $('li.phrase').not('.unselected_phrase').first() ;
+        }
+        console.log('get_next_li(): returning: ' + next_li.attr('file')) ;
+        return next_li ;
+    } ;
+
+    // action for the play button. if current_file is set then we get its media
+    // and check to see if current position is less than duration. if it is then
+    // resume. otherwise go to next.
+    $scope.play = function() {
+        console.log('Play. Current file is ' + $scope.current_file) ;
+        $scope.is_paused = false ;
+        var file_to_play = null ;
+        var next_li = null ;
+        $scope.play_button.hide() ;
+        next_li = $scope.get_li($scope.current_file) ;
+        if($scope.current_file) {
+            next_li = $scope.get_next_li(next_li) ;
+        }
+        // next_li = $scope.get_next_li($scope.get_li($scope.current_file)) ;
+        if(next_li) {
+            file_to_play = next_li.attr('file') ;
+        }
+        if(!file_to_play) {
+            console.log('No file to play. Triggering PAUSE ...') ;
+            $scope.pause_button.trigger('click') ;
+        }
+        else {
+            console.log('File to play: ' + file_to_play) ;
+            var media = $scope.get_media(file_to_play) ;
+            media.getCurrentPosition(function(position) {
+                if(position > 0) {
+                    console.log('File ' + file_to_play + ' is not at the beginning, so resuming ...') ;
+                    media.play() ;
+                }
+                else {
+                    console.log('File ' + file_to_play + ' is at the beginning, so playing ...');
+                    media.play() ;
+                }
+            }, function(err) {
+                console.log('Unable to get current position: ' + err) ;
+            } ) ;
+
+        }
+        $scope.pause_button.show() ;
     } ;
 
     $scope.pause = function() {
         $scope.is_paused = true ;
         console.log('Pause ...') ;
+        $scope.recordings_media[$scope.recordings_file.indexOf($scope.current_file)].pause() ;
         $scope.play_button.show() ;
         $scope.pause_button.hide() ;
     } ;
@@ -202,9 +269,33 @@ angApp.controller("player-cordova-plugin-media", function($scope, $http, $window
     setTimeout(function() {
         $('li.phrase').each(function (index, value) {
             var file = $(this).attr('file') ;
-            console.log('Wanting to preload[' + index + '] ' + file);
+            // console.log('Wanting to preload[' + index + '] ' + file);
             $scope.recordings_file.push(file) ;
-            $scopr.recordings_media.push(new Media(file, null)) ;
+            $scope.recordings_media.push(new Media(file, null, null, function(msg) {
+                if(msg == 2) {
+                    console.log('Playback started: ' + file) ;
+                    $scope.current_file = file ;
+                    $('li.phrase.playing').removeClass('playing') ;
+                    $scope.get_li(file).addClass('playing') ;
+                }
+                if(msg == 4) {
+                    console.log('File ' + file + 'has just stopped playing') ;
+                    $('li.phrase.playing').removeClass('playing') ;
+                    if($scope.is_paused) {
+                        console.log('Paused, so do nothing') ;
+                    }
+                    else {
+                        // var next_li = $scope.get_next_li($scope.get_li(file)) ;
+                        // if(!next_li) {
+                            // couldn't get a next_li so pausing
+                        //     $scope.pause_button.trigger('click') ;
+                        // }
+                        // else {
+                            $scope.play_button.trigger('click') ;
+                        // }
+                    }
+                }
+            })) ;
         }) ;
         console.log('Recordings count: ' + $scope.recordings_file.length) ;
         for(i=0; i < $scope.recordings_file.length; i++) {

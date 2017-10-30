@@ -78,9 +78,6 @@
     <feature name="Insomnia">
         <param name="ios-package" value="Insomnia" />
     </feature>
-    <feature name="NativeAudio">
-        <param name="ios-package" value="NativeAudio" />
-    </feature>
     <name>Ngā Taonga O Ngāti Toa</name>
     <description>
         Ngā Taonga O Ngāti Toa
@@ -89,7 +86,7 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

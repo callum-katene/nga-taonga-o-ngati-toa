@@ -21,7 +21,7 @@ angApp.config(function($routeProvider) {
         .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player" })
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
-        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player4" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player-cordova-plugin-media" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
@@ -100,8 +100,171 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         [0].pause() ;
 }) ;
 
+angApp.controller("player-cordova-plugin-media", function($scope, $http, $window) {
+    console.log("player3 controller");
+    // this player manages to audio elements.
+    // if a phrase is selected/deselected, and an audio is currently playing
+    // then the source of the OTHER audio is set to the next file to be played
+    // if there is no audio currently playing, then just work with the
+    // currently selected player
+    $('audio').hide() ;
+    $scope.footer = $("footer");
+    $scope.song_title = $(".song_title");
+    $window.plugins.insomnia.keepAwake();
+    $scope.lyric_panel = $(".lyric_panel");
+    $("#header_image").css("display", "none");
+    $('body').removeClass('background');
+    $scope.play_button = $('#player_play') ;
+    $scope.pause_button = $('#player_pause') ;
+    $scope.play_button.show() ;
+    $scope.pause_button.hide() ;
+    $http.get("res/lyrics.json").then(function (v) {
+        console.log("lyrics.JSON loaded successfully");
+        $scope.menuitems = v.data;
+    }, function (v) {
+        console.log("error: " + v);
+    });
+
+    $scope.current_file = null ;
+    $scope.next_file = null ;
+    $scope.is_paused = null ;
+    $scope.recordings_file = new Array() ; // an array of the file names loaded
+    $scope.recordings_media = new Array() ; // an array of the media objects loaded
+
+    $scope.get_next_li = function(current_file) {
+        // find the current file
+        // if found
+            // find the next file where list element is not unselected
+            // if not found
+                // search from the start for the next file where list element is not unselected
+        // else, if no current file, select the first file where list element is not unselected
+        var current_li = null ;
+        var next_li = null ;
+        if(current_file) {
+            console.log('Looking for current file in list: ' + current_file) ;
+            current_li = $('li.phrase[file="' + $scope.current_file +'"]') ;
+            if(current_li) {
+                console.log('Found current li, now looking for next') ;
+                next_li = current_li.nextAll('li.phrase').not('unselected_phrase') ;
+                if(next_li) {
+                    console.log('Found next li. File is ' + next_li.attr('file')) ;
+                }
+            }
+        }
+
+        // search from the start if not yet found
+
+        if(! next_li) {
+            next_li = $('li.phrase').not('unselected_phrase').first() ;
+        }
+        // console.log('get_next_li returning: ' + JSON.stringify(next_li)) ;
+        return next_li ;
+    } ;
+
+    $scope.play = function() {
+        console.log('Play ...') ;
+        $scope.is_paused = false ;
+        var file_to_play = null ;
+        var next_li = null ;
+        $scope.play_button.hide() ;
+        $scope.pause_button.show() ;
+        next_li = $scope.get_next_li($scope.current_file) ;
+        if(next_li) {
+            file_to_play = next_li.attr('file') ;
+        }
+        if(file_to_play == null) {
+            console.log('No file to play. Triggering PAUSE ...') ;
+            $scope.pause_button.trigger('click') ;
+        }
+        else {
+            console.log('File to play: ' + file_to_play) ;
+            var recording_index = $scope.recordings_file.indexOf(file_to_play) ;
+            if (recording_index < 0) {
+                console.log('Could not find recording for ' + file_to_play) ;
+            }
+            else {
+                var media = $scope.recordings_media[recording_index] ;
+                // console.log('Got recording media: ' + JSON.stringify(media)) ;
+                media.play() ;
+            }
+        }
+    } ;
+
+    $scope.pause = function() {
+        $scope.is_paused = true ;
+        console.log('Pause ...') ;
+        $scope.play_button.show() ;
+        $scope.pause_button.hide() ;
+    } ;
+
+    $scope.play_button.click($scope.play) ;
+    $scope.pause_button.click($scope.pause) ;
+
+    $scope.doToggle = function(val) {
+        var myEl = $("ul li").eq(val) ;
+        if(myEl.hasClass("unselected_phrase")) {
+            console.log("Selected element has unselected class so removing ...") ;
+            myEl.removeClass("unselected_phrase") ;
+        }
+        else {
+            myEl.addClass("unselected_phrase") ;
+            console.log("Selected element does not have unselected class so adding ...") ;
+        }
+    } ;
+
+    // set the height of the view port and enable scrolling
+    $scope.viewport_size = $(window).outerHeight(true) ;
+    console.log("Viewport size: " + $scope.viewport_size) ;
+    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
+    // resize the lyrics_panel
+    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
+    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+
+    // preload all audio. This is done after a 500mS timeout. There's
+    // probably a better way to do this
+    setTimeout(function() {
+        $('li.phrase').each(function (index, value) {
+            var file = $(this).attr('file') ;
+            console.log('Wanting to preload[' + index + '] ' + file);
+            $scope.recordings_file.push(file) ;
+            $scope.recordings_media.push(new Media(file, null, null, function(msg) {
+                console.log("Status change: " + JSON.stringify(msg)) ;
+                if(msg == 2) {
+                    console.log('Playback started: ' + file) ;
+                    $scope.current_file = file ;
+                    // $scope.next_file = get_next_file(file) ;
+                }
+                if(msg == 4) {
+                    console.log('File ' + file + 'has just stopped playing') ;
+                    if($scope.is_paused) {
+                        console.log('Paused, so do nothing') ;
+                    }
+                    else {
+                        var next_li = $scope.get_next_li(file) ;
+                        if(!next_li) {
+                            // couldn't get a next_li so pausing
+                            $scope.pause_button.trigger('click') ;
+                        }
+                        else {
+                            $scope.play_button.trigger('click') ;
+                        }
+                    }
+                }
+            })) ;
+        }) ;
+        console.log('Recordings count: ' + $scope.recordings_file.length) ;
+        for(i=0; i < $scope.recordings_file.length; i++) {
+            console.log('Recording file: ' + $scope.recordings_file[i]) ;
+        }
+    }, 500) ;
+
+    //
+} ) ;
+
 // player 4 uses the native audio plugin
-angApp.controller("player4", function($scope, $http, $window) {
+angApp.controller("player-cordova-plugin-nativeaudio", function($scope, $http, $window) {
     console.log("player3 controller");
     // this player manages to audio elements.
     // if a phrase is selected/deselected, and an audio is currently playing
@@ -130,9 +293,11 @@ angApp.controller("player4", function($scope, $http, $window) {
     console.log('Native audio plugin loaded') ;
 
     $scope.current_file = null ;
+    $scope.is_paused = null ;
 
     $scope.play = function() {
         console.log('Play ...') ;
+        $scope.is_paused = false ;
         var file_to_play = null ;
         $scope.play_button.hide() ;
         $scope.pause_button.show() ;
@@ -151,14 +316,26 @@ angApp.controller("player4", function($scope, $http, $window) {
                 $scope.current_file = file_to_play ;
             }, function(msg) {
                 console.log('Failure: ' + file_to_play + ': ' + msg) ;
-            }) ;
-    }
+            }, function() {
+                console.log('Playback completed: ') ;
+                // if not paused, trigger a click event on the Play button
+                // if(! $scope.is_paused) {
+                //     console.log('Not paused, so triggering click event on Play button') ;
+                //     $scope.play_button.trigger('click') ;
+                // }
+                // else {
+                //     console.log('Playback now paused so not triggering click event on Play button') ;
+                // }
+            }
+        ) ;
+    } ;
 
     $scope.pause = function() {
+        $scope.is_paused = true ;
         console.log('Pause ...') ;
         $scope.play_button.show() ;
         $scope.pause_button.hide() ;
-    }
+    } ;
 
     $scope.play_button.click($scope.play) ;
     $scope.pause_button.click($scope.pause) ;

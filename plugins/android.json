@@ -66,9 +66,6 @@
         },
         "cordova-plugin-insomnia": {
             "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
-        },
-        "cordova-plugin-nativeaudio": {
-            "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
         }
     },
     "dependent_plugins": {

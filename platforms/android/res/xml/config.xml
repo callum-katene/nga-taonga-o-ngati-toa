@@ -65,9 +65,6 @@
     <feature name="Insomnia">
         <param name="android-package" value="nl.xservices.plugins.Insomnia" />
     </feature>
-    <feature name="NativeAudio">
-        <param name="android-package" value="com.rjfun.cordova.plugin.nativeaudio.NativeAudio" />
-    </feature>
     <name>Ngā Taonga O Ngāti Toa</name>
     <description>
         Ngā Taonga O Ngāti Toa

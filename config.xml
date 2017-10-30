@@ -113,7 +113,6 @@
     <plugin name="cordova-plugin-insomnia" spec="git+https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git" />
     <plugin name="cordova-plugin-media" spec="^2.2.0" />
     <plugin name="cordova-plugin-media-capture" spec="^1.2.0" />
-    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
     <plugin name="cordova-plugin-network-information" spec="^1.2.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^3.2.2" />
     <plugin name="cordova-plugin-statusbar" spec="^2.1.3" />
