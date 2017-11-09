@@ -87,8 +87,9 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     $("#header_image").css("display","block") ;
     $('body').addClass('background') ;
     $('#navigate_back').hide() ;
-
-    $('.navigation_entry > img').height($(window).outerHeight(true) * .1) ;
+    var outer_height = $(window).outerHeight(true) ;
+    console.log("outer_height: " + outer_height) ;
+    $('.navigation_entry > img').height(outer_height * .07) ;
     $('.navigation_bar').show() ;
     //
     // if this controller is active then we are on a menu page
@@ -904,6 +905,17 @@ angApp.controller("player2", function($scope, $http, $window) {
     $("#player_none").show().click(function() {
         $scope.unselectAllPhrases() ;
     }) ;
+    $('#font_larger').show().click(function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+    }) ;
+    $('#font_smaller').show().click(function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
+    }) ;
+
 
     $scope.getNextSource = function(current_rec) {
         //loop through to find the phrase with this rec
@@ -1185,6 +1197,16 @@ angApp.controller("player", function($scope, $http, $window) {
     }) ;
     $("#player_none").show().click(function() {
         $scope.unselectAllPhrases() ;
+    }) ;
+    $('#font_larger').show().click(function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+    }) ;
+    $('#font_smaller').show().click(function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
     }) ;
     //
     // function to set audio source to next

@@ -12,7 +12,7 @@ angApp.config(function($routeProvider) {
         .when("/haka.html", { templateUrl: "haka.html", controller: "controller" })
         .when("/pepeha.html", { templateUrl: "pepeha.html", controller: "controller" })
         .when("/waiata.html", { templateUrl: "waiata.html", controller: "controller" })
-        .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player" })
+        .when("/tera_ia_nga_tai_o_honipaka.html", { templateUrl: "tera_ia_nga_tai_o_honipaka.html", controller: "player2" })
         .when("/e_whatoro_ana.html", { templateUrl: "e_whatoro_ana.html", controller: "player" })
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player" })
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player" })
@@ -21,7 +21,7 @@ angApp.config(function($routeProvider) {
         .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player" })
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
-        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player-cordova-plugin-nativeaudio" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
@@ -41,8 +41,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     }) ;
     $scope.footer = $("footer") ;
     // $scope.footer.height(52) ;
-    $("#player_all").hide() ;
-    $("#player_none").hide() ;
+    $(".player_control").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
@@ -54,6 +53,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     $('body').addClass('background') ;
     $('#navigate_back').show() ;
     //
+    // $('.navigation_entry > img').height($(window).outerHeight(true) * .1) ;
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
     // listeners disabled
@@ -67,6 +67,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
 
 angApp.controller("home_controller", function($scope, $http, $window, $location) {
     console.log("home controller") ;
+    $('.navigation_bar').hide() ;
     $http.get("res/main_menu.json").then(function (v) {
         console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
@@ -75,8 +76,7 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     }) ;
     $scope.footer = $("footer") ;
     // $scope.footer.height(52) ;
-    $("#player_all").hide() ;
-    $("#player_none").hide() ;
+    $(".player_control").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
@@ -88,6 +88,8 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     $('body').addClass('background') ;
     $('#navigate_back').hide() ;
 
+    $('.navigation_entry > img').height($(window).outerHeight(true) * .1) ;
+    $('.navigation_bar').show() ;
     //
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
@@ -102,11 +104,6 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
 
 angApp.controller("player-cordova-plugin-nativeaudio", function($scope, $http, $window) {
     console.log("player-cordova-plugin-nativeaudio controller");
-    // this player manages to audio elements.
-    // if a phrase is selected/deselected, and an audio is currently playing
-    // then the source of the OTHER audio is set to the next file to be played
-    // if there is no audio currently playing, then just work with the
-    // currently selected player
     $('audio').hide() ;
     $scope.footer = $("footer");
     $scope.song_title = $(".song_title");
@@ -143,7 +140,7 @@ angApp.controller("player-cordova-plugin-nativeaudio", function($scope, $http, $
 
     // cleanup after controller is finished
     $scope.$on('$destroy', function() {
-        console.log('$destroy: leaving controller player-cordova-plugin-media') ;
+        console.log('$destroy: leaving controller player-cordova-plugin-nativeaudio') ;
         $scope.pause() ; // setting is_paused so the media listener doesn't try to restart playing
         $.each($scope.recordings_file, function(index, value) {
             console.log('Attempting to unload file ' + value) ;
@@ -315,7 +312,7 @@ angApp.controller("player-cordova-plugin-nativeaudio", function($scope, $http, $
     setTimeout(function() {
         $('li.phrase').each(function (index, value) {
             var file = $(this).attr('file') ;
-            $scope.audio_plugin.preloadSimple(file, file,
+            $scope.audio_plugin.preloadComplex(file, file, 1, 1, 0,
                 function(msg) {
                     console.log('File ' + file + ' pre-loaded successfully: ' + msg) ;
                     $scope.recordings_file.push(file) ;
@@ -422,7 +419,6 @@ angApp.controller("player-cordova-plugin-media", function($scope, $http, $window
         $scope.all_button.off('click') ;
         $scope.none_button.off('click') ;
     }) ;
-
 
     $scope.get_media = function(file) {
         return $scope.recordings_media[$scope.recordings_file.indexOf(file)] ;
@@ -586,123 +582,6 @@ angApp.controller("player-cordova-plugin-media", function($scope, $http, $window
     //
 } ) ;
 
-// player 4 uses the native audio plugin
-angApp.controller("player-cordova-plugin-nativeaudio-old", function($scope, $http, $window) {
-    console.log("player3 controller");
-    // this player manages to audio elements.
-    // if a phrase is selected/deselected, and an audio is currently playing
-    // then the source of the OTHER audio is set to the next file to be played
-    // if there is no audio currently playing, then just work with the
-    // currently selected player
-    $('audio').hide() ;
-    $scope.footer = $("footer");
-    $scope.song_title = $(".song_title");
-    $window.plugins.insomnia.keepAwake();
-    $scope.lyric_panel = $(".lyric_panel");
-    $("#header_image").css("display", "none");
-    $('body').removeClass('background');
-    $scope.play_button = $('#player_play') ;
-    $scope.pause_button = $('#player_pause') ;
-    $scope.play_button.show() ;
-    $scope.pause_button.hide() ;
-    $http.get("res/lyrics.json").then(function (v) {
-        console.log("lyrics.JSON loaded successfully");
-        $scope.menuitems = v.data;
-    }, function (v) {
-        console.log("error: " + v);
-    });
-
-    $scope.audio_plugin = window.plugins.NativeAudio ;
-    console.log('Native audio plugin loaded') ;
-
-    $scope.current_file = null ;
-    $scope.is_paused = null ;
-
-    $scope.play = function() {
-        console.log('Play ...') ;
-        $scope.is_paused = false ;
-        var file_to_play = null ;
-        $scope.play_button.hide() ;
-        $scope.pause_button.show() ;
-        if($scope.current_file !== null) {
-            console.log('Playing file after current file: ' + $scope.current_file) ;
-            file_to_play = $('li.phrase[file="' + $scope.current_file +'"]').next().attr('file') ;
-        }
-        else {
-            console.log('No current_file so finding first phrase that is not unselected') ;
-            file_to_play = $('li.phrase:not(.unselected_phrase)').first().attr('file') ;
-        }
-        console.log('File to play: ' + file_to_play) ;
-        $scope.audio_plugin.play(file_to_play,
-            function(msg) {
-                console.log('Success: ' + file_to_play) ;
-                $scope.current_file = file_to_play ;
-            }, function(msg) {
-                console.log('Failure: ' + file_to_play + ': ' + msg) ;
-            }, function() {
-                console.log('Playback completed: ' + file_to_play) ;
-                // if not paused, trigger a click event on the Play button
-                // if(! $scope.is_paused) {
-                //     console.log('Not paused, so triggering click event on Play button') ;
-                //     $scope.play_button.trigger('click') ;
-                // }
-                // else {
-                //     console.log('Playback now paused so not triggering click event on Play button') ;
-                // }
-            }
-        ) ;
-    } ;
-
-    $scope.pause = function() {
-        $scope.is_paused = true ;
-        console.log('Pause ...') ;
-        $scope.play_button.show() ;
-        $scope.pause_button.hide() ;
-    } ;
-
-    $scope.play_button.click($scope.play) ;
-    $scope.pause_button.click($scope.pause) ;
-
-    $scope.doToggle = function(val) {
-        var myEl = $("ul li").eq(val) ;
-        if(myEl.hasClass("unselected_phrase")) {
-            console.log("Selected element has unselected class so removing ...") ;
-            myEl.removeClass("unselected_phrase") ;
-        }
-        else {
-            myEl.addClass("unselected_phrase") ;
-            console.log("Selected element does not have unselected class so adding ...") ;
-        }
-    } ;
-
-    // set the height of the view port and enable scrolling
-    $scope.viewport_size = $(window).outerHeight(true) ;
-    console.log("Viewport size: " + $scope.viewport_size) ;
-    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
-    // resize the lyrics_panel
-    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
-    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
-    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
-    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
-
-    // preload all audio. This is done after a 500mS timeout. There's
-    // probably a better way to do this
-    setTimeout(function() {
-        $('li.phrase').each(function (index, value) {
-            var file = $(this).attr('file') ;
-            console.log('Wanting to preload[' + index + '] ' + file);
-            $scope.audio_plugin.preloadSimple(file, file,
-                function(msg) {
-                    console.log('Success for file ' + file + ': ' + msg) ;
-                }, function(msg) {
-                    console.log('Failure for file ' + file + ': ' + msg);
-                }
-            ) ;
-        })
-    }, 500) ;
-
-    //
-} ) ;
 
 angApp.controller("player3", function($scope, $http, $window) {
     console.log("player3 controller");
@@ -845,7 +724,7 @@ angApp.controller("player3", function($scope, $http, $window) {
 
 angApp.controller("player2", function($scope, $http, $window) {
     console.log("player2 controller");
-    // this player manages to audio elements.
+    // this player manages two audio elements.
     // if a phrase is selected/deselected, and an audio is currently playing
     // then the source of the OTHER audio is set to the next file to be played
     // if there is no audio currently playing, then just work with the
