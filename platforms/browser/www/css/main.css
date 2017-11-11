@@ -20,6 +20,7 @@ header > img {
     padding-bottom: 10px ;
     display: block;
     margin: 0 auto;
+    width: 100% ;
 }
 
 .menu {
@@ -37,9 +38,9 @@ header > img {
 
 .menuitem {
     font-family: Verdana, Geneva, sans-serif;
-    font-size:18px;
+    /*font-size:30px;*/
     color: white;
-    font-weight: bolder ;
+    /*font-weight: bolder ;*/
     overflow:visible;
     margin-top: 10px ;
     padding-top: 5px ;
@@ -99,7 +100,6 @@ footer > p.listening {
 .navigation_bar {
     display: flex;
     justify-content: left ;
-    border-top: solid white ;
 }
 .navigation_entry {
     font-family: Verdana, Geneva, sans-serif;

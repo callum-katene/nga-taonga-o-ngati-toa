@@ -40,6 +40,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
         console.log("error: " + v);
     }) ;
     $scope.footer = $("footer") ;
+    $scope.navigation_bar = $('.navigation_bar') ;
     // $scope.footer.height(52) ;
     $(".player_control").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
@@ -52,6 +53,25 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     $("#header_image").css("display","block") ;
     $('body').addClass('background') ;
     $('#navigate_back').show() ;
+
+    var outer_height = $(window).outerHeight(true) ;
+    console.log("outer_height: " + outer_height) ;
+    $('.navigation_entry > img').height(outer_height * .05) ;
+    var font_size = '18px' ;
+    if(outer_height > 1300 ) {
+        font_size = '40px' ;
+    }
+    else if(outer_height > 1100) {
+        font_size = '33px' ;
+    }
+    else if(outer_height > 900) {
+        font_size = '26px' ;
+    }
+    else if(outer_height < 600) {
+        font_size = '12px' ;
+    }
+    console.log('Setting font size to ' + font_size) ;
+    $('.menu').css('font-size', font_size) ;
     //
     // $('.navigation_entry > img').height($(window).outerHeight(true) * .1) ;
     // if this controller is active then we are on a menu page
@@ -63,6 +83,10 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
         .off("paused")
         .hide()
         [0].pause() ;
+    $('.navigation_bar').show() ;
+    $scope.$on('$destroy', function() {
+        $scope.navigation_bar.hide() ;
+    }) ;
 }) ;
 
 angApp.controller("home_controller", function($scope, $http, $window, $location) {
@@ -75,7 +99,6 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         console.log("error: " + v);
     }) ;
     $scope.footer = $("footer") ;
-    // $scope.footer.height(52) ;
     $(".player_control").hide() ;
     $window.plugins.insomnia.allowSleepAgain() ;
     $scope.goTo = function(url) {
@@ -87,9 +110,26 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     $("#header_image").css("display","block") ;
     $('body').addClass('background') ;
     $('#navigate_back').hide() ;
-
-    $('.navigation_entry > img').height($(window).outerHeight(true) * .1) ;
-    $('.navigation_bar').show() ;
+    var outer_height = $(window).outerHeight(true) ;
+    console.log("outer_height: " + outer_height) ;
+    $('.navigation_entry > img').height(outer_height * .05) ;
+    var font_size = '18px' ;
+    if(outer_height > 1300 ) {
+        font_size = '40px' ;
+    }
+    else if(outer_height > 1100) {
+        font_size = '33px' ;
+    }
+    else if(outer_height > 900) {
+        font_size = '26px' ;
+    }
+    else if(outer_height < 600) {
+        font_size = '12px' ;
+    }
+    console.log('Setting font size to ' + font_size) ;
+    $('.menu').css('font-size', font_size) ;
+    // $('.navigation_bar').show() ;
+    //
     //
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
@@ -739,9 +779,12 @@ angApp.controller("player2", function($scope, $http, $window) {
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
+    $scope.navigation_bar = $('.navigation_bar') ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
-
+    $scope.$on('$destroy', function() {
+        $scope.navigation_bar.hide() ;
+    }) ;
 
     // function to get the active audio player if no audio is playing,
     // or the inactive audio player if audio is playing
@@ -904,6 +947,17 @@ angApp.controller("player2", function($scope, $http, $window) {
     $("#player_none").show().click(function() {
         $scope.unselectAllPhrases() ;
     }) ;
+    $('#font_larger').show().click(function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+    }) ;
+    $('#font_smaller').show().click(function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
+    }) ;
+
 
     $scope.getNextSource = function(current_rec) {
         //loop through to find the phrase with this rec
@@ -969,30 +1023,6 @@ angApp.controller("player2", function($scope, $http, $window) {
         }
     } ;
 
-    // $scope.setSourceToNext = function(current_rec) {
-    //     console.log("setSourceToNext. Looking for: " + current_rec) ;
-    //     var ret = $scope.getNextSource(current_rec) ;
-    //     // $scope.audio.attr("src",ret) ;
-    //     var au = $scope.getAudio() ;
-    //     au.attr("src", ret) ;
-    //     console.log("audio player loading: " + ret) ;
-    //     au[0].load() ;
-    //     var pl = $scope.getCurrentlyPlaying() ;
-    //     if(pl !== null) {
-    //         console.log("an audio player is currently playing so not starting playback") ;
-    //     }
-    //     else {
-    //         console.log("No current playback, so starting ...") ;
-    //         au[0].play() ;
-    //     }
-    //     if(ret) {
-    //         console.log("Playing new rec: " + ret) ;
-    //         $scope.audio[0].play() ;
-    //     }
-    //     else {
-    //         console.log("No next rec so disabling player") ;
-    //     }
-    // } ;
     //
     // doToggle function adds or removes the unselected_phrase class
     // from a phrase.
@@ -1102,6 +1132,7 @@ angApp.controller("player2", function($scope, $http, $window) {
     // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
     // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
     $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+    $scope.navigation_bar.show() ;
 }) ;
 
 angApp.controller("player", function($scope, $http, $window) {
@@ -1112,9 +1143,13 @@ angApp.controller("player", function($scope, $http, $window) {
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
+    $scope.navigation_bar = $('.navigation_bar') ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
 
+    $scope.$on('$destroy', function() {
+        $scope.navigation_bar.hide() ;
+    }) ;
     //
     // init_audio is designed to be called after the
     // song phrases have been loaded. uses an ng-init
@@ -1185,6 +1220,16 @@ angApp.controller("player", function($scope, $http, $window) {
     }) ;
     $("#player_none").show().click(function() {
         $scope.unselectAllPhrases() ;
+    }) ;
+    $('#font_larger').show().click(function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+    }) ;
+    $('#font_smaller').show().click(function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
     }) ;
     //
     // function to set audio source to next
@@ -1311,7 +1356,7 @@ angApp.controller("player", function($scope, $http, $window) {
             }) ;
     })
     .show();
-
+    $scope.navigation_bar.show() ;
     $scope.viewport_size = $(window).outerHeight(true) ;
     console.log("Viewport size: " + $scope.viewport_size) ;
     console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
@@ -1320,6 +1365,7 @@ angApp.controller("player", function($scope, $http, $window) {
     // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
     // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
     $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+
 }) ;
 
 // app is used by the cordova initialization
