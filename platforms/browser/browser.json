@@ -9,9 +9,6 @@
   "installed_plugins": {
     "cordova-plugin-insomnia": {
       "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
-    },
-    "cordova-plugin-nativeaudio": {
-      "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
     }
   },
   "dependent_plugins": {},
@@ -31,19 +28,9 @@
       "merges": [
         "window.plugins.insomnia"
       ]
-    },
-    {
-      "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio-browser.js",
-      "id": "cordova-plugin-nativeaudio.NativeAudioBrowser",
-      "pluginId": "cordova-plugin-nativeaudio",
-      "clobbers": [
-        "cordova.plugins.NativeAudio",
-        "plugins.NativeAudio"
-      ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-insomnia": "4.3.0",
-    "cordova-plugin-nativeaudio": "3.0.9"
+    "cordova-plugin-insomnia": "4.3.0"
   }
 }

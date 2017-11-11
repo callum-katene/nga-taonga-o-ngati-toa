@@ -17,11 +17,6 @@
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		F7C18B6440F442A5BC441D0A /* Insomnia.m in Sources */ = {isa = PBXBuildFile; fileRef = FE226C0736014B37AE170898 /* Insomnia.m */; };
-		FE998F26852A4A9EA9B8C5CF /* NativeAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F9D4B3E3A74647A8553260 /* NativeAudio.m */; };
-		3FAF62C3D38B4E8791711506 /* NativeAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 4120DA51859745F2A6B40E2E /* NativeAudioAsset.m */; };
-		306C03CF69764DAFA8C95283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5D0FE39753491DBF991FB2 /* Foundation.framework */; };
-		7CE4ADF92B0B420EA7C48564 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E851B7105FD46FC9779E6A0 /* AVFoundation.framework */; };
-		F74123DF5658449298F31A4F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6005AC500A0E40C59C150973 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +59,6 @@
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		FE226C0736014B37AE170898 /* Insomnia.m */ = {isa = PBXFileReference; name = "Insomnia.m"; path = "cordova-plugin-insomnia/Insomnia.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		75C80DA209D1438595B35001 /* Insomnia.h */ = {isa = PBXFileReference; name = "Insomnia.h"; path = "cordova-plugin-insomnia/Insomnia.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		F1F9D4B3E3A74647A8553260 /* NativeAudio.m */ = {isa = PBXFileReference; name = "NativeAudio.m"; path = "cordova-plugin-nativeaudio/NativeAudio.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		4120DA51859745F2A6B40E2E /* NativeAudioAsset.m */ = {isa = PBXFileReference; name = "NativeAudioAsset.m"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		1175B84019124D6A9C915EC0 /* NativeAudio.h */ = {isa = PBXFileReference; name = "NativeAudio.h"; path = "cordova-plugin-nativeaudio/NativeAudio.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		D821CBD2104440EFA18DDA0B /* NativeAudioAsset.h */ = {isa = PBXFileReference; name = "NativeAudioAsset.h"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		4D5D0FE39753491DBF991FB2 /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		0E851B7105FD46FC9779E6A0 /* AVFoundation.framework */ = {isa = PBXFileReference; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		6005AC500A0E40C59C150973 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				306C03CF69764DAFA8C95283 /* Foundation.framework in Frameworks */,
-				7CE4ADF92B0B420EA7C48564 /* AVFoundation.framework in Frameworks */,
-				F74123DF5658449298F31A4F /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,9 +137,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D5D0FE39753491DBF991FB2 /* Foundation.framework */,
-				0E851B7105FD46FC9779E6A0 /* AVFoundation.framework */,
-				6005AC500A0E40C59C150973 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,10 +164,6 @@
 			children = (
 				FE226C0736014B37AE170898 /* Insomnia.m */,
 				75C80DA209D1438595B35001 /* Insomnia.h */,
-				F1F9D4B3E3A74647A8553260 /* NativeAudio.m */,
-				4120DA51859745F2A6B40E2E /* NativeAudioAsset.m */,
-				1175B84019124D6A9C915EC0 /* NativeAudio.h */,
-				D821CBD2104440EFA18DDA0B /* NativeAudioAsset.h */,
 			);
 			name = Plugins;
 			path = "Ngā Taonga O Ngāti Toa/Plugins";
@@ -299,8 +277,6 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				F7C18B6440F442A5BC441D0A /* Insomnia.m in Sources */,
-				FE998F26852A4A9EA9B8C5CF /* NativeAudio.m in Sources */,
-				3FAF62C3D38B4E8791711506 /* NativeAudioAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

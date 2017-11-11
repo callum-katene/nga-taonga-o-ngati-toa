@@ -9,16 +9,14 @@
       "ios"
     ],
     "plugins": {
-      "cordova-plugin-insomnia": {},
-      "cordova-plugin-nativeaudio": {}
+      "cordova-plugin-insomnia": {}
     }
   },
   "dependencies": {
-    "cordova-android": "^6.3.0",
+    "cordova-android": "^6.4.0",
     "cordova-browser": "^5.0.1",
     "cordova-ios": "^4.5.3",
     "cordova-plugin-insomnia": "^4.3.0",
-    "cordova-plugin-nativeaudio": "^3.0.9",
     "ios": "0.0.1"
   }
 }
