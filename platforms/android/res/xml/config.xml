@@ -10,7 +10,7 @@
     <author email="admin@katene.nz" href="http://katene.nz">
         KateneDev
     </author>
-    <content src="index.html" />
+    <content src="index_new.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
