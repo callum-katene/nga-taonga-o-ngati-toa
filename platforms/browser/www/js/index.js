@@ -21,11 +21,38 @@ angApp.config(function($routeProvider) {
         .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player" })
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player" })
-        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player" })
+        .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player2" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
+        .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
         .otherwise({  template: "<h2>Under development</h2>" }) ;
+}) ;
+
+angApp.controller("player_help", function($scope, $window) {
+    console.log('Player help controller') ;
+    $('div').click(function() {
+        $window.history.go(-1) ;
+        return false ;
+    }) ;
+    var outer_height = $(window).outerHeight(true) ;
+    console.log("outer_height: " + outer_height) ;
+    $('.navigation_entry > img').height(outer_height * .05) ;
+    var font_size = '18px' ;
+    if(outer_height > 1300 ) {
+        font_size = '40px' ;
+    }
+    else if(outer_height > 1100) {
+        font_size = '33px' ;
+    }
+    else if(outer_height > 900) {
+        font_size = '26px' ;
+    }
+    else if(outer_height < 600) {
+        font_size = '12px' ;
+    }
+    console.log('Setting font size to ' + font_size) ;
+    $('p,li').css('font-size', font_size) ;
 }) ;
 //
 // controller is the menu controller for all the menu pages. All menu items are
@@ -765,7 +792,7 @@ angApp.controller("player3", function($scope, $http, $window) {
     }, 500) ;
 }) ;
 
-angApp.controller("player2", function($scope, $http, $window) {
+angApp.controller("player2", function($scope, $http, $window, $location) {
     console.log("player2 controller");
     // this player manages two audio elements.
     // if a phrase is selected/deselected, and an audio is currently playing
@@ -910,12 +937,6 @@ angApp.controller("player2", function($scope, $http, $window) {
         }) ;
         $scope.audio[0].load() ;
     } ;
-    $http.get("res/lyrics.json").then(function (v) {
-        console.log("lyrics.JSON loaded successfully") ;
-        $scope.menuitems = v.data ;
-    }, function(v) {
-        console.log("error: " + v);
-    }) ;
     //
     // select all phrases
     $scope.selectAllPhrases = function() {
@@ -960,7 +981,10 @@ angApp.controller("player2", function($scope, $http, $window) {
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
         $('.phrase').css('font-size',current_font_size - 1) ;
     }) ;
-
+    $('#player_help').show().click(function() {
+        console.log('Help selected') ;
+        $window.location = '/player_help.html' ;
+    }) ;
 
     $scope.getNextSource = function(current_rec) {
         //loop through to find the phrase with this rec
@@ -988,7 +1012,7 @@ angApp.controller("player2", function($scope, $http, $window) {
                 newx += 1;
                 newx = (newx == list.length ? 0 : newx) ;
                 // console.log('newx: ' + newx) ;
-                if(!list.eq(newx).hasClass("unselected_phrase")) {
+                if(!list.eq(newx).hasClass("unselected_phrase") && list.eq(newx).text() != '-----') {
                     console.log("Found selected phrase at " + newx) ;
                     ret = list.eq(newx).attr("file") ;
                 }
@@ -1031,20 +1055,25 @@ angApp.controller("player2", function($scope, $http, $window) {
     // from a phrase.
     $scope.doToggle = function(val) {
         var myEl = $("ul li").eq(val) ;
-        if(myEl.hasClass("unselected_phrase")) {
-            console.log("Selected element has unselected class so removing ...") ;
-            myEl.removeClass("unselected_phrase") ;
+        if(myEl.text() === '-----') {
+            console.log('Spacer') ;
         }
         else {
-            myEl.addClass("unselected_phrase") ;
-            console.log("Selected element does not have unselected class so adding ...") ;
-        }
-        if(!$scope.nowPlaying) {
-            $scope.setSourceToFirst() ;
-        }
-        else {
-            console.log("currently playing so need to set OTHER audio src") ;
-            $scope.setSourceToNext($scope.nowPlaying.attr('src')) ;
+            if(myEl.hasClass("unselected_phrase")) {
+                console.log("Selected element has unselected class so removing ...") ;
+                myEl.removeClass("unselected_phrase") ;
+            }
+            else {
+                myEl.addClass("unselected_phrase") ;
+                console.log("Selected element does not have unselected class so adding ...") ;
+            }
+            if(!$scope.nowPlaying) {
+                $scope.setSourceToFirst() ;
+            }
+            else {
+                console.log("currently playing so need to set OTHER audio src") ;
+                $scope.setSourceToNext($scope.nowPlaying.attr('src')) ;
+            }
         }
     } ;
     //
@@ -1127,18 +1156,30 @@ angApp.controller("player2", function($scope, $http, $window) {
         .attr("src",null)
         .hide();
 
-    $scope.viewport_size = $(window).outerHeight(true) ;
-    console.log("Viewport size: " + $scope.viewport_size) ;
-    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
-    // resize the lyrics_panel
-    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
-    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
-    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
-    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
-    $scope.navigation_bar.show() ;
+    $scope.navigation_bar.show();
+    // this loads the lyrics so sets up the page components hopefully after it's
+    // finished the page will be rendered correctly
+    $http.get("res/lyrics.json").then(function (v) {
+        console.log("lyrics.JSON loaded successfully") ;
+        $scope.menuitems = v.data ;
+        console.log('Spacing hack for Tau Mai E Kāpiti');
+        $("li[file$='tau_mai_e_kapiti_22.mp3']").addClass('last-phrase');
+        $("li[file$='tau_mai_e_kapiti_15.mp3']").addClass('last-phrase');
+        $("li[file$='tau_mai_e_kapiti_8.mp3']").addClass('last-phrase');
+        $scope.viewport_size = $(window).outerHeight(true);
+        console.log("Viewport size: " + $scope.viewport_size);
+        console.log("Footer height at end: " + $scope.footer.outerHeight());
+        // resize the lyrics_panel
+        $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true));
+        // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+        // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+        $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height);
+    }, function(v) {
+        console.log("error: " + v);
+    }) ;
 }) ;
 
-angApp.controller("player", function($scope, $http, $window) {
+angApp.controller("player", function($scope, $http, $window, $location) {
     console.log("player controller") ;
     $scope.nowPlaying = false ;
     $scope.audio = $("#player1") ;
@@ -1184,12 +1225,7 @@ angApp.controller("player", function($scope, $http, $window) {
         }) ;
         $scope.audio[0].load() ;
     } ;
-    $http.get("res/lyrics.json").then(function (v) {
-        console.log("lyrics.JSON loaded successfully") ;
-        $scope.menuitems = v.data ;
-    }, function(v) {
-        console.log("error: " + v);
-    }) ;
+
     //
     // select all phrases
     $scope.selectAllPhrases = function() {
@@ -1236,6 +1272,10 @@ angApp.controller("player", function($scope, $http, $window) {
     }) ;
     //
     // function to set audio source to next
+    $('#player_help').show().click(function() {
+        console.log('Help selected') ;
+        $window.location = '/player_help.html' ;
+    }) ;
     $scope.setSourceToNext = function(current_rec) {
         //loop through to find the phrase with this rec
         var x = 0 ;
@@ -1261,7 +1301,7 @@ angApp.controller("player", function($scope, $http, $window) {
                 newx += 1;
                 newx = (newx == list.length ? 0 : newx) ;
                 // console.log('newx: ' + newx) ;
-                if(!list.eq(newx).hasClass("unselected_phrase")) {
+                if(!list.eq(newx).hasClass("unselected_phrase")  && list.eq(newx).text() != '-----' ) {
                     console.log("Found selected phrase at " + newx) ;
                     ret = list.eq(newx).attr("file") ;
                 }
@@ -1360,14 +1400,22 @@ angApp.controller("player", function($scope, $http, $window) {
     })
     .show();
     $scope.navigation_bar.show() ;
-    $scope.viewport_size = $(window).outerHeight(true) ;
-    console.log("Viewport size: " + $scope.viewport_size) ;
-    console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
-    // resize the lyrics_panel
-    $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
-    // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
-    // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
-    $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+    $http.get("res/lyrics.json").then(function (v) {
+        console.log("lyrics.JSON loaded successfully") ;
+        $scope.menuitems = v.data ;
+        $scope.viewport_size = $(window).outerHeight(true) ;
+        console.log("Viewport size: " + $scope.viewport_size) ;
+        console.log("Footer height at end: " + $scope.footer.outerHeight()) ;
+        // resize the lyrics_panel
+        $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true)) ;
+        // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+        // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+        $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+    }, function(v) {
+        console.log("error: " + v);
+    }) ;
+
+
 
 }) ;
 

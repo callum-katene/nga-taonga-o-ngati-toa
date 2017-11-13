@@ -73,6 +73,10 @@ header > img {
     display: block ;
 }
 
+last-phrase {
+    margin-bottom: 10px ;
+}
+
 footer {
     position: absolute;
     bottom:0;
