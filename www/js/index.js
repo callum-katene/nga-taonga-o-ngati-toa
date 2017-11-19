@@ -30,14 +30,21 @@ angApp.config(function($routeProvider) {
 }) ;
 
 angApp.controller("player_help", function($scope, $window) {
+    $('footer').hide() ;
     console.log('Player help controller') ;
-    $('div').click(function() {
-        $window.history.go(-1) ;
-        return false ;
-    }) ;
+
     var outer_height = $(window).outerHeight(true) ;
+    var outer_width = $(window).outerWidth(true) ;
+    $('.title').click(function() {
+        $window.history.go(-1) ;
+    }) ;
+
+    $scope.$on('$destroy', function() {
+        $('footer').show() ;
+    }) ;
     console.log("outer_height: " + outer_height) ;
-    $('.navigation_entry > img').height(outer_height * .05) ;
+    $('li > img').height(outer_height * .05) ;
+    $('div.title > img').height(outer_height * .05) ;
     var font_size = '18px' ;
     if(outer_height > 1300 ) {
         font_size = '40px' ;
@@ -810,11 +817,28 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
     $scope.navigation_bar = $('.navigation_bar') ;
+    $scope.goTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+        $scope.$apply() ;
+        return null ;
+    } ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
     $scope.$on('$destroy', function() {
         $scope.navigation_bar.hide() ;
     }) ;
+
+    // centre phrases vertically
+    $scope.centre_phrases = function() {
+        var lyric_panel_height = $scope.lyric_panel.height() ;
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        var diff = content_panel_height - ( $scope.song_title.outerHeight(true) + lyric_panel_height) ;
+        if(diff > 0) {
+            console.log('Setting lyric panel margin to ' + diff / 2) ;
+            $scope.lyric_panel.animate({marginTop:diff / 2}, "normal") ;
+        }
+    } ;
 
     // function to get the active audio player if no audio is playing,
     // or the inactive audio player if audio is playing
@@ -975,15 +999,18 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         console.log('Font larger') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
         $('.phrase').css('font-size',current_font_size + 1) ;
+        $scope.centre_phrases() ;
     }) ;
     $('#font_smaller').show().click(function() {
         console.log('Font smaller') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
         $('.phrase').css('font-size',current_font_size - 1) ;
+        $scope.centre_phrases() ;
     }) ;
     $('#player_help').show().click(function() {
         console.log('Help selected') ;
-        $window.location = '/player_help.html' ;
+        $scope.goTo('/p_help.html') ;
+        return false ;
     }) ;
 
     $scope.getNextSource = function(current_rec) {
@@ -1174,6 +1201,15 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
         // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
         $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height);
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        $('#content_panel').css('min-height', content_panel_height).css('max-height', content_panel_height) ;
+
+        //
+        // vertical centre, but give the phrases a chance to render first
+        setTimeout(function() {
+            $scope.centre_phrases() ;
+        }, 300) ;
+
     }, function(v) {
         console.log("error: " + v);
     }) ;
@@ -1186,14 +1222,33 @@ angApp.controller("player", function($scope, $http, $window, $location) {
     $scope.footer = $("footer") ;
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
+    $scope.content_panel = $('#content_panel') ;
     $scope.lyric_panel = $(".lyric_panel") ;
     $scope.navigation_bar = $('.navigation_bar') ;
+    $scope.goTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+        $scope.$apply() ;
+        return null ;
+    } ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
 
     $scope.$on('$destroy', function() {
         $scope.navigation_bar.hide() ;
     }) ;
+
+    // centre phrases vertically
+    $scope.centre_phrases = function() {
+        var lyric_panel_height = $scope.lyric_panel.height() ;
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        var diff = content_panel_height - ( $scope.song_title.outerHeight(true) + lyric_panel_height) ;
+        if(diff > 0) {
+            console.log('Setting lyric panel margin to ' + diff / 2) ;
+            $scope.lyric_panel.animate({marginTop:diff / 2}, "normal") ;
+        }
+    } ;
+
     //
     // init_audio is designed to be called after the
     // song phrases have been loaded. uses an ng-init
@@ -1264,17 +1319,22 @@ angApp.controller("player", function($scope, $http, $window, $location) {
         console.log('Font larger') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
         $('.phrase').css('font-size',current_font_size + 1) ;
+        $scope.centre_phrases() ;
     }) ;
     $('#font_smaller').show().click(function() {
         console.log('Font smaller') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
         $('.phrase').css('font-size',current_font_size - 1) ;
+        $scope.centre_phrases() ;
     }) ;
     //
     // function to set audio source to next
     $('#player_help').show().click(function() {
         console.log('Help selected') ;
-        $window.location = '/player_help.html' ;
+        // $window.location.href = '/p_help.html' ;
+
+        $scope.goTo('/p_help.html') ;
+        return false ;
     }) ;
     $scope.setSourceToNext = function(current_rec) {
         //loop through to find the phrase with this rec
@@ -1411,6 +1471,13 @@ angApp.controller("player", function($scope, $http, $window, $location) {
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
         // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
         $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height) ;
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        $('#content_panel').css('min-height', content_panel_height).css('max-height', content_panel_height) ;
+        //
+        // vertical centre, but give the phrases a chance to render first
+        setTimeout(function() {
+            $scope.centre_phrases() ;
+        }, 300) ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
@@ -1443,20 +1510,24 @@ var app = {
     onDeviceReady: function() {
         console.log("deviceReady event received") ;
         app.receivedEvent('deviceready');
-        var hammer_options = "" ;
-        var hammertime = new Hammer($('body')[0]) ;
-        hammertime.on('pan', function(ev) {
-            console.log("Hammertime: " + JSON.stringify(ev)) ;
-        })
+        // $(window).scroll(function(ev) {
+        //     console.log('Scroll: ' + JSON.stringify(ev)) ;
+        // }) ;
+        var manager = new Hammer.Manager($('body')[0]) ;
+        var swipe = new Hammer.Swipe() ;
+        manager.add(swipe) ;
+        manager.on('swipe', function(e) {
+            console.log('Swipe: ' + e) ;
+        }) ;
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
-        $(".listening").text("Device ready")  ;
-        // $(".listening").css('display', 'none') ;
-        setInterval(function() {
-            $("p.listening").css("display",'none') ;
-        }, 5000) ;
+        // $(".listening").text("Device ready")  ;
+        // // $(".listening").css('display', 'none') ;
+        // setInterval(function() {
+        //     $("p.listening").css("display",'none') ;
+        // }, 5000) ;
         // document is now ready. need to activate angular now. We
         // do this so that controllers ( and therefore plugins )
         // are not accessed until after the ready event is received
