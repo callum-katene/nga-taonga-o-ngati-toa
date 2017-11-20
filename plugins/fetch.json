@@ -6,5 +6,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "com.hutchind.cordova.plugins.streamingmedia": {
+    "source": {
+      "type": "local",
+      "path": "/Users/callum/Documents/workspace/intellij/nga-taonga-o-ngati-toa/node_modules/cordova-plugin-streaming-media"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-streaming-media": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/nchutchind/cordova-plugin-streaming-media.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

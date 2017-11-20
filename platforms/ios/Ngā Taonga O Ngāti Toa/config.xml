@@ -30,13 +30,13 @@
         KateneDev
     </author>
     <content src="index_new.html" />
+    <access launch-external="yes" origin="tel:*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <allow-intent href="*" />
     <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
     <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
     <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
@@ -65,7 +65,7 @@
     <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
-    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="EnableViewportScale" value="false" />

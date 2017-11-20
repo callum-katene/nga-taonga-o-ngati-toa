@@ -1,7 +1,7 @@
 {
-  "name": "com.phonegap.helloworld",
+  "name": "nz.katene.ngataongaongatitoa",
   "version": "1.0.0",
-  "displayName": "helloworld",
+  "displayName": "Ngā Taonga O Ngāti Toa",
   "cordova": {
     "platforms": [
       "android",

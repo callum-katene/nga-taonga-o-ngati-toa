@@ -24,7 +24,7 @@
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/hammer.min.js"></script>
-
+    <base href="." />
     <title>Ngā Taonga O Ngāti Toa</title>
 </head>
 
@@ -66,23 +66,32 @@ routeProvider in the controller defined in the accompanying javascript file
     <header>
         <img id="header_image" src="img/logo-kapiti.png">
     </header>
-    <ng-view></ng-view>
+
+<div id="content_panel"><ng-view class="content_child"></ng-view></div>
 
 
-<p class="event listening">Connecting to Device</p>
+<!--<p class="event listening">Connecting to Device</p>-->
     <footer>
         <audio controls style="width:100%;display: none;" type="audio/mp3" id="player1">
         </audio>
         <audio controls style="width:100%;display: none;" type="audio/mp3" id="player2">
         </audio>
         <div class="navigation_bar background" style="display:none;">
-            <div class="navigation_entry" id="navigate_home"><img src="img/icon/home.png"></div>
-            <div class="navigation_entry" id="navigate_back"><img src="img/icon/back.png"></div>
-            <div class="navigation_entry player_control" id="player_all" style="display:none;"><img src="img/icon/all.png"></div>
-            <div class="navigation_entry player_control" id="player_none" style="display:none;"><img src="img/icon/none.png"></div>
-            <div class="navigation_entry player_control" id="font_larger" style="display:none;"><img src="img/icon/font_larger.png"></div>
-            <div class="navigation_entry player_control" id="font_smaller" style="display:none;"><img src="img/icon/font_smaller.png"></div>
-            <div class="navigation_entry player_control" id="player_help" style="display:none;"><img src="img/icon/help.png"></div>
+            <img class="navigation_entry" id="navigate_home" src="img/icon/home.png">
+            <img class="navigation_entry" id="navigate_back" src="img/icon/back.png">
+            <!--<div class="navigation_entry" id="navigate_home"><img src="img/icon/home.png"></div>-->
+            <!--<div class="navigation_entry" id="navigate_back"><img src="img/icon/back.png"></div>-->
+            <img class="navigation_entry player_control" id="player_all" style="display:none;" src="img/icon/all.png">
+            <img class="navigation_entry player_control" id="player_none" style="display:none;" src="img/icon/none.png">
+            <img class="navigation_entry player_control" id="font_larger" style="display:none;" src="img/icon/font_larger.png">
+            <img  class="navigation_entry player_control" id="font_smaller" style="display:none;" src="img/icon/font_smaller.png">
+            <img class="navigation_entry player_control" id="player_help" style="display:none;" src="img/icon/help.png">
+
+            <!--<div class="navigation_entry player_control" id="player_all" style="display:none;"><img src="img/icon/all.png"></div>-->
+            <!--<div class="navigation_entry player_control" id="player_none" style="display:none;"><img src="img/icon/none.png"></div>-->
+            <!--<div class="navigation_entry player_control" id="font_larger" style="display:none;"><img src="img/icon/font_larger.png"></div>-->
+            <!--<div class="navigation_entry player_control" id="font_smaller" style="display:none;"><img src="img/icon/font_smaller.png"></div>-->
+            <!--<div class="navigation_entry player_control" id="player_help" style="display:none;"><img src="img/icon/help.png"></div>-->
         </div>
     </footer>
 
@@ -93,7 +102,6 @@ routeProvider in the controller defined in the accompanying javascript file
         $("#navigate_home").click(function() {
             window.location.href = 'index.html' ;
         });
-
         $("#navigate_back").click(function() {
             window.location.href = 'javascript: window.history.back() ' ;
         });
