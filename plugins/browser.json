@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-insomnia": {
       "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
     }
   },
   "dependent_plugins": {}

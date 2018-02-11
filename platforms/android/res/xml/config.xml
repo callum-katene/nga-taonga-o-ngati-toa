@@ -3,6 +3,9 @@
     <feature name="Insomnia">
         <param name="android-package" value="nl.xservices.plugins.Insomnia" />
     </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
     <name>Ngā Taonga O Ngāti Toa</name>
     <description>
         Ngā Taonga O Ngāti Toa

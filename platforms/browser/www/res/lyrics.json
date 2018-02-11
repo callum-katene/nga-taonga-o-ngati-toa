@@ -168,11 +168,12 @@
   ] ,
   "ka_tukituki" : [
     {"lyric" :"Ka tukituki, ka tukituki","file" :"audio/ka_tukituki_1.mp3"},
+    {"lyric" :"Ka tukituki, ka tukituki","file" :"audio/ka_tukituki_1point5.mp3"},
     {"lyric" :"Ka tukituki tonu tōku manawa","file" :"audio/ka_tukituki_2.mp3"},
     {"lyric" :"He uira ki te rangi, He kanapu ki raro ki te whenua","file" :"audio/ka_tukituki_3.mp3"},
-    {"lyric" :"Ko te rite o nga iwi ka eke","file" :"audio/ka_tukituki_4.mp3"},
+    {"lyric" :"Hī āha hā - ko te rite o nga iwi ka eke","file" :"audio/ka_tukituki_4.mp3"},
     {"lyric" :"Ka ngarue te whenua ka whaoko te tangata","file" :"audio/ka_tukituki_5.mp3"},
     {"lyric" :"Ko te ritenga o te aitanga a","file" :"audio/ka_tukituki_6.mp3"},
-    {"lyric" :"Tiki, tiki, tiki hai ha.","file" :"audio/ka_tukituki_7.mp3"}
+    {"lyric" :"Tiki, tiki, tiki hai ha!","file" :"audio/ka_tukituki_7.mp3"}
   ]
 }

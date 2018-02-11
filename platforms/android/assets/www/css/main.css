@@ -105,7 +105,8 @@ footer > p.listening {
     display: flex;
     display: -webkit-box;
     display: -webkit-flex;
-    justify-content: space-evenly ;
+    justify-content: space-around ;
+    -webkit-justify-content: space-around;
 }
 .navigation_entry {
     /*font-family: Verdana, Geneva, sans-serif;*/

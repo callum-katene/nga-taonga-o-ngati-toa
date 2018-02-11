@@ -22,6 +22,9 @@
     <feature name="Insomnia">
         <param name="ios-package" value="Insomnia" />
     </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
     <name>Ngā Taonga O Ngāti Toa</name>
     <description>
         Ngā Taonga O Ngāti Toa

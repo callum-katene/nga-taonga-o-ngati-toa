@@ -13,7 +13,7 @@
     <title>Ngā Taonga O Ngāti Toa Rangatira</title>
 </head>
 <body>
-<video src='img/marae3.mov' id="video" style="background-color: black ;" autoplay loop webkit-playsinline playsinline> No video support</video>
+<!--<video src='img/marae3.mov' id="video" style="background-color: black ;" autoplay loop webkit-playsinline playsinline> No video support</video>-->
 
 <script type="text/javascript">
 //    app.initialize();
@@ -24,8 +24,10 @@
 //    if(vid[0].requestFullScreen) {
 //        vid[0].requestFullScreen() ;
 //    }
-
-    $('#video').css('height', $(window).outerHeight(true)).css('width', 'auto') ;
+    setTimeout(function() {
+        $("body").click() ;
+    }, 100) ;
+//    $('#video').css('height', $(window).outerHeight(true)).css('width', 'auto') ;
 
 </script>
 </body>

@@ -3,7 +3,7 @@ var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]);
 // routeProvider is configured to control application routing. For eaach pattern it specifies
 // the template html file to apply and the controller to use.
 // tempPlateUrl either refers to the ng-templates in the html file, or a specific html file
-angApp.config(function($routeProvider) {
+angApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", { templateUrl: "home.html", controller: "home_controller" })
         .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
@@ -26,7 +26,7 @@ angApp.config(function($routeProvider) {
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player" })
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player" })
-        .otherwise({  template: "<h2>Under development</h2>" }) ;
+        .otherwise({  redirectTo: '/' }) ;
 }) ;
 
 angApp.controller("player_help", function($scope, $window) {
@@ -70,9 +70,9 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     $http.get("res/main_menu.json").then(function (v) {
         console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
-        // setTimeout(function() {
-        //     $('.menuitem').animate({ width: "80%" }, { duration: "normal" } ) ;
-        // }, 100) ;
+        setTimeout(function() {
+            $('.menuitem').animate({ width: "80%" }, { duration: "normal" } ) ;
+        }, 100) ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
@@ -84,6 +84,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
         $location.path(url) ;
+        // $scope.$apply() ;
     } ;
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
@@ -133,7 +134,7 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
         setTimeout(function() {
-            $('.menuitem').animate({ width: "80%" }, { duration: "normal" } ).fadeTo("slow", 0.8) ;
+            $('.menuitem').animate({ width: "80%" }, { duration: "normal" } ) ;
 
         }, 100) ;
     }, function(v) {
@@ -145,7 +146,14 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
         $location.path(url) ;
+        return null ;
     } ;
+    $scope.help_click_handler = function() {
+        setTimeout(function() {
+            $location.path = 'p_help.html' ;
+        }, 100) ;
+    } ;
+    $('#player_help').off().on('click', $scope.help_click_handler) ;
     //
     // initialise hammer
 
@@ -247,6 +255,21 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $('#font_smaller').off('click', $scope.font_smaller) ;
         // $('#player_help').click(null) ;
     }) ;
+
+    var storage = $window.localStorage ;
+    var player_help = storage.getItem('player_help') ;
+    if(player_help != 'true') {
+        console.log('Did not find player_gelp flag so showing popup') ;
+        // setTimeout(function() {
+        //     alert('For help with this page touch the question mark (?) icon below') ;
+        // }, 1000) ;
+        navigator.notification.alert("For help regarding how to use this page, touch the question mark (?) icon in the navigation bar below",
+            null, 'Help', "OK") ;
+        storage.setItem('player_help', 'true') ;
+    }
+    else {
+        console.log('player_help flag found so help must have been seen already') ;
+    }
 
     // centre phrases vertically
     $scope.centre_phrases = function() {
@@ -672,6 +695,29 @@ angApp.controller("player", function($scope, $http, $window, $location) {
         // $('#player_help').click(null) ;
     }) ;
 
+    // pop up a quick help message if one hasn't bee displayed before
+
+    var storage = $window.localStorage ;
+    var player_help = storage.getItem('player_help') ;
+    if(player_help != 'true') {
+        console.log('Did not find player_gelp flag so showing popup') ;
+        if(player_help != 'true') {
+            console.log('Did not find player_gelp flag so showing popup') ;
+            // setTimeout(function() {
+            //     alert('For help with this page touch the question mark (?) icon below') ;
+            // }, 1000) ;
+            navigator.notification.alert("For help regarding how to use this page, touch the question mark (?) icon in the navigation bar below",
+                null, 'Help', "OK") ;
+            storage.setItem('player_help', 'true') ;
+        }
+        else {
+            console.log('player_help flag found so help must have been seen already') ;
+        }
+        storage.setItem('player_help', 'true') ;
+    }
+    else {
+        console.log('player_help flag found so help must have been seen already') ;
+    }
     // centre phrases vertically
     $scope.centre_phrases = function () {
         var lyric_panel_height = $scope.lyric_panel.height();
@@ -919,12 +965,12 @@ var app = {
         // $(window).scroll(function(ev) {
         //     console.log('Scroll: ' + JSON.stringify(ev)) ;
         // }) ;
-        var manager = new Hammer.Manager($('body')[0]) ;
-        var swipe = new Hammer.Swipe() ;
-        manager.add(swipe) ;
-        manager.on('swipe', function(e) {
-            console.log('Swipe: ' + e) ;
-        }) ;
+        // var manager = new Hammer.Manager($('body')[0]) ;
+        // var swipe = new Hammer.Swipe() ;
+        // manager.add(swipe) ;
+        // manager.on('swipe', function(e) {
+        //     console.log('Swipe: ' + e) ;
+        // }) ;
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
