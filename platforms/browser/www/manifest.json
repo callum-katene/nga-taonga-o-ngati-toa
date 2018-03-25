@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Ngā Taonga O Ngāti Toa",
+  "short_name": "Ngā Taonga O Ngāti Toa",
+  "version": "nz.katene.ngataongaongatitoa",
+  "description": "Ngā Taonga O Ngāti Toa",
+  "author": "KateneDev",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index_new.html"
+}

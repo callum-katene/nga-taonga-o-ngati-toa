@@ -1,0 +1,43 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"NativeAudio\"><param name=\"ios-package\" value=\"NativeAudio\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-nativeaudio": {
+            "PACKAGE_NAME": "com.rjfun.demo"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.rjfun.demo"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-nativeaudio.nativeaudio",
+            "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+            "pluginId": "cordova-plugin-nativeaudio",
+            "clobbers": [
+                "window.plugins.NativeAudio"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-nativeaudio": "3.0.9",
+        "cordova-plugin-whitelist": "1.3.2"
+    }
+}
