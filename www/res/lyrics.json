@@ -65,26 +65,26 @@
     { "lyric" : " tina hui e, taiki e", "file" : "audio/e_whatoro_ana_10.mp3" }
   ] ,
   "te_roa_o_te_po" : [
-    { "lyric" : "Te roa o te pō e oho ai au", "file" : "audio/te_roa_o_te_po_1.mp3" } ,
-    { "lyric" : "He rau tahuritanga i konei Tūkino", "file" : "audio/te_roa_o_te_po_2.mp3" } ,
-    { "lyric" : "Tōu hohoro mai te hinapōuri", "file" : "audio/te_roa_o_te_po_3.mp3" } ,
-    { "lyric" : "Ko te āhua kau e kite atu ai", "file" : "audio/te_roa_o_te_po_4.mp3" } ,
-    { "lyric" : "Whano rawa ka nunumi, he wairua haere", "file" : "audio/te_roa_o_te_po_5.mp3" } ,
-    { "lyric" : "Kei roto mai te papaki kia mau rawa mai", "file" : "audio/te_roa_o_te_po_6.mp3" } ,
-    { "lyric" : "Hei hoa pono koe mōku nei ki te whare", "file" : "audio/te_roa_o_te_po_7.mp3" } ,
-    { "lyric" : "E moea iho nei ko tō tinana tonu", "file" : "audio/te_roa_o_te_po_8.mp3" } ,
-    { "lyric" : "Angiangi hauraro e tuku mai te hiwi", "file" : "audio/te_roa_o_te_po_9.mp3" } ,
-    { "lyric" : "O Ngongotahā rā, te oha noa", "file" : "audio/te_roa_o_te_po_10.mp3" } ,
-    { "lyric" : "Taku nei titiro te puia i Whakahinga", "file" : "audio/te_roa_o_te_po_11.mp3" } ,
-    { "lyric" : "Tū mai i konā mā te hautotanga koe", "file" : "audio/te_roa_o_te_po_12.mp3" } ,
-    { "lyric" : "E whiu ki te rae o Tahere rā ia", "file" : "audio/te_roa_o_te_po_13.mp3" } ,
-    { "lyric" : "Whai noa atu ana ka huri atu nā koe nā", "file" : "audio/te_roa_o_te_po_14.mp3" } ,
-    { "lyric" : "Tera te pūkohu tāiri ana mai", "file" : "audio/te_roa_o_te_po_15.mp3" } ,
-    { "lyric" : "tara ki Tautari, kia tangi atu au", "file" : "audio/te_roa_o_te_po_16.mp3" } ,
-    { "lyric" : "Me tangi me aha te makau", "file" : "audio/te_roa_o_te_po_17.mp3" } ,
-    { "lyric" : "Ka wehe ka tatara rawa koe ki taku tinana nui", "file" : "audio/te_roa_o_te_po_18.mp3" } ,
-    { "lyric" : "Ka riua tēnei te hiwi ki Tāiri", "file" : "audio/te_roa_o_te_po_19.mp3" } ,
-    { "lyric" : "Ka hoki mai te manako huri atu ai koe nā", "file" : "audio/te_roa_o_te_po_20.mp3" }
+    { "lyric" : "Te roa o te pō e oho ai au,", "file" : "audio/te_roa_o_te_po_1.mp3" } ,
+    { "lyric" : "He rau te hurihanga i konei Tukino", "file" : "audio/te_roa_o_te_po_2.mp3" } ,
+    { "lyric" : "Tōu hohoro mai i te hinapōuri", "file" : "audio/te_roa_o_te_po_3.mp3" } ,
+    { "lyric" : "Ko te āhua kau i kitea atu ai.", "file" : "audio/te_roa_o_te_po_4.mp3" } ,
+    { "lyric" : "Whano rawa ka nunumi, he wairua haere;", "file" : "audio/te_roa_o_te_po_5.mp3" } ,
+    { "lyric" : "Kai roto mai te papaki, kia mau rawa mai,", "file" : "audio/te_roa_o_te_po_6.mp3" } ,
+    { "lyric" : "Hei hoa pono koe mōku nei ki te whare.", "file" : "audio/te_roa_o_te_po_7.mp3" } ,
+    { "lyric" : "Nāku i moe iho ko tō wairua tonu.", "file" : "audio/te_roa_o_te_po_8.mp3" } ,
+    { "lyric" : "Tērā te pūkohu tāiri ana mai", "file" : "audio/te_roa_o_te_po_9.mp3" } ,
+    { "lyric" : "Te tara ki ‘Tautari, kia tangi atu au.", "file" : "audio/te_roa_o_te_po_10.mp3" } ,
+    { "lyric" : "Me tangi, me aha te makau ka wehe;", "file" : "audio/te_roa_o_te_po_11.mp3" } ,
+    { "lyric" : "Taratara rawa koe i taku tinana nei.", "file" : "audio/te_roa_o_te_po_12.mp3" } ,
+    { "lyric" : "Ka riua ia koe ngā hiwi ki ‘Tairi", "file" : "audio/te_roa_o_te_po_13.mp3" } ,
+    { "lyric" : "Te hoki mai te manako, huri atu ai koe, ē.", "file" : "audio/te_roa_o_te_po_14.mp3" } ,
+    { "lyric" : "Kōangi hauraro i tuku mai te hiwi", "file" : "audio/te_roa_o_te_po_15.mp3" } ,
+    { "lyric" : "Ki Ngongotaha rā, tē hōhā noa", "file" : "audio/te_roa_o_te_po_16.mp3" } ,
+    { "lyric" : "Tāku nei titiro te puia i Whakahinga;", "file" : "audio/te_roa_o_te_po_17.mp3" } ,
+    { "lyric" : "Tū mai i konā, mā te hautonga koe", "file" : "audio/te_roa_o_te_po_18.mp3" } ,
+    { "lyric" : "E whiu ki te rae o Tahere rā ia.", "file" : "audio/te_roa_o_te_po_19.mp3" } ,
+    { "lyric" : "Whai noa atu ana, ka huri atu nā koe, ē.", "file" : "audio/te_roa_o_te_po_20.mp3" }
   ] ,
   "toea_mai_ra" : [
     { "lyric" : "Toea mai rā te ata i Kāpiti", "file" : "audio/toea_mai_ra_1.mp3" } ,
@@ -175,5 +175,126 @@
     {"lyric" :"Ka ngarue te whenua ka whaoko te tangata","file" :"audio/ka_tukituki_5.mp3"},
     {"lyric" :"Ko te ritenga o te aitanga a","file" :"audio/ka_tukituki_6.mp3"},
     {"lyric" :"Tiki, tiki, tiki hai ha!","file" :"audio/ka_tukituki_7.mp3"}
+  ] ,
+  "unuhia" : [
+    {"lyric" :"Unuhia, Unuhia","file" :"audio/unuhia_1.mp3"},
+    {"lyric" :"I te uru tapu nui a Tane","file" :"audio/unuhia_2.mp3"},
+    {"lyric" :"Kia watea","file" :"audio/unuhia_3.mp3"},
+    {"lyric" :"Kia māmā","file" :"audio/unuhia_4.mp3"},
+    {"lyric" :"Te ngakau","file" :"audio/unuhia_5.mp3"},
+    {"lyric" :"Te hinengaro","file" :"audio/unuhia_6.mp3"},
+    {"lyric" :"Te wairua","file" :"audio/unuhia_7.mp3"},
+    {"lyric" :"Te tinana","file" :"audio/unuhia_8.mp3"},
+    {"lyric" :"I te ara takatū","file" :"audio/unuhia_9.mp3"},
+    {"lyric" :"E Rongo whakairia","file" :"audio/unuhia_10.mp3"},
+    {"lyric" :"Ki runga kia watea","file" :"audio/unuhia_11.mp3"},
+    {"lyric" :"Ae ra kua wātea, hou!","file" :"audio/unuhia_12.mp3"}
+  ] ,
+  "nau_mai_nga_hua" : [
+    {"lyric" :"Nau mai ngā hua i hora nei!","file" :"audio/nau_mai_nga_hua_1.mp3"},
+    {"lyric" :"I haere mai nā koe","file" :"audio/nau_mai_nga_hua_2.mp3"},
+    {"lyric" :"I whakatupu ā nuku","file" :"audio/nau_mai_nga_hua_3.mp3"},
+    {"lyric" :"I whakatupu ā Rangi","file" :"audio/nau_mai_nga_hua_4.mp3"},
+    {"lyric" :"Tawhia kia Rehua e tama","file" :"audio/nau_mai_nga_hua_5.mp3"},
+    {"lyric" :"Ki te ao marama","file" :"audio/nau_mai_nga_hua_6.mp3"},
+    {"lyric" :"Tūturu kia Rongo whakamaua ki a tina","file" :"audio/nau_mai_nga_hua_7.mp3"}
+    ] ,
+  "e_tu_ana": [
+    {"lyric" :"Ko Ngāti Toa Ranagatira","file" :"audio/e_tu_ana_1.mp3"},
+    {"lyric" :"E tū ana a Whitireia","file" :"audio/e_tu_ana_2.mp3"},
+    {"lyric" :"Ko Rangituhi e titiro iho ki a Parirua","file" :"audio/e_tu_ana_3.mp3"},
+    {"lyric" :"Raukawakawa e rere ana","file" :"audio/e_tu_ana_4.mp3"},
+    {"lyric" :"ki te Mana o Kupe ki Kapiti motu e","file" :"audio/e_tu_ana_5.mp3"},
+    {"lyric" :"Tū ake nei ngā uri","file" :"audio/e_tu_ana_6.mp3"},
+    {"lyric" :"i runga o Hongoeka","file" :"audio/e_tu_ana_7.mp3"},
+    {"lyric" :"Ko Takapūwāhia ngā marae","file" :"audio/e_tu_ana_8.mp3"},
+    {"lyric" :"o Ngāti Toa Rangatira e!","file" :"audio/e_tu_ana_9.mp3"},
+    {"lyric" :"I heke mai i Kawhia! Hi!","file" :"audio/e_tu_ana_10.mp3"},
+    {"lyric" :"I te heke Tahutahu Ahi! Ha!","file" :"audio/e_tu_ana_11.mp3"},
+    {"lyric" :"I te heke Tataramoa! Hi!","file" :"audio/e_tu_ana_12.mp3"},
+    {"lyric" :"I te heke mai i raro! Hei ha! Hi!","file" :"audio/e_tu_ana_13.mp3"}
+  ] ,
+  "iti_whetu" : [
+    {"lyric" :"Ahakoa iti whetu ki te rangi","file" :"audio/iti_whetu_1.mp3"},
+    {"lyric" :"ranginui pōkēkē ao","file" :"audio/iti_whetu_2.mp3"},
+    {"lyric" :"uhia kia ngaro e kore e ngaro","file" :"audio/iti_whetu_3.mp3"},
+    {"lyric" :"Ko Te Rauparaha","file" :"audio/iti_whetu_4.mp3"},
+    {"lyric" :"nāna i whakawhiti mai te rā","file" :"audio/iti_whetu_5.mp3"},
+    {"lyric" :"hei tauira mō tātou o mohoa noa nei","file" :"audio/iti_whetu_6.mp3"},
+    {"lyric" :"Tēnei mātou ngā uri e mihi atu ki ngā iwi","file" :"audio/iti_whetu_7.mp3"},
+    {"lyric" :"tōia ma rā ki tēnei wānanga","file" :"audio/iti_whetu_8.mp3"},
+    {"lyric" :"rarau mai piki mai ki te whāriki takapau","file" :"audio/iti_whetu_9.mp3"},
+    {"lyric" :"o Toa Rangatira","file" :"audio/iti_whetu_10.mp3"},
+    {"lyric" :"E Raha, nōu i arataki i ngā hekenga","file" :"audio/iti_whetu_11.mp3"},
+    {"lyric" :"Ko te heke Tahutahu Ahi","file" :"audio/iti_whetu_12.mp3"},
+    {"lyric" :"Tatū atu ki te Kūreitanga","file" :"audio/iti_whetu_13.mp3"},
+    {"lyric" :"Ko te heke Tataramoa! Hi! Hi! Hi! Ha!","file" :"audio/iti_whetu_14.mp3"}
+  ] ,
+  "taku_toroa" : [
+    {"lyric" :"Kua hinga ngā tōtara i te wao nui a Tane","file" :"audio/taku_toroa_1.mp3"},
+    {"lyric" :"Takiri mai ko te ata i te motu tapu o Kapiti","file" :"audio/taku_toroa_2.mp3"},
+    {"lyric" :"Ngā wai whakariporipo o Raukawakawa","file" :"audio/taku_toroa_3.mp3"},
+    {"lyric" :"Koutou kua nanaiore atu","file" :"audio/taku_toroa_4.mp3"},
+    {"lyric" :"whaia te here Toroa ki te uru","file" :"audio/taku_toroa_5.mp3"},
+    {"lyric" :"Kua tō te rā i te aroha","file" :"audio/taku_toroa_6.mp3"},
+    {"lyric" :"Kua ngū te oro o te Kopara-tū-whārangi","file" :"audio/taku_toroa_7.mp3"},
+    {"lyric" :"Rukuhia atu rā","file" :"audio/taku_toroa_8.mp3"},
+    {"lyric" :"Whakarērea ki ngā tūpuna","file" :"audio/taku_toroa_9.mp3"},
+    {"lyric" :"Whakarērea ki te kauheke kaumātua","file" :"audio/taku_toroa_10.mp3"},
+    {"lyric" :"ki te awa i pikopiko i whiti","file" :"audio/taku_toroa_11.mp3"},
+    {"lyric" :"ki te awa o te akeake","file" :"audio/taku_toroa_12.mp3"}
+  ] ,
+  "i_nga_ra_o_mua" : [
+    {"lyric" :"I nga ra o mua noa atu","file" :"audio/i_nga_ra_o_mua_1.mp3"},
+    {"lyric" :"Waiatatia te waiata o mua","file" :"audio/i_nga_ra_o_mua_2.mp3"},
+    {"lyric" :"Aue e hine ma, aue e tama ma","file" :"audio/i_nga_ra_o_mua_3.mp3"},
+    {"lyric" :"Kia mau ki to reo Maori e","file" :"audio/i_nga_ra_o_mua_4.mp3"},
+    {"lyric" :"Aue, aue, aue.","file" :"audio/i_nga_ra_o_mua_5.mp3"},
+    {"lyric" :"I nga ra o mua noa atu","file" :"audio/i_nga_ra_o_mua_6.mp3"},
+    {"lyric" :"I mahi I nga mahi Maori","file" :"audio/i_nga_ra_o_mua_7.mp3"},
+    {"lyric" :"E te iwi e te iwi","file" :"audio/i_nga_ra_o_mua_8.mp3"},
+    {"lyric" :"Hapai ake ki runga","file" :"audio/i_nga_ra_o_mua_9.mp3"},
+    {"lyric" :"Tenei whakatipuranga e","file" :"audio/i_nga_ra_o_mua_10.mp3"},
+    {"lyric" :"Aue, aue, aue.","file" :"audio/i_nga_ra_o_mua_11.mp3"},
+    {"lyric" :"Akona ai te haka taparahi e","file" :"audio/i_nga_ra_o_mua_12.mp3"},
+    {"lyric" :"Akona ai te poi powhiri","file" :"audio/i_nga_ra_o_mua_13.mp3"},
+    {"lyric" :"Poi porotiti tapara patua.","file" :"audio/i_nga_ra_o_mua_14.mp3"},
+    {"lyric" :"Kia mau ki to Maoritanga","file" :"audio/i_nga_ra_o_mua_15.mp3"},
+    {"lyric" :"Ki nga taonga a ou tupuna","file" :"audio/i_nga_ra_o_mua_16.mp3"},
+    {"lyric" :"Tenei hei kahukiwi","file" :"audio/i_nga_ra_o_mua_17.mp3"},
+    {"lyric" :"Mo tou pakihiwi","file" :"audio/i_nga_ra_o_mua_18.mp3"},
+    {"lyric" :"Mo ake ake tonu au e","file" :"audio/i_nga_ra_o_mua_19.mp3"},
+    {"lyric" :"Mo ake ake tonu au e","file" :"audio/i_nga_ra_o_mua_20.mp3"}
+  ] ,
+  "williams" : [
+    {"lyric" :"He iti pōkēkē i tuku iho i runga o Moeātoa, puta ana te mātao ki tua.","file" :"audio/williams_1.mp3"},
+    {"lyric" :"If a small dark cloud settles on Moeātoa, cold will extend beyond.","file" :"audio/williams_2.mp3"}
+
+  ],
+  "smith" : [
+    {"lyric" :"Mangō taringa tahi.","file" :"audio/smith_1.mp3"},
+    {"lyric" :"One-eared Mangō.","file" :"audio/smith_2.mp3"}
+
+  ],
+  "grey_1" : [
+    {"lyric" :"Ngāti Toa Tainui kōwhai rau.","file" :"audio/grey_1_1.mp3"},
+    {"lyric" :"Ngāti Toa were descended from chiefs of the Tainui, a tribe inhabiting many different locations.","file" :"audio/grey_1_2.mp3"}
+
+  ],
+  "grey_2" : [
+    {"lyric" :"Ngā uri o Toarangatira rāua ko Tūrangapeke, taonga hoatu noa atu.","file" :"audio/grey_2_1.mp3"},
+    {"lyric" :"If a small dark cloud settles on Moeātoa, cold will extend beyond.","file" :"audio/grey_2_2.mp3"}
+
+  ],
+  "best" : [
+    {"lyric" :"Te inati o Ngāti Raukawa, te inati o Ngāti Toa.","file" :"audio/best_1.mp3"},
+    {"lyric" :"The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa.","file" :"audio/best_2.mp3"}
+
+  ],
+  "te_hurinui" : [
+    {"lyric" :"Kia tūpato kei ngau te kauae runga i te kauae raro.","file" :"audio/te_hurinui_1.mp3"},
+    {"lyric" :"Take care lest the upper jaw close on the lower.","file" :"audio/te_hurinui_2.mp3"}
+
   ]
+
 }
