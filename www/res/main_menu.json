@@ -10,7 +10,7 @@
   "karakia": [
     { "name" : "E Whatoro Ana >", "url" : "e_whatoro_ana.html" },
     { "name" : "Unuhia >", "url" : "unuhia.html" },
-    { "name" : "Nau Mai Ngā Hua >", "url" : "nau_mai_nga_hua.html" }
+    { "name" : "Nau Mai E Ngā Hua >", "url" : "nau_mai_e_nga_hua.html" }
   ] ,
   "moteatea": [
     { "name" : "Te Roa O Te Pō   >", "url" : "te_roa_o_te_po.html" },
@@ -22,12 +22,11 @@
   "waiata": [
     { "name" : "E Tū Ana   >", "url" : "e_tu_ana.html" },
     { "name" : "Iti Whetū   >", "url" : "iti_whetu.html" },
-    { "name" : "Ka Oho Te Wairua   >", "url" : "ka_oho_te_wairua.html" },
-    { "name" : "Ka Oho Te Wairua   >", "url" : "ka_oho_te_wairua.html" },
+    { "name" : "Taku Toroa   >", "url" : "taku_toroa.html" },
+    { "name" : "I Ngā Rā O Mua   >", "url" : "i_nga_ra_o_mua.html" },
     { "name" : "Ka Oho Te Wairua   >", "url" : "ka_oho_te_wairua.html" }
   ] ,
   "haka": [
-    { "name" : "Taku Toroa   >", "url" : "taku_toroa.html" },
     { "name" : "Kikiki, Kakaka   >", "url" : "kikiki_kakaka.html" },
     { "name" : "Ka Tukituki   >", "url" : "ka_tukituki.html" }
   ],
