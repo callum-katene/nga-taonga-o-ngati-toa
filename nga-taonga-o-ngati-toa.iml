@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/node_modules/cordova-ios/tests/spec/unit/fixtures/dummyProj/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/cordova-ios/tests/spec/unit/fixtures/testProj/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp/node_modules/cordova-ios/tests/spec/unit/fixtures/dummyProj/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/tmp/node_modules/cordova-ios/tests/spec/unit/fixtures/testProj/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/tmp/platforms" />
     </content>
