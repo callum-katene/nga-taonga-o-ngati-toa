@@ -207,11 +207,7 @@
     {"lyric" :"Tū ake nei ngā uri","file" :"e_tu_ana_5.mp3"},
     {"lyric" :"I runga o Hongoeka","file" :"e_tu_ana_6.mp3"},
     {"lyric" :"Ko Takapūwāhia ngā marae","file" :"e_tu_ana_7.mp3"},
-    {"lyric" :"o Ngāti Toa Rangatira e!","file" :"e_tu_ana_8.mp3"},
-    {"lyric" :"I heke mai i Kawhia! Hi!","file" :"e_tu_ana_9.mp3"},
-    {"lyric" :"I te heke Tahutahu Ahi! Ha!","file" :"e_tu_ana_10.mp3"},
-    {"lyric" :"I te heke Tataramoa! Hi!","file" :"e_tu_ana_11.mp3"},
-    {"lyric" :"I te heke mai i raro! Hei ha! Hi!","file" :"e_tu_ana_12.mp3"}
+    {"lyric" :"o Ngāti Toa Rangatira e!","file" :"e_tu_ana_8.mp3"}
   ],
   "iti_whetu" : [
     {"lyric" :"Ahakoa iti whetu ki te rangi","file" :"iti_whetu_1.mp3"},
