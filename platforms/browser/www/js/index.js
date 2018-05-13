@@ -23,7 +23,7 @@ angApp.config(function($routeProvider, $locationProvider) {
         .when("/iti_whetu.html", { templateUrl: "iti_whetu.html", controller: "player2" })
         .when("/taku_toroa.html", { templateUrl: "taku_toroa.html", controller: "player2" })
         .when("/i_nga_ra_o_mua.html", { templateUrl: "i_nga_ra_o_mua.html", controller: "player2" })
-        .when("/ka_oho_te_wairua.html", { templateUrl: "ka_oho_te_wairua.html", controller: "player2" })
+        .when("/ka_oho_te_wairua.html", { templateUrl: "ka_oho_te_wairua.html", controller: "music_player" })
         .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player2" })
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player2" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player2" })
@@ -198,6 +198,34 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         .off("paused")
         .hide()
         [0].pause() ;
+}) ;
+
+angApp.controller("music_player", function($scope, $http, $window, $location) {
+    console.log("music_player controller");
+    // this player manages two audio elements.
+    // if a phrase is selected/deselected, and an audio is currently playing
+    // then the source of the OTHER audio is set to the next file to be played
+    // if there is no audio currently playing, then just work with the
+    // currently selected player
+    $scope.nowPlaying = null;
+    $scope.audio1 = $('#player1'); // the first player
+    $scope.audio2 = $('#player2'); // the second player
+    $scope.audio1.attr("src", null)[0].load();
+    $scope.audio2.attr("src", null)[0].load();
+    $scope.audio = $scope.audio1; // the current player, initially set to player 1
+    $scope.footer = $("footer");
+    $scope.song_title = $(".song_title");
+    $window.plugins.insomnia.keepAwake();
+    $scope.lyric_panel = $(".lyric_panel");
+    $scope.navigation_bar = $('.navigation_bar');
+    $scope.goTo = function (url) {
+        console.log("Going to: " + url);
+        $location.path(url);
+        $scope.$apply();
+        return null;
+    };
+    $("#header_image").css("display", "none");
+    $('body').removeClass('background');
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
