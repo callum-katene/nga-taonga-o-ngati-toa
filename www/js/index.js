@@ -3,10 +3,9 @@ var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]);
 // routeProvider is configured to control application routing. For eaach pattern it specifies
 // the template html file to apply and the controller to use.
 // tempPlateUrl either refers to the ng-templates in the html file, or a specific html file
-angApp.config(function($routeProvider, $locationProvider) {
+angApp.config(function($routeProvider) {
     $routeProvider
         .when("/", { templateUrl: "home.html", controller: "home_controller" })
-        .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "controller" })
         .when("/moteatea.html", { templateUrl: "moteatea.html", controller: "controller" })
         .when("/karakia.html", { templateUrl: "karakia.html", controller: "controller" })
         .when("/haka.html", { templateUrl: "haka.html", controller: "controller" })
@@ -19,15 +18,16 @@ angApp.config(function($routeProvider, $locationProvider) {
         .when("/te_roa_o_te_po.html", { templateUrl: "te_roa_o_te_po.html", controller: "player2" })
         .when("/toea_mai_ra.html", { templateUrl: "toea_mai_ra.html", controller: "player2" })
         .when("/moe_hurihuri.html", { templateUrl: "moe_hurihuri.html", controller: "player2" })
-        .when("/e_tu_ana.html", { templateUrl: "e_tu_ana.html", controller: "player2" })
-        .when("/iti_whetu.html", { templateUrl: "iti_whetu.html", controller: "player2" })
-        .when("/taku_toroa.html", { templateUrl: "taku_toroa.html", controller: "player2" })
-        .when("/i_nga_ra_o_mua.html", { templateUrl: "i_nga_ra_o_mua.html", controller: "player2" })
+        .when("/e_tu_ana.html", { templateUrl: "e_tu_ana.html", controller: "music_player" })
+        .when("/iti_whetu.html", { templateUrl: "iti_whetu.html", controller: "music_player" })
+        .when("/taku_toroa.html", { templateUrl: "taku_toroa.html", controller: "music_player" })
+        .when("/i_nga_ra_o_mua.html", { templateUrl: "i_nga_ra_o_mua.html", controller: "music_player" })
         .when("/ka_oho_te_wairua.html", { templateUrl: "ka_oho_te_wairua.html", controller: "music_player" })
         .when("/he_hokioi.html", { templateUrl: "he_hokioi.html", controller: "player2" })
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player2" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player2" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player2" })
+        .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "whakatauki_player" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player2" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player2" })
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
@@ -226,6 +226,212 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
     };
     $("#header_image").css("display", "none");
     $('body').removeClass('background');
+    $scope.player_all = function() {
+        $scope.selectAllPhrases() ;
+        $scope.setSourceToFirst() ;
+    } ;
+    $scope.player_none = function() {
+        $scope.unselectAllPhrases() ;
+    } ;
+    $scope.font_larger = function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+        $scope.centre_phrases() ;
+    } ;
+    $scope.font_smaller = function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
+        $scope.centre_phrases() ;
+    } ;
+    $('#player_help').show() ;
+    $('#font_larger').show().click($scope.font_larger) ;
+    $('#font_smaller').show().click($scope.font_smaller) ;
+
+    $scope.$on('$destroy', function() {
+        console.log("$destroy event received") ;
+        $scope.navigation_bar.hide() ;
+        $("#player_all").off('click', $scope.player_all) ;
+        $("#player_none").off('click', $scope.player_none) ;
+        $('#font_larger').off('click', $scope.font_larger) ;
+        $('#font_smaller').off('click', $scope.font_smaller) ;
+        // $('#player_help').click(null) ;
+    }) ;
+
+    var storage = $window.localStorage ;
+    var player_help = storage.getItem('player_help') ;
+    if(player_help != 'true') {
+        console.log('Did not find player_gelp flag so showing popup') ;
+        // setTimeout(function() {
+        //     alert('For help with this page touch the question mark (?) icon below') ;
+        // }, 1000) ;
+        navigator.notification.alert("For help regarding how to use this page, touch the question mark (?) icon in the navigation bar below",
+            null, 'Help', "OK") ;
+        storage.setItem('player_help', 'true') ;
+    }
+    else {
+        console.log('player_help flag found so help must have been seen already') ;
+    }
+
+    // centre phrases vertically
+    $scope.centre_phrases = function() {
+        var lyric_panel_height = $scope.lyric_panel.height() ;
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        var diff = content_panel_height - ( $scope.song_title.outerHeight(true) + lyric_panel_height) ;
+        if(diff > 0) {
+            console.log('Setting lyric panel margin to ' + diff / 2) ;
+            $scope.lyric_panel.animate({marginTop:diff / 2}, "normal") ;
+        }
+    } ;
+
+    $scope.navigation_bar.show();
+    // this loads the lyrics so sets up the page components hopefully after it's
+    // finished the page will be rendered correctly
+    $http.get("res/lyrics.json").then(function (v) {
+        console.log("lyrics.JSON loaded successfully") ;
+        $scope.menuitems = v.data ;
+        console.log('Spacing hack for Tau Mai E Kāpiti');
+        $("li[file$='tau_mai_e_kapiti_22.mp3']").addClass('last-phrase');
+        $("li[file$='tau_mai_e_kapiti_15.mp3']").addClass('last-phrase');
+        $("li[file$='tau_mai_e_kapiti_8.mp3']").addClass('last-phrase');
+        $scope.viewport_size = $(window).outerHeight(true);
+        console.log("Viewport size: " + $scope.viewport_size);
+        console.log("Footer height at end: " + $scope.footer.outerHeight());
+        // resize the lyrics_panel
+        $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true));
+        // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+        // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+        $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height);
+        // var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        // $('#content_panel').css('min-height', content_panel_height).css('max-height', content_panel_height) ;
+
+        //
+        // vertical centre, but give the phrases a chance to render first
+        setTimeout(function() {
+            $scope.centre_phrases() ;
+        }, 300) ;
+    }, function(v) {
+        console.log("error: " + v);
+    }) ;
+    // init_audio is designed to be called after the
+    // song phrases have been loaded. uses an ng-init
+    // in the ul. this should be fine with dual players
+    // if it's only used after first load
+    $scope.init_audio = function(first_file) {
+        console.log("First song file: " + first_file);
+        if(first_file) {
+            $scope.audio1.attr("src", first_file) ;
+            $scope.audio1[0].load() ;
+            $scope.audio1.show() ;
+        }
+    } ;
+}) ;
+
+angApp.controller("whakatauki_player", function($scope, $http, $window, $location) {
+    $scope.nowPlaying = null ;
+    $scope.audio1 = $('#player1') ; // the first player
+    $scope.audio2 = $('#player2') ; // the second player
+    $scope.audio1.attr("src", null)[0].load() ;
+    $scope.audio2.attr("src", null)[0].load() ;
+    $scope.audio = $scope.audio1 ; // the current player, initially set to player 1
+    $scope.footer = $("footer") ;
+    $scope.song_title = $(".song_title") ;
+    $window.plugins.insomnia.keepAwake() ;
+    $scope.lyric_panel = $(".lyric_panel") ;
+    $scope.navigation_bar = $('.navigation_bar') ;
+
+    $("#header_image").css("display","none") ;
+    $('body').removeClass('background') ;
+    $scope.player_all = function() {
+        $scope.selectAllPhrases() ;
+        $scope.setSourceToFirst() ;
+    } ;
+    $scope.player_none = function() {
+        $scope.unselectAllPhrases() ;
+    } ;
+    $scope.font_larger = function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size + 1) ;
+        $scope.centre_phrases() ;
+    } ;
+    $scope.font_smaller = function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.phrase').css('font-size')) ;
+        $('.phrase').css('font-size',current_font_size - 1) ;
+        $scope.centre_phrases() ;
+    } ;
+    $('#player_help').show() ;
+
+    $("#player_all").hide() ;
+    $("#player_none").hide() ;
+    $('#font_larger').show().click($scope.font_larger) ;
+    $('#font_smaller').show().click($scope.font_smaller) ;
+    $('#navigate_back').show() ;
+
+    $scope.$on('$destroy', function() {
+        console.log("$destroy event received") ;
+        $scope.navigation_bar.hide() ;
+        $("#player_all").off('click', $scope.player_all) ;
+        $("#player_none").off('click', $scope.player_none) ;
+        $('#font_larger').off('click', $scope.font_larger) ;
+        $('#font_smaller').off('click', $scope.font_smaller) ;
+        // $('#player_help').click(null) ;
+    }) ;
+
+    var storage = $window.localStorage ;
+    var player_help = storage.getItem('player_help') ;
+    if(player_help != 'true') {
+        console.log('Did not find player_gelp flag so showing popup') ;
+        // setTimeout(function() {
+        //     alert('For help with this page touch the question mark (?) icon below') ;
+        // }, 1000) ;
+        navigator.notification.alert("For help regarding how to use this page, touch the question mark (?) icon in the navigation bar below",
+            null, 'Help', "OK") ;
+        storage.setItem('player_help', 'true') ;
+    }
+    else {
+        console.log('player_help flag found so help must have been seen already') ;
+    }
+
+    // centre phrases vertically
+    $scope.centre_phrases = function() {
+        var lyric_panel_height = $scope.lyric_panel.height() ;
+        var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        var diff = content_panel_height - ( $scope.song_title.outerHeight(true) + lyric_panel_height) ;
+        if(diff > 0) {
+            console.log('Setting lyric panel margin to ' + diff / 2) ;
+            $scope.lyric_panel.animate({marginTop:diff / 2}, "normal") ;
+        }
+    } ;
+
+    $http.get("res/lyrics.json").then(function (v) {
+        console.log("lyrics.JSON loaded successfully") ;
+        $scope.menuitems = v.data ;
+        $scope.viewport_size = $(window).outerHeight(true);
+        console.log("Viewport size: " + $scope.viewport_size);
+        console.log('$scope.footer.outerHeight(true): ' + $scope.footer.outerHeight(true)) ;
+        console.log('$scope.song_title.outerHeight(true): ' + $scope.song_title.outerHeight(true)) ;
+        console.log("Footer height at end: " + $scope.footer.outerHeight());
+        // resize the lyrics_panel
+        $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true));
+
+        // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+        // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+        $scope.lyric_panel.css('max-height', $scope.max_lyric_panel_height);
+        console.log('$scope.max_lyric_panel_height: ' + $scope.max_lyric_panel_height) ;
+
+        //
+        // vertical centre, but give the phrases a chance to render first
+        setTimeout(function() {
+            $scope.centre_phrases() ;
+        }, 300) ;
+    }, function(v) {
+        console.log("error: " + v);
+    }) ;
+
+    $scope.navigation_bar.show() ;
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
@@ -352,8 +558,8 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         else if(currentPlayer.is($scope.audio2)) {
             console.log("Other player is audi01") ;
             otherPlayer = $scope.audio1 ;
-         }
-         else {
+        }
+        else {
             alert('Error code 101') ;
         }
         // console.log('Other player: ' + JSON.stringify(otherPlayer)) ;
@@ -526,8 +732,8 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
     // setSourceToNext takes an audio filename, gets the
     // next file name to play. If there is a next
     // then
-        // if playing then set and load the inactive player
-            // else set and load the visible player
+    // if playing then set and load the inactive player
+    // else set and load the visible player
     $scope.setSourceToNext = function(current_rec) {
         console.log("setSourceToNext. Looking for: " + current_rec) ;
         var ret = $scope.getNextSource(current_rec) ;
