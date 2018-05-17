@@ -27,7 +27,7 @@ angApp.config(function($routeProvider) {
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player2" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player2" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player2" })
-        .when("/whakatauki.html", { templateUrl: "whakatauki.html", controller: "whakatauki_player" })
+        .when("/whakatauki.html", { templateUrl: "whakatauki2.html", controller: "whakatauki_player" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player2" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player2" })
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
@@ -408,6 +408,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
 
     $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
+        // console.log("Whakataukī: " + JSON.stringify(v.data)) ;
         $scope.menuitems = v.data ;
         $scope.viewport_size = $(window).outerHeight(true);
         console.log("Viewport size: " + $scope.viewport_size);

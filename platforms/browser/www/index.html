@@ -36,10 +36,6 @@ routeProvider in the controller defined in the accompanying javascript file
     <ul class="menu"><li ng-repeat="x in menuitems.mainmenu" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
 </script>
 
-<script type="text/ng-template" id="whakatauki.html">
-    <ul class="menu"><li ng-repeat="x in menuitems.whakatauki" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
-</script>
-
 <script type="text/ng-template" id="karakia.html">
     <ul class="menu"><li ng-repeat="x in menuitems.karakia" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
 </script>
@@ -53,6 +49,9 @@ routeProvider in the controller defined in the accompanying javascript file
 
 <script type="text/ng-template" id="waiata.html">
     <ul class="menu"><li ng-repeat="x in menuitems.waiata" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
+</script>
+<script type="text/ng-template" id="whakatauki.html">
+    <ul class="menu"><li ng-repeat="x in menuitems.whakatauki" ng-click = "goTo(x.url)" class="menuitem">{{ x.name }}</li></ul>
 </script>
 
 <script type="text/ng-template" id="pepeha.html">
