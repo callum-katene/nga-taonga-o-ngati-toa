@@ -1,5 +1,9 @@
 
-var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]);
+var angApp = angular.module("nga-taonga-o-ngati-toa", ["ngRoute"]).config(function($sceProvider) {
+    // Completely disable SCE.  We do this so we can embed HTML in the
+    // lyrics. This is not a security threat because it is a contained app
+    $sceProvider.enabled(false);
+});
 // routeProvider is configured to control application routing. For eaach pattern it specifies
 // the template html file to apply and the controller to use.
 // tempPlateUrl either refers to the ng-templates in the html file, or a specific html file
@@ -82,6 +86,7 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     }, function(v) {
         console.log("error: " + v);
     }) ;
+
     $scope.footer = $("footer") ;
     $scope.navigation_bar = $('.navigation_bar') ;
     // $scope.footer.height(52) ;
@@ -121,21 +126,27 @@ angApp.controller("controller", function($scope, $http, $window, $location) {
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
     // listeners disabled
+
+
     $("audio")
         .off("ended")
         .off("playing")
         .off("paused")
         .hide()
         [0].pause() ;
+
     $('.navigation_bar').show() ;
+
     $scope.$on('$destroy', function() {
         $scope.navigation_bar.hide() ;
     }) ;
+
 }) ;
 
 angApp.controller("home_controller", function($scope, $http, $window, $location) {
     console.log("home controller") ;
     $('.navigation_bar').hide() ;
+
     $http.get("res/main_menu.json").then(function (v) {
         console.log("main_menu JSON loaded successfully") ;
         $scope.menuitems = v.data ;
@@ -161,7 +172,6 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     } ;
     $('#player_help').off().on('click', $scope.help_click_handler) ;
     //
-    // initialise hammer
 
     // if this controller loads it is because we're on a menu page, so
     // ensure the header is visible and the audio player is hidden
@@ -192,12 +202,14 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
     // if this controller is active then we are on a menu page
     // so the audio player needs to be paused, hidden, and event
     // listeners disabled
-    $("audio")
+
+      $("audio")
         .off("ended")
         .off("playing")
         .off("paused")
         .hide()
         [0].pause() ;
+
 }) ;
 
 angApp.controller("music_player", function($scope, $http, $window, $location) {
@@ -340,9 +352,10 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
     $scope.navigation_bar = $('.navigation_bar') ;
-
+    console.log("This is the whakatauki player") ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
+
     $scope.player_all = function() {
         $scope.selectAllPhrases() ;
         $scope.setSourceToFirst() ;
@@ -383,7 +396,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
     var storage = $window.localStorage ;
     var player_help = storage.getItem('player_help') ;
     if(player_help != 'true') {
-        console.log('Did not find player_gelp flag so showing popup') ;
+        console.log('Did not find player_help flag so showing popup') ;
         // setTimeout(function() {
         //     alert('For help with this page touch the question mark (?) icon below') ;
         // }, 1000) ;
@@ -406,9 +419,14 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         }
     } ;
 
+    // THIS is where the footer height gets set, by setting
+    // the height navigation entry to 5% of the outer height
+    var outer_height = $(window).outerHeight(true) ;
+    console.log("outer_height: " + outer_height) ;
+    $('.navigation_entry').height(outer_height * .05) ;
+    $scope.navigation_bar.show() ;
     $http.get("res/lyrics.json").then(function (v) {
         console.log("lyrics.JSON loaded successfully") ;
-        // console.log("Whakataukī: " + JSON.stringify(v.data)) ;
         $scope.menuitems = v.data ;
         $scope.viewport_size = $(window).outerHeight(true);
         console.log("Viewport size: " + $scope.viewport_size);
@@ -432,7 +450,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         console.log("error: " + v);
     }) ;
 
-    $scope.navigation_bar.show() ;
+    $(".phrase div:nth-child(1)").addClass("ingarihi") ;
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
