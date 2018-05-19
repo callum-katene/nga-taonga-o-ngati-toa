@@ -64,7 +64,7 @@
     { "lyric" : "Tina hui e, taiki e", "file" : "audio/e_whatoro_ana_10.mp3" }
   ] ,
   "nau_mai_e_nga_hua" : [
-    { "lyric" : "Nau mai ngā hua i hora nei!","file":"audio/nau_mai_e_nga_hua_1.mp3"},
+    { "lyric" : "Nau mai e ngā hua i hora nei!","file":"audio/nau_mai_e_nga_hua_1.mp3"},
     { "lyric" : "I haere mai nā koe","file":"audio/nau_mai_e_nga_hua_2.mp3"},
     { "lyric" : "I whakatupu ā Nuku","file":"audio/nau_mai_e_nga_hua_3.mp3"},
     { "lyric" : "I whakatupu ā Rangi","file":"audio/nau_mai_e_nga_hua_4.mp3"},
