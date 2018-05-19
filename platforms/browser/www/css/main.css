@@ -120,6 +120,7 @@ footer > p.listening {
 
 .unselected_phrase {
     color: grey ;
+    background-color: black ;
 }
 
 .song_title {
@@ -136,3 +137,17 @@ footer > p.listening {
     background-color: #404040;
 }
 
+.ingarihi {
+    color: darkgrey ;
+    font-style: italic;
+}
+
+.ingarihi > hr {
+    width: 20% ;
+    border-color: darkgrey;
+    size: 1px ;
+}
+
+#hidden_player {
+    display: none ;
+}

@@ -238,13 +238,7 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
     };
     $("#header_image").css("display", "none");
     $('body').removeClass('background');
-    $scope.player_all = function() {
-        $scope.selectAllPhrases() ;
-        $scope.setSourceToFirst() ;
-    } ;
-    $scope.player_none = function() {
-        $scope.unselectAllPhrases() ;
-    } ;
+
     $scope.font_larger = function() {
         console.log('Font larger') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
@@ -341,28 +335,22 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
 }) ;
 
 angApp.controller("whakatauki_player", function($scope, $http, $window, $location) {
-    $scope.nowPlaying = null ;
+    $scope.nowPlaying = "FALSE" ;
     $scope.audio1 = $('#player1') ; // the first player
     $scope.audio2 = $('#player2') ; // the second player
+    $scope.hidden_player = $('#hidden_player') ;
     $scope.audio1.attr("src", null)[0].load() ;
     $scope.audio2.attr("src", null)[0].load() ;
     $scope.audio = $scope.audio1 ; // the current player, initially set to player 1
     $scope.footer = $("footer") ;
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
-    $scope.lyric_panel = $(".lyric_panel") ;
+    $scope.lyric_panel = $(".lyric_panel").hide() ;
     $scope.navigation_bar = $('.navigation_bar') ;
     console.log("This is the whakatauki player") ;
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
 
-    $scope.player_all = function() {
-        $scope.selectAllPhrases() ;
-        $scope.setSourceToFirst() ;
-    } ;
-    $scope.player_none = function() {
-        $scope.unselectAllPhrases() ;
-    } ;
     $scope.font_larger = function() {
         console.log('Font larger') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
@@ -393,6 +381,41 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         // $('#player_help').click(null) ;
     }) ;
 
+    /*
+    play function is called by the ng-click and passed the filename
+     */
+    $scope.play = function(file_to_play) {
+        if($scope.nowPlaying == "TRUE") {
+            console.log("Ignoring request to play " + file_to_play + " because audio is already playing") ;
+        }
+        else {
+            console.log("Now playing file " + file_to_play) ;
+            playing_element = $("li.phrase[file='" + file_to_play + "']") ;
+            console.log("Playing element: " + playing_element) ;
+            $scope.hidden_player
+                .off("ended")
+                .off("pause")
+                .off("playing")
+                .on("ended", function() {
+                    console.log("Playing finished") ;
+                    $scope.hidden_player.attr("src", null) ;
+                    playing_element.css("border","").css("font-weight", "").animate({ fontSize: "-=25%" } , function() {
+                        console.log("Finished closing animation") ;
+                        $scope.nowPlaying = "FALSE" ;
+                    }) ;
+
+                })
+                .on("pause", function() {
+                    console.log("Playing paused: ")
+                })
+                .on("playing", function() {
+                    console.log("Now playing ...") ;
+                    $scope.nowPlaying = "TRUE" ;
+                    playing_element.css("border", "1px solid red").css("font-weight", "bold").animate({fontSize: "+=25%"}) ;
+                })
+                .attr("src",file_to_play) ;
+        }
+    } ;
     var storage = $window.localStorage ;
     var player_help = storage.getItem('player_help') ;
     if(player_help != 'true') {
@@ -444,13 +467,17 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         //
         // vertical centre, but give the phrases a chance to render first
         setTimeout(function() {
+
+            $(".phrase div:nth-child(2)").addClass("ingarihi").append('<hr>') ;
             $scope.centre_phrases() ;
+            // the lyric panel was hidden at the start of this controller. This is
+            // where we show it
+            $scope.lyric_panel.show() ;
         }, 300) ;
     }, function(v) {
         console.log("error: " + v);
     }) ;
 
-    $(".phrase div:nth-child(1)").addClass("ingarihi") ;
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
@@ -655,6 +682,7 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
     // IF audio is not currently playing
     $scope.setSourceToFirst = function() {
         console.log("setSourceToFirst") ;
+        $scope.audio = $("audio:visible") ;
         $scope.audio.attr("src", null) ;
         var list = $("li.phrase") ;
         console.log("List size: " + list.length) ;
@@ -706,7 +734,7 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $scope.audio1.attr("src", null)[0].load() ;
         $scope.audio2.stop() ;
         $scope.audio2.attr("src", null)[0].load() ;
-
+        $scope.nowPlaying = null ;
     } ;
 
     $scope.getNextSource = function(current_rec) {
@@ -826,36 +854,65 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $scope.nowPlaying = $(this);
         var now_playing = $scope.getCurrentlyPlaying().attr("src") ;
         console.log("File currently playing: " + now_playing) ;
-        $("li.phrase").each(function() {
-            if($(this).attr("file") === now_playing) {
-                console.log("Found playing phrase") ;
-                // $(this).attr("style='border:1px solid white;font-weight:bold;background-color:gray'") ;
-                $(this).css("border","1px solid white").css("font-weight","bold").css("background-color","#404040") ;
-                // at this stage we need to ensure that the
-                // current element is visible
-                var elementRect = $(this)[0].getBoundingClientRect() ;
+        playing_element = $("li.phrase[file='" + now_playing + "']") ;
 
-                console.log("Bounding rectangle: Top: " + elementRect.top + ", bottom: " + elementRect.bottom) ;
-                var lyricPanelPosition = $scope.lyric_panel.position() ;
-                var lyricPanelTop = lyricPanelPosition.top + $scope.lyric_panel.scrollTop() ;
-                var lyricPanelBottom = lyricPanelTop + $scope.lyric_panel.height() ;
-                console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
-                var lyricPanelOffset = $scope.lyric_panel.offset() ;
-                console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
-                if(elementRect.top <= lyricPanelTop) {
-                    console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
-                    $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
-                }
-                console.log("ElementRec:BOTTOM " + elementRect.bottom + ", LyricPanel:BOTTOM " + lyricPanelBottom) ;
-                if(elementRect.bottom  >= lyricPanelBottom) {
-                    console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
-                    $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
-                }
+        playing_element.each(function() {
+            console.log("Found playing phrase") ;
+            // $(this).attr("style='border:1px solid white;font-weight:bold;background-color:gray'") ;
+            $(this).css("border","1px solid white").css("font-weight","bold").css("background-color","#404040") ;
+            // at this stage we need to ensure that the
+            // current element is visible
+            var elementRect = $(this)[0].getBoundingClientRect() ;
+
+            console.log("Bounding rectangle: Top: " + elementRect.top + ", bottom: " + elementRect.bottom) ;
+            var lyricPanelPosition = $scope.lyric_panel.position() ;
+            var lyricPanelTop = lyricPanelPosition.top + $scope.lyric_panel.scrollTop() ;
+            var lyricPanelBottom = lyricPanelTop + $scope.lyric_panel.height() ;
+            console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
+            var lyricPanelOffset = $scope.lyric_panel.offset() ;
+            console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
+            if(elementRect.top <= lyricPanelTop) {
+                console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
+                $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
             }
-            else {
-                $(this).css("border","none") ;
+            console.log("ElementRec:BOTTOM " + elementRect.bottom + ", LyricPanel:BOTTOM " + lyricPanelBottom) ;
+            if(elementRect.bottom  >= lyricPanelBottom) {
+                console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
+                $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
             }
-        }) ;
+        } ) ;
+        playing_element.siblings().css("border","none").css("background-color","black") ;
+            // $("li.phrase").each(function() {
+            //     if($(this).attr("file") === now_playing) {
+            //         console.log("Found playing phrase") ;
+            //         // $(this).attr("style='border:1px solid white;font-weight:bold;background-color:gray'") ;
+            //         $(this).css("border","1px solid white").css("font-weight","bold").css("background-color","#404040") ;
+            //         // at this stage we need to ensure that the
+            //         // current element is visible
+            //         var elementRect = $(this)[0].getBoundingClientRect() ;
+            //
+            //         console.log("Bounding rectangle: Top: " + elementRect.top + ", bottom: " + elementRect.bottom) ;
+            //         var lyricPanelPosition = $scope.lyric_panel.position() ;
+            //         var lyricPanelTop = lyricPanelPosition.top + $scope.lyric_panel.scrollTop() ;
+            //         var lyricPanelBottom = lyricPanelTop + $scope.lyric_panel.height() ;
+            //         console.log("Lyric panel. Top: " + lyricPanelPosition.top + ", scrollTop: " + $scope.lyric_panel.scrollTop()) ;
+            //         var lyricPanelOffset = $scope.lyric_panel.offset() ;
+            //         console.log("Lyric panel. Top: " + lyricPanelTop + ", bottom: " + lyricPanelBottom) ;
+            //         if(elementRect.top <= lyricPanelTop) {
+            //             console.log("Need to scroll DOWN: " + ( lyricPanelTop - elementRect.top)) ;
+            //             $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+            //         }
+            //         console.log("ElementRec:BOTTOM " + elementRect.bottom + ", LyricPanel:BOTTOM " + lyricPanelBottom) ;
+            //         if(elementRect.bottom  >= lyricPanelBottom) {
+            //             console.log("Need to scroll UP: " + ( elementRect.bottom - lyricPanelBottom ) ) ;
+            //             $(this)[0].scrollIntoView(true, { behavior: "smooth", block: "nearest", inline: "nearest"}) ;
+            //         }
+            //     }
+            //     else {
+            //         $(this).css("border","none") ;
+            //     }
+            // }) ;
+
         // playing has started so set the src
         $scope.setSourceToNext(now_playing) ;
     } ;
