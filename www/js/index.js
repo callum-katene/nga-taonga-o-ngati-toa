@@ -262,6 +262,9 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
         $("#player_none").off('click', $scope.player_none) ;
         $('#font_larger').off('click', $scope.font_larger) ;
         $('#font_smaller').off('click', $scope.font_smaller) ;
+        $('audio').each(function() {
+            this.pause() ;
+        }) ;
         // $('#player_help').click(null) ;
     }) ;
 
@@ -390,8 +393,11 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         }
         else {
             console.log("Now playing file " + file_to_play) ;
-            playing_element = $("li.phrase[file='" + file_to_play + "']") ;
-            console.log("Playing element: " + playing_element) ;
+            playing_element = $("li.phrase[file='" + file_to_play + "'] > div:first") ;
+            // console.log("Playing element: " + playing_element[0]) ;
+            var current_font_size = parseInt($('.phrase').css('font-size')) ;
+            console.log("Current font size: " + current_font_size) ;
+
             $scope.hidden_player
                 .off("ended")
                 .off("pause")
@@ -399,10 +405,10 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
                 .on("ended", function() {
                     console.log("Playing finished") ;
                     $scope.hidden_player.attr("src", null) ;
-                    playing_element.css("border","").css("font-weight", "").animate({ fontSize: "-=25%" } , function() {
+                    playing_element.css("font-weight", "").animate({ fontSize: current_font_size } , function() {
                         console.log("Finished closing animation") ;
                         $scope.nowPlaying = "FALSE" ;
-                    }) ;
+                    }).parent().css("border","") ;
 
                 })
                 .on("pause", function() {
@@ -411,7 +417,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
                 .on("playing", function() {
                     console.log("Now playing ...") ;
                     $scope.nowPlaying = "TRUE" ;
-                    playing_element.css("border", "1px solid red").css("font-weight", "bold").animate({fontSize: "+=25%"}) ;
+                    playing_element.css("font-weight", "bold").animate({fontSize: current_font_size + 4}).parent().css("border", "1px solid red") ;
                 })
                 .attr("src",file_to_play) ;
         }
@@ -539,6 +545,9 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $("#player_none").off('click', $scope.player_none) ;
         $('#font_larger').off('click', $scope.font_larger) ;
         $('#font_smaller').off('click', $scope.font_smaller) ;
+        $('audio').each(function() {
+            this.pause() ;
+        }) ;
         // $('#player_help').click(null) ;
     }) ;
 

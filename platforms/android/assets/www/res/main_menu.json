@@ -31,9 +31,7 @@
     { "name" : "Ka Tukituki   >", "url" : "ka_tukituki.html" }
   ],
   "whakatauki" : [
-    { "name" : "Whakataukī1   >", "url" : "whakatauki1.html" },
-    { "name" : "Whakataukī2   >", "url" : "whakatauki2.html" },
-    { "name" : "Whakataukī3   >", "url" : "whakatauki3.html" }
+    { "name" : "Ngāti Toa WHakataukī   >", "url" : "whakatauki.html" }
   ],
   "pepeha": [
     { "name" : "Takapūwāhia   >", "url" : "takapuwahia.html" },
