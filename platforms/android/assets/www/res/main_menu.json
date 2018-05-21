@@ -23,8 +23,7 @@
     { "name" : "E Tū Ana   >", "url" : "e_tu_ana.html" },
     { "name" : "Iti Whetū   >", "url" : "iti_whetu.html" },
     { "name" : "Taku Toroa   >", "url" : "taku_toroa.html" },
-    { "name" : "I Ngā Rā O Mua   >", "url" : "i_nga_ra_o_mua.html" },
-    { "name" : "Ka Oho Te Wairua   >", "url" : "ka_oho_te_wairua.html" }
+    { "name" : "I Ngā Rā O Mua   >", "url" : "i_nga_ra_o_mua.html" }
   ] ,
   "haka": [
     { "name" : "Kikiki, Kakaka   >", "url" : "kikiki_kakaka.html" },

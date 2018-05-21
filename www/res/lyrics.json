@@ -231,19 +231,12 @@
     {"lyric" :"Takapau O Toa Rangatira","file" :"iti_whetu_10.mp3"}
     ],
   "whakatauki2" : [
-    {"lyric" : "<div>Haumia whakatere taniwha</div><div>Haumia who made the taniwha float</div>", "file":"audio/whakatauki_1.mp3"},
-    {"lyric" : "<div>Ka mate te iwi keri parepare,hei aha mā Te Whare-o-te-riri</div><div>Even if the sappers are killed what does Te Whare-o-te-riri care?</div>", "file":"audio/whakatauki_3.mp3"},
-    {"lyric" : "<div>Kaua e hoatu ki te atua, me homai ki Te Kākākura</div><div>Do not give it to god, give it to Te Kākākura</div>", "file":"audio/whakatauki_4.mp3"},
-    {"lyric" : "<div>Kei ahau te huka o te riri</div><div>I have the foam of the battle</div>", "file":"audio/whakatauki_5.mp3"},
     {"lyric" : "<div>Kia tūpato kei ngau te kauae runga i te kauae raro</div><div>Take care lest the upper jaw close on the lower</div>", "file":"audio/whakatauki_6.mp3"},
-    {"lyric" : "<div>Ko Haumia toa</div><div>Brave Haumia</div>", "file":"audio/whakatauki_7.mp3"},
     {"lyric" : "<div>Mangō taringa tahi</div><div>One-eared Mangō</div>", "file":"audio/whakatauki_8.mp3"},
-    {"lyric" : "<div>Ngāti Toa o te whare o Waiōrangi</div><div>Ngāti Toa were descendants of the house of Waiōrangi</div>", "file":"audio/whakatauki_9.mp3"},
     {"lyric" : "<div>Ngāti Toa Tainui kōwhai rau</div><div>Ngāti Toa were descended from chiefs of the Tainui, a tribe inhabiting many different locations</div>", "file":"audio/whakatauki_10.mp3"},
     {"lyric" : "<div>Ngā uri o Toarangatira rāua ko Tūrangapeke, taonga hoatu noa atu</div><div>Those descended from Toarangatira and Tūrangapeke make presents without expecting any return</div>", "file":"audio/whakatauki_11.mp3"},
-    {"lyric" : "<div>Te inati o Ngāti Raukawa, te inati o Ngāti Toa</div><div>The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa</div>", "file":"audio/whakatauki_12.mp3"},
-    {"lyric" : "<div>Tōtara wāhi rua he aitua</div><div>A Tōtara that splits in two is a disaster</div>", "file":"audio/whakatauki_13.mp3"}
-  ] ,
+    {"lyric" : "<div>Te inati o Ngāti Raukawa, te inati o Ngāti Toa</div><div>The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa</div>", "file":"audio/whakatauki_12.mp3"}
+    ],
   "taku_toroa" : [
     {"lyric" :"Kua hinga ngā tōtara i te wao nui a Tane","file":"audio/taku_toroa_1.mp3"},
     {"lyric" :"Takiri mai ko te ata i te motu tapu o Kapiti","file":"taku_toroa_2.mp3"},
@@ -263,23 +256,24 @@
   "i_nga_ra_o_mua" : [
     {"lyric" :"I nga rā o mua noa atu","file":"audio/i_nga_ra_o_mua_1.mp3"},
     {"lyric" :"Waiatatia te waiata o mua","file":"i_nga_ra_o_mua_2.mp3"},
-    {"lyric" :"Au1e e hine ma, aue e tama ma","file":"i_nga_ra_o_mua_3.mp3"},
+    {"lyric" :"Aue e hine ma, aue e tama ma","file":"i_nga_ra_o_mua_3.mp3"},
     {"lyric" :"Kia mau ki tō reo Māori e","file":"i_nga_ra_o_mua_4.mp3"},
     {"lyric" :"Auē, auē, auē.","file":"i_nga_ra_o_mua_5.mp3"},
     {"lyric" :"I ngā rā o mua noa atu","file":"i_nga_ra_o_mua_6.mp3"},
-    {"lyric" :"I mahi I nga mahi Māori","file":"i_nga_ra_o_mua_7.mp3"},
+    {"lyric" :"I mahi i nga mahi Māori","file":"i_nga_ra_o_mua_7.mp3"},
     {"lyric" :"E te iwi e te iwi","file":"i_nga_ra_o_mua_8.mp3"},
     {"lyric" :"Hāpai ake ki runga","file":"i_nga_ra_o_mua_9.mp3"},
     {"lyric" :"Tēnei whakatipuranga e","file":"i_nga_ra_o_mua_10.mp3"},
     {"lyric" :"Auē, auē, auē.","file":"i_nga_ra_o_mua_11.mp3"},
     {"lyric" :"Akona ai te haka taparahi e","file":"i_nga_ra_o_mua_12.mp3"},
-    {"lyric" :"Akona ai te poi powhiri","file":"i_nga_ra_o_mua_13.mp3"},
-    {"lyric" :"Poi porotiti tapara patua.","file":"i_nga_ra_o_mua_14.mp3"},
+    {"lyric" :"Akona ai te poi pohiri","file":"i_nga_ra_o_mua_13.mp3"},
+    {"lyric" :"Poi porotiti tapara patua","file":"i_nga_ra_o_mua_14.mp3"},
     {"lyric" :"Kia mau ki to Māoritanga","file":"i_nga_ra_o_mua_15.mp3"},
     {"lyric" :"Ki nga taonga a ōu tupuna","file":"i_nga_ra_o_mua_16.mp3"},
     {"lyric" :"Tēnei hei kahukiwi","file":"i_nga_ra_o_mua_17.mp3"},
     {"lyric" :"Mō tōu pakihiwi","file":"i_nga_ra_o_mua_18.mp3"},
     {"lyric" :"Mō ake ake tonu atu e","file":"i_nga_ra_o_mua_19.mp3"},
-    {"lyric" :"Mo ake ake tonu atu e","file":"i_nga_ra_o_mua_20.mp3"}
+    {"lyric" :"Mo ake ake tonu atu e","file":"i_nga_ra_o_mua_20.mp3"},
+    {"lyric" :" . . . ","file":"i_nga_ra_o_mua_20.mp3"}
   ]
 }

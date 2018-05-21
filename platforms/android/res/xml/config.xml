@@ -21,12 +21,12 @@
     <allow-navigation href="data:*" />
     <allow-intent href="*" />
     <access origin="*" />
-    <icon density="ldpi" src="www/res/icon/android/toa-ldpi-icon.png" />
-    <icon density="mdpi" src="www/res/icon/android/toa-mdpi-icon.png" />
-    <icon density="hdpi" src="www/res/icon/android/toa-hdpi-icon.png" />
-    <icon density="xhdpi" src="www/res/icon/android/toa-xhdpi-icon.png" />
-    <icon density="xxhdpi" src="www/res/icon/android/toa-xxhdpi-icon.png" />
-    <icon density="xxxhdpi" src="www/res/icon/android/toa-xxxhdpi-icon.png" />
+    <icon density="ldpi" src="www/res/icon/android/toa-ldpi-icon_1.png" />
+    <icon density="mdpi" src="www/res/icon/android/toa-mdpi-icon_1.png" />
+    <icon density="hdpi" src="www/res/icon/android/toa-hdpi-icon_1.png" />
+    <icon density="xhdpi" src="www/res/icon/android/toa-xhdpi-icon_1.png" />
+    <icon density="xxhdpi" src="www/res/icon/android/toa-xxhdpi-icon_1.png" />
+    <icon density="xxxhdpi" src="www/res/icon/android/toa-xxxhdpi-icon_1.png" />
     <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
     <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
     <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />

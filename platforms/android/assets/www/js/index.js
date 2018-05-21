@@ -224,7 +224,7 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
     $scope.audio2 = $('#player2'); // the second player
     $scope.audio1.attr("src", null)[0].load();
     $scope.audio2.attr("src", null)[0].load();
-    $scope.audio = $scope.audio1; // the current player, initially set to player 1
+    $scope.audio = $scope.audio1.show(); // the current player, initially set to player 1
     $scope.footer = $("footer");
     $scope.song_title = $(".song_title");
     $window.plugins.insomnia.keepAwake();
@@ -238,7 +238,14 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
     };
     $("#header_image").css("display", "none");
     $('body').removeClass('background');
-
+    $scope.init_audio = function(first_file) {
+        console.log("First song file: " + first_file);
+        if(first_file) {
+            $scope.audio1.attr("src", first_file) ;
+            $scope.audio1[0].load() ;
+            $scope.audio1.show() ;
+        }
+    } ;
     $scope.font_larger = function() {
         console.log('Font larger') ;
         var current_font_size = parseInt($('.phrase').css('font-size')) ;
@@ -304,9 +311,10 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
         $("li[file$='tau_mai_e_kapiti_22.mp3']").addClass('last-phrase');
         $("li[file$='tau_mai_e_kapiti_15.mp3']").addClass('last-phrase');
         $("li[file$='tau_mai_e_kapiti_8.mp3']").addClass('last-phrase');
+
         $scope.viewport_size = $(window).outerHeight(true);
         console.log("Viewport size: " + $scope.viewport_size);
-        console.log("Footer height at end: " + $scope.footer.outerHeight());
+        console.log("Footer height at end: " + $scope.footer.outerHeight(true));
         // resize the lyrics_panel
         $scope.max_lyric_panel_height = $scope.viewport_size - ( $scope.footer.outerHeight(true) + $scope.song_title.outerHeight(true));
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
@@ -323,18 +331,7 @@ angApp.controller("music_player", function($scope, $http, $window, $location) {
     }, function(v) {
         console.log("error: " + v);
     }) ;
-    // init_audio is designed to be called after the
-    // song phrases have been loaded. uses an ng-init
-    // in the ul. this should be fine with dual players
-    // if it's only used after first load
-    $scope.init_audio = function(first_file) {
-        console.log("First song file: " + first_file);
-        if(first_file) {
-            $scope.audio1.attr("src", first_file) ;
-            $scope.audio1[0].load() ;
-            $scope.audio1.show() ;
-        }
-    } ;
+
 }) ;
 
 angApp.controller("whakatauki_player", function($scope, $http, $window, $location) {
