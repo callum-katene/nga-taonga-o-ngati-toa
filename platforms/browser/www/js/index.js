@@ -471,7 +471,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         // vertical centre, but give the phrases a chance to render first
         setTimeout(function() {
 
-            $(".phrase div:nth-child(2)").addClass("ingarihi").append('<hr>') ;
+            $(".phrase > div:last-child").addClass("ingarihi").append('<hr>') ;
             $scope.centre_phrases() ;
             // the lyric panel was hidden at the start of this controller. This is
             // where we show it

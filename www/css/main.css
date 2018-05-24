@@ -140,6 +140,7 @@ footer > p.listening {
 .ingarihi {
     color: darkgrey ;
     font-style: italic;
+    padding-top: 5px ;
 }
 
 .ingarihi > hr {

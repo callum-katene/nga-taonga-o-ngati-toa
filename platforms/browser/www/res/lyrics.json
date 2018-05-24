@@ -231,11 +231,11 @@
     {"lyric" :"Takapau O Toa Rangatira","file" :"iti_whetu_10.mp3"}
     ],
   "whakatauki2" : [
-    {"lyric" : "<div>Kia tūpato kei ngau te kauae runga i te kauae raro</div><div>Take care lest the upper jaw close on the lower</div>", "file":"audio/whakatauki_6.mp3"},
+    {"lyric" : "<div><div>Kia tūpato kei ngau te</div><div>kauae runga i te kauae raro</div></div><div>Take care lest the upper jaw close on the lower</div>", "file":"audio/whakatauki_6.mp3"},
     {"lyric" : "<div>Mangō taringa tahi</div><div>One-eared Mangō</div>", "file":"audio/whakatauki_8.mp3"},
     {"lyric" : "<div>Ngāti Toa Tainui kōwhai rau</div><div>Ngāti Toa were descended from chiefs of the Tainui, a tribe inhabiting many different locations</div>", "file":"audio/whakatauki_10.mp3"},
-    {"lyric" : "<div>Ngā uri o Toarangatira rāua ko Tūrangapeke, taonga hoatu noa atu</div><div>Those descended from Toarangatira and Tūrangapeke make presents without expecting any return</div>", "file":"audio/whakatauki_11.mp3"},
-    {"lyric" : "<div>Te inati o Ngāti Raukawa, te inati o Ngāti Toa</div><div>The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa</div>", "file":"audio/whakatauki_12.mp3"}
+    {"lyric" : "<div><div>Ngā uri o Toa Rangatira rāua ko</div><div>Tūrangapeke,taonga hoatu noa atu</div></div><div>Those descended from Toarangatira and Tūrangapeke make presents without expecting any return</div>", "file":"audio/whakatauki_11.mp3"},
+    {"lyric" : "<div><div>Te inati o Ngāti Raukawa,</div><div>te inati o Ngāti Toa</div></div><div>The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa</div>", "file":"audio/whakatauki_12.mp3"}
     ],
   "taku_toroa" : [
     {"lyric" :"Kua hinga ngā tōtara i te wao nui a Tane","file":"audio/taku_toroa_1.mp3"},
