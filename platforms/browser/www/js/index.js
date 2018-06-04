@@ -70,6 +70,61 @@ angApp.controller("player_help", function($scope, $window) {
     }
     console.log('Setting font size to ' + font_size) ;
     $('p,li').css('font-size', font_size) ;
+    // $('.help').css('padding-top', title_height) ;
+
+
+    $scope.font_larger = function() {
+        console.log('Font larger') ;
+        var current_font_size = parseInt($('.help > p').css('font-size')) ;
+        $('.help > p').css('font-size',current_font_size + 1) ;
+    } ;
+    $scope.font_smaller = function() {
+        console.log('Font smaller') ;
+        var current_font_size = parseInt($('.help > p').css('font-size')) ;
+        $('.help > p').css('font-size',current_font_size - 1) ;
+    } ;
+    $scope.$on('$destroy', function() {
+        console.log("$destroy event received") ;
+        $('footer .navigation_bar').hide() ;
+        $("#player_all").off('click', $scope.player_all) ;
+        $("#player_none").off('click', $scope.player_none) ;
+        $('#font_larger').off('click', $scope.font_larger) ;
+        $('#font_smaller').off('click', $scope.font_smaller) ;
+        // $('#player_help').click(null) ;
+    }) ;
+    $('footer').show() ;
+    $('audio').hide() ;
+    console.log('Hiding stuff') ;
+    $('#player_help').hide() ;
+    $("#player_all").hide() ;
+    $("#player_none").hide() ;
+    console.log('showing stuff') ;
+    $('#font_larger').show().click($scope.font_larger) ;
+    $('#font_smaller').show().click($scope.font_smaller) ;
+    $('#navigate_back').show() ;
+
+    $('footer .navigation_bar').show() ;
+
+    setTimeout(function() {
+
+        var title_height = $('div > h1.title').outerHeight(true) ;
+        var title_offset = $('div.title').position().top ;
+        console.log('Title height: ' + title_height) ;
+        console.log('Title offset.top: ' + title_offset) ;
+        var nav_bar_height = $('div.navigation_bar.background').outerHeight(true) ;
+        // now set the content pane
+        console.log('Nav bar height: ' + nav_bar_height) ;
+        var viewport_size = $(window).outerHeight(true);
+        console.log("Viewport size: " + viewport_size);
+        // resize the lyrics_panel
+        var max_panel_height = viewport_size - ( nav_bar_height + title_height);
+        // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
+        // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
+        console.log('max_panel_height: ' + max_panel_height) ;
+        $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
+    }, 100) ;
+
+
 }) ;
 //
 // controller is the menu controller for all the menu pages. All menu items are
@@ -165,12 +220,12 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         $location.path(url) ;
         return null ;
     } ;
-    $scope.help_click_handler = function() {
-        setTimeout(function() {
-            $location.path = 'p_help.html' ;
-        }, 100) ;
-    } ;
-    $('#player_help').off().on('click', $scope.help_click_handler) ;
+    // $('#player_help').off().on('click', function() {
+    //     setTimeout(function() {
+    //         console.log("Trying to go to help") ;
+    //         $location.path('p_help.html') ;
+    //     }, 300) ;
+    // }) ;
     //
 
     // if this controller loads it is because we're on a menu page, so
@@ -480,7 +535,6 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
     }, function(v) {
         console.log("error: " + v);
     }) ;
-
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
@@ -528,13 +582,12 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $('.phrase').css('font-size',current_font_size - 1) ;
         $scope.centre_phrases() ;
     } ;
-    $('#player_help').show() ;
 
     $("#player_all").show().click($scope.player_all) ;
     $("#player_none").show().click($scope.player_none) ;
     $('#font_larger').show().click($scope.font_larger) ;
     $('#font_smaller').show().click($scope.font_smaller) ;
-
+    $('#player_help').show() ;
     $scope.$on('$destroy', function() {
         console.log("$destroy event received") ;
         $scope.navigation_bar.hide() ;
@@ -565,9 +618,14 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
 
     // centre phrases vertically
     $scope.centre_phrases = function() {
+
+        // console.trace();
         var lyric_panel_height = $scope.lyric_panel.height() ;
+        console.log("lyric_panel_height: " + lyric_panel_height) ;
         var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
+        console.log("content_panel_height: " + content_panel_height) ;
         var diff = content_panel_height - ( $scope.song_title.outerHeight(true) + lyric_panel_height) ;
+        console.log("diff: " + diff) ;
         if(diff > 0) {
             console.log('Setting lyric panel margin to ' + diff / 2) ;
             $scope.lyric_panel.animate({marginTop:diff / 2}, "normal") ;

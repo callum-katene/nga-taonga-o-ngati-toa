@@ -115,10 +115,9 @@
     { "lyric" : "I kapakapa atu ai te tau o taku ate", "file" : "audio/toea_mai_ra_3.mp3" } ,
     { "lyric" : "Nā Tūmatapōngia, nā Tumatawarea", "file" : "audio/toea_mai_ra_4.mp3" } ,
     { "lyric" : "Warea te ngākau i haere ai koe nā", "file" : "audio/toea_mai_ra_5.mp3" } ,
-    { "lyric" : "Moe ana te huia", "file" : "audio/toea_mai_ra_6.mp3" } ,
-    { "lyric" : "Tangi ana te kōtuku", "file" : "audio/toea_mai_ra_7.mp3" } ,
-    { "lyric" : "I runga o Tītere", "file" : "audio/toea_mai_ra_8.mp3" } ,
-    { "lyric" : "He au here toroa nā", "file" : "audio/toea_mai_ra_9.mp3" }
+    { "lyric" : "Moe ana te huia, tangi ana te kōtuku", "file" : "audio/toea_mai_ra_6.mp3" } ,
+    { "lyric" : "I runga o Tītere", "file" : "audio/toea_mai_ra_7.mp3" } ,
+    { "lyric" : "He au here toroa nā", "file" : "audio/toea_mai_ra_8.mp3" }
   ] ,
   "moe_hurihuri" : [
     { "lyric" : "Moe hurihuri ai taku moe ki te whare", "file" : "audio/moe_hurihuri_1.mp3" } ,
@@ -273,7 +272,14 @@
     {"lyric" :"Tēnei hei kahukiwi","file":"i_nga_ra_o_mua_17.mp3"},
     {"lyric" :"Mō tōu pakihiwi","file":"i_nga_ra_o_mua_18.mp3"},
     {"lyric" :"Mō ake ake tonu atu e","file":"i_nga_ra_o_mua_19.mp3"},
-    {"lyric" :"Mo ake ake tonu atu e","file":"i_nga_ra_o_mua_20.mp3"},
-    {"lyric" :" . . . ","file":"i_nga_ra_o_mua_20.mp3"}
-  ]
+    {"lyric" :"Akona ai te haka taparahi e","file":"i_nga_ra_o_mua_12.mp3"},
+    {"lyric" :"Akona ai te poi pohiri","file":"i_nga_ra_o_mua_13.mp3"},
+    {"lyric" :"Poi porotiti tapara patua","file":"i_nga_ra_o_mua_14.mp3"},
+    {"lyric" :"Kia mau ki to Māoritanga","file":"i_nga_ra_o_mua_15.mp3"},
+    {"lyric" :"Ki nga taonga a ōu tupuna","file":"i_nga_ra_o_mua_16.mp3"},
+    {"lyric" :"Tēnei hei kahukiwi","file":"i_nga_ra_o_mua_17.mp3"},
+    {"lyric" :"Mō tōu pakihiwi","file":"i_nga_ra_o_mua_18.mp3"},
+    {"lyric" :"Mō ake ake tonu atu e","file":"i_nga_ra_o_mua_19.mp3"},
+    {"lyric" :"Mō ake ake tonu atu e","file":"i_nga_ra_o_mua_20.mp3"}
+    ]
 }

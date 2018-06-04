@@ -165,12 +165,12 @@ angApp.controller("home_controller", function($scope, $http, $window, $location)
         $location.path(url) ;
         return null ;
     } ;
-    $scope.help_click_handler = function() {
-        setTimeout(function() {
-            $location.path = 'p_help.html' ;
-        }, 100) ;
-    } ;
-    $('#player_help').off().on('click', $scope.help_click_handler) ;
+    // $('#player_help').off().on('click', function() {
+    //     setTimeout(function() {
+    //         console.log("Trying to go to help") ;
+    //         $location.path('p_help.html') ;
+    //     }, 300) ;
+    // }) ;
     //
 
     // if this controller loads it is because we're on a menu page, so
@@ -480,7 +480,6 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
     }, function(v) {
         console.log("error: " + v);
     }) ;
-
 }) ;
 
 angApp.controller("player2", function($scope, $http, $window, $location) {
@@ -528,13 +527,12 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $('.phrase').css('font-size',current_font_size - 1) ;
         $scope.centre_phrases() ;
     } ;
-    $('#player_help').show() ;
 
     $("#player_all").show().click($scope.player_all) ;
     $("#player_none").show().click($scope.player_none) ;
     $('#font_larger').show().click($scope.font_larger) ;
     $('#font_smaller').show().click($scope.font_smaller) ;
-
+    $('#player_help').show() ;
     $scope.$on('$destroy', function() {
         console.log("$destroy event received") ;
         $scope.navigation_bar.hide() ;
