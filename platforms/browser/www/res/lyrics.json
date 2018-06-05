@@ -76,15 +76,11 @@
   "unuhia" : [
     { "lyric" : "Unuhia, Unuhia","file":"audio/unuhia_1.mp3"},
     { "lyric" : "I te uru tapu nui a Tane","file":"audio/unuhia_2.mp3"},
-    { "lyric" : "Kia watea","file":"audio/unuhia_3.mp3"},
-    { "lyric" : "Kia māmā","file":"audio/unuhia_4.mp3"},
-    { "lyric" : "Te ngakau","file":"audio/unuhia_5.mp3"},
-    { "lyric" : "Te hinengaro","file":"audio/unuhia_6.mp3"},
-    { "lyric" : "Te wairua","file":"audio/unuhia_7.mp3"},
-    { "lyric" : "Te tinana","file":"audio/unuhia_8.mp3"},
+    { "lyric" : "Kia watea, kia māmā","file":"audio/unuhia_4.mp3"},
+    { "lyric" : "Te ngakau, te hinengaro","file":"audio/unuhia_6.mp3"},
+    { "lyric" : "Te wairua, te tinana","file":"audio/unuhia_8.mp3"},
     { "lyric" : "I te ara takatū","file":"audio/unuhia_9.mp3"},
-    { "lyric" : "E Rongo whakairia","file":"audio/unuhia_10.mp3"},
-    { "lyric" : "Ki runga kia watea","file":"audio/unuhia_11.mp3"},
+    { "lyric" : "E Rongo whakairia ki runga kia watea","file":"audio/unuhia_11.mp3"},
     { "lyric" : "Ae ra kua wātea, hou!","file":"audio/unuhia_12.mp3"}
   ],
   "te_roa_o_te_po" : [
@@ -161,6 +157,13 @@
   { "lyric" : "Ko Whakatu te marae", "file" : "audio/koata_6.mp3"},
   { "lyric" : "Ko Kakati te whare tupuna", "file" : "audio/koata_7.mp3"}
 ],
+  "wairau" : [
+    { "lyric" : "Ko Tainui te waka", "file" : "audio/wairau_1.mp3"},
+    { "lyric" : "Ko Tokomaru te maunga", "file" : "audio/wairau_2.mp3"},
+    { "lyric" : "Ko Wairau te awa", "file" : "audio/wairau_3.mp3"},
+    { "lyric" : "Ko Ngāti Toa te iwi", "file" : "audio/wairau_4.mp3"},
+    { "lyric" : "Ko Wairau te pā marae", "file" : "audio/wairau_5.mp3"}
+    ],
   "he_hokioi" : [
     { "lyric" : "Kaea: He hokioi i runga, he hokioi i runga, hu!", "file" : "audio/he_hokioi_1.mp3"},
     { "lyric" : "Katoa: E kei te āputa nā o te rangi e noho ana te hoa moenga nō Whaititiri-mā-takataka", "file" : "audio/he_hokioi_2.mp3"},

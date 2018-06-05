@@ -36,6 +36,7 @@ angApp.config(function($routeProvider) {
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player2" })
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player2" })
+        .when("/wairau.html", { templateUrl: "wairau.html", controller: "player2" })
         .otherwise({  redirectTo: '/' }) ;
 }) ;
 
@@ -107,22 +108,26 @@ angApp.controller("player_help", function($scope, $window) {
 
     setTimeout(function() {
 
-        var title_height = $('div > h1.title').outerHeight(true) ;
-        var title_offset = $('div.title').position().top ;
+        var title_height = $('h1.title').outerHeight(true) ;
+        var title_offset = $('h1.title').position().top ;
         console.log('Title height: ' + title_height) ;
         console.log('Title offset.top: ' + title_offset) ;
+        console.log('Title offset: ' +  JSON.stringify($('div#help.help').offset())) ;
+        console.log('Title position: ' +  JSON.stringify($('div#help.help').position())) ;
         var nav_bar_height = $('div.navigation_bar.background').outerHeight(true) ;
         // now set the content pane
         console.log('Nav bar height: ' + nav_bar_height) ;
         var viewport_size = $(window).outerHeight(true);
         console.log("Viewport size: " + viewport_size);
+        var nav_bar_position = $('div.navigation_bar.background').position() ;
+        console.log('NavBar is at: ' + nav_bar_position.top + ':' + nav_bar_position.left) ;
         // resize the lyrics_panel
         var max_panel_height = viewport_size - ( nav_bar_height + title_height);
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
         // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
         console.log('max_panel_height: ' + max_panel_height) ;
         $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
-    }, 100) ;
+    }, 5000) ;
 
 
 }) ;
@@ -418,7 +423,7 @@ angApp.controller("whakatauki_player", function($scope, $http, $window, $locatio
         $('.phrase').css('font-size',current_font_size - 1) ;
         $scope.centre_phrases() ;
     } ;
-    $('#player_help').show() ;
+    $('#player_help').hide() ;
 
     $("#player_all").hide() ;
     $("#player_none").hide() ;
