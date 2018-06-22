@@ -73,16 +73,34 @@ angApp.controller("player_help", function($scope, $window) {
     $('p,li').css('font-size', font_size) ;
     // $('.help').css('padding-top', title_height) ;
 
-
+    $scope.font_size_change = function(delta) {
+        console.log('font_size_change: ' + delta) ;
+        var current_font_size = parseInt($('.help p').css('font-size')) ;
+        console.log('current_font_size: ' + current_font_size) ;
+        var new_font_size = current_font_size + delta ;
+        $('.help p').css('font-size', new_font_size) ;
+        console.log('Font size is now: ' + $('.help p').css('font-size')) ;
+    }
     $scope.font_larger = function() {
         console.log('Font larger') ;
-        var current_font_size = parseInt($('.help > p').css('font-size')) ;
-        $('.help > p').css('font-size',current_font_size + 1) ;
+        $scope.font_size_change(1) ;
+        // $('.help p').css('font-size', '120%') ;
+        // var current_font_size = parseInt($('.help > p').css('font-size')) ;
+        // $('.help > p').css('font-size',current_font_size + 1) ;
     } ;
     $scope.font_smaller = function() {
         console.log('Font smaller') ;
-        var current_font_size = parseInt($('.help > p').css('font-size')) ;
-        $('.help > p').css('font-size',current_font_size - 1) ;
+        $scope.font_size_change(-1) ;
+        // $('.help p').css('font-size', '80%') ;
+        // var current_font_size = parseInt($('.help  p').css('font-size')) ;
+        // console.log('Current font size: ' + current_font_size) ;
+        // var new_font_size = current_font_size - 1 ;
+        // console.log('Setting font size to ' + new_font_size) ;
+        // $('.help p').each(function(index, value) {
+        //     $(this).css('font-size', new_font_size) ;
+        // } ) ;
+        // // $('.help > p').css('font-size',new_font_size) ;
+        // console.log('New font size: ' + parseInt($('.help  p').css('font-size') ) ) ;
     } ;
     $scope.$on('$destroy', function() {
         console.log("$destroy event received") ;
