@@ -1,6 +1,6 @@
-Node version: v6.11.1
+Node version: v8.11.2
 
-Cordova version: 7.1.0
+Cordova version: 8.0.0
 
 Config.xml file: 
 
@@ -13,17 +13,18 @@ Config.xml file:
     <author email="admin@katene.nz" href="http://katene.nz">
         KateneDev
     </author>
-    <content src="index.html" />
+    <content src="index_new.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="orientation" value="portrait" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <platform name="android">
-        <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
-        <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
-        <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
-        <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
-        <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
-        <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
+        <icon density="ldpi" src="www/res/icon/android/toa-ldpi-icon_1.png" />
+        <icon density="mdpi" src="www/res/icon/android/toa-mdpi-icon_1.png" />
+        <icon density="hdpi" src="www/res/icon/android/toa-hdpi-icon_1.png" />
+        <icon density="xhdpi" src="www/res/icon/android/toa-xhdpi-icon_1.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/toa-xxhdpi-icon_1.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/toa-xxxhdpi-icon_1.png" />
         <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
         <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
         <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
@@ -87,13 +88,14 @@ Config.xml file:
         <icon height="360" platform="windows" src="www/res/icon/windows/Wide310x150Logo.scale-240.png" width="744" />
         <splash height="1920" platform="windows" src="www/res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
-    <access origin="" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+    <access origin="*" />
+    <access launch-external="yes" origin="tel:*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <allow-intent href="*" />
+    <access origin="*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -101,16 +103,16 @@ Config.xml file:
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="^6.3.0" />
-    <engine name="browser" spec="^5.0.1" />
     <plugin name="cordova-plugin-insomnia" spec="^4.3.0" />
-    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
+    <plugin name="cordova-plugin-dialogs" spec="^1.3.4" />
+    <engine name="browser" spec="^5.0.3" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
 
 
 Plugins: 
 
-cordova-plugin-insomnia,cordova-plugin-nativeaudio
+cordova-plugin-dialogs,cordova-plugin-insomnia
 
 Android platform:
 
@@ -123,52 +125,35 @@ Running /Users/callum/Library/Android/sdk/tools/bin/avdmanager list target
 
 Loading local repository...                                                     [=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       Available Android targets:
 ----------
-id: 1 or "android-19"
-     Name: Android API 19
-     Type: Platform
-     API level: 19
-     Revision: 4
-----------
-id: 2 or "android-21"
-     Name: Android API 21
-     Type: Platform
-     API level: 21
-     Revision: 2
-----------
-id: 3 or "android-22"
-     Name: Android API 22
-     Type: Platform
-     API level: 22
-     Revision: 2
-----------
-id: 4 or "android-23"
+id: 1 or "android-23"
      Name: Android API 23
      Type: Platform
      API level: 23
      Revision: 3
 ----------
-id: 5 or "android-24"
+id: 2 or "android-24"
      Name: Android API 24
      Type: Platform
      API level: 24
      Revision: 2
 ----------
-id: 6 or "android-25"
+id: 3 or "android-25"
      Name: Android API 25
      Type: Platform
      API level: 25
      Revision: 3
 ----------
-id: 7 or "android-26"
+id: 4 or "android-26"
      Name: Android API 26
      Type: Platform
      API level: 26
      Revision: 2
+----------
+id: 5 or "android-27"
+     Name: Android API 27
+     Type: Platform
+     API level: 27
+     Revision: 3
 
 
-
-iOS platform:
-
-Xcode 8.2.1
-Build version 8C1002
 

@@ -19,11 +19,11 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Insomnia">
-        <param name="ios-package" value="Insomnia" />
-    </feature>
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
+    </feature>
+    <feature name="Insomnia">
+        <param name="ios-package" value="Insomnia" />
     </feature>
     <name>Ngā Taonga O Ngāti Toa</name>
     <description>

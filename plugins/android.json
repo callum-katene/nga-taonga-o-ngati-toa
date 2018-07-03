@@ -7,10 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-insomnia": {
+    "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
     },
-    "cordova-plugin-dialogs": {
+    "cordova-plugin-insomnia": {
       "PACKAGE_NAME": "nz.katene.ngataongaongatitoa"
     }
   },
