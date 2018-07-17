@@ -15,13 +15,22 @@ module.exports = [
     "clobbers": [
       "window.plugins.insomnia"
     ]
+  },
+  {
+    "id": "cordova-plugin-splashscreen.SplashScreen",
+    "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+    "pluginId": "cordova-plugin-splashscreen",
+    "clobbers": [
+      "navigator.splashscreen"
+    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
   "cordova-plugin-dialogs": "1.3.4",
-  "cordova-plugin-insomnia": "4.3.0"
+  "cordova-plugin-insomnia": "4.3.0",
+  "cordova-plugin-splashscreen": "5.0.2"
 };
 // BOTTOM OF METADATA
 });
