@@ -1,10 +1,10 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "Ngā Taonga O Ngāti Toa",
-  "short_name": "Ngā Taonga O Ngāti Toa",
+  "name": "Ngāti Toa",
+  "short_name": "Ngāti Toa",
   "version": "nz.katene.ngataongaongatitoa",
-  "description": "He kete rauemi no ngā taonga o ngā mātua tūpuna o mua.",
+  "description": "He kete rauemi mō ngā taonga o ngā mātua tūpuna o mua.",
   "author": "KateneDev",
   "icons": [],
   "orientation": "portrait",
