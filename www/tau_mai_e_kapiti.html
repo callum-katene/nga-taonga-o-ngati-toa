@@ -1,2 +1,3 @@
-<div class="song_title"><h1>Tau Mai E Kāpiti</h1></div>
-<ul class="lyric_panel"><li ng-init="$first && init_audio(x.file)" ng-repeat="x in ::menuitems.tau_mai_e_kapiti" file="{{x.file}}" ng-click = "doToggle($index)" class="phrase">{{ x.lyric }}</li></ul>
+<!--<div class="song_title song_title_table" ng-click="quickGoTo('tau_mai_e_kapiti_2.html')"><div class="song_title_table_row"><h1 class="song_title_table_cell">Tau Mai E Kāpiti</h1><img class="song_title_table_cell" id='title_icon' src='img/icon/list.png' ></div></div>-->
+<div class="song_title" ng-click="quickGoTo('tau_mai_e_kapiti_2.html')"><h1>Tau Mai E Kāpiti<img id='title_icon' src='img/icon/list.png' style="display:none;"></h1></div>
+<ul class="lyric_panel"><li ng-init="$first && init_audio(x.file)" ng-repeat="x in ::menuitems.tau_mai_e_kapiti" ng-bind-html="x.lyric" file="{{x.file}}" ng-click = "doToggle($index)" class="phrase">{{ x.lyric }}</li></ul>

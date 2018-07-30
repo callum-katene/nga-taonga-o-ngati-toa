@@ -239,6 +239,12 @@
     {"lyric" : "<div><div>Ngā uri o Toa Rangatira rāua ko</div><div>Tūrangapeke,taonga hoatu noa atu</div></div><div>Those descended from Toarangatira and Tūrangapeke make presents without expecting any return</div>", "file":"audio/whakatauki_11.mp3"},
     {"lyric" : "<div><div>Te inati o Ngāti Raukawa,</div><div>te inati o Ngāti Toa</div></div><div>The extraordinary of Ngāti Raukawa, the extraordinary of Ngāti Toa</div>", "file":"audio/whakatauki_12.mp3"}
     ],
+  "tau_mai_e_kapiti_2" : [
+    { "lyric" : "<ul class='lyric_panel'><li>Tau mai e Kāpiti te kāinga o te hunga kua wehe ki te iwi nui i te pō</li><li>te marae i Wai-ō-rua tēnei te mihia</li><li>te wāhi i tanuku ai te whakaaro o te motu</li><li>Kia patua ō tamariki i kopaina e koe</li><li>hei tohu ki ngā uri whakaheke mai</li><li>i te mana o tuawhakarere iho</li><li>i te mana i te wehi o Io nui...i</li></ul><hr class='separator'>", "file" : "audio/tmek/tau_mai_e_kapiti_1.mp3"},
+    { "lyric" : "<ul class='lyric_panel'><li>Tau mai e Kāpiti, Te Whare Wānanga o ia, o te nui, o te wehi o te Toa</li><li>whakakaupapa i te nohotahi, a Awa, a Toa, a Raukawa</li><li>i heke mai i Kāwhia ki te kawe tikanga</li><li>hei ora mō ngā uri o muri nei</li><li>Tau mai e Kāpiti te kāinga tupu</li><li>o te wehi, o te toa, o te whakamanawanui...i</li></ul><hr class='separator'>", "file" : "audio/tmek/tau_mai_e_kapiti_2.mp3"},
+    { "lyric" : "<ul class='lyric_panel'><li>Tau mai e Kāpiti, te kāinga o te kino, o te mau-ā-hara, o te kaitangata</li><li>e ai rā hoki ki ngā kupu whakapae o ngā iwi maha o te motu nei</li><li>ko Rangatira te marae tēnei te mihia, tōna rite he marae paenga whakairo</li><li>ki roto Kaiweka, he marae rongonui, ki runga ki raro tāwhio noa...a</li></ul><hr class='separator'>", "file" : "audio/tmek/tau_mai_e_kapiti_3.mp3"},
+    { "lyric" : "<ul class='lyric_panel'><li>Tau mai e Kāpiti, whakataretare mai ki te rangatahi e hao ne</li><li>ko Waikāhua, ko Waikātohu, e mau ki ngā mana i ngakia e koe<</li><li>ū̄hia mai rā te manaakitanga a ngā tūpuna kua wehe ki te pō</li><li>hei mauri whakakaha i te hinengaro, ā Tama, ā Hine e pae nei</li></ul><hr class='separator'>", "file" : "audio/tmek/tau_mai_e_kapiti_4.mp3"}
+  ] ,
   "taku_toroa" : [
     {"lyric" :"Kua hinga ngā tōtara i te wao nui a Tane","file":"audio/taku_toroa_1.mp3"},
     {"lyric" :"Takiri mai ko te ata i te motu tapu o Kapiti","file":"taku_toroa_2.mp3"},
