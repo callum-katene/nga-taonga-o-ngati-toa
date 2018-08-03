@@ -38,10 +38,20 @@ angApp.config(function($routeProvider) {
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player2" })
         .when("/wairau.html", { templateUrl: "wairau.html", controller: "player2" })
+        .when("/pukana.html", { templateUrl: "pukana.html", controller: "pukana"})
         .otherwise({  redirectTo: '/' }) ;
 }) ;
 
-angApp.controller("player_help", function($scope, $window) {
+angApp.controller("pukana", function($scope, $window) {
+    console.log("Pūkana!!") ;
+
+    $("video.easter_egg").on("ended", function() {
+        console.log("Easter egg ended") ;
+        $window.history.back(1) ;
+    }) ;
+}) ;
+
+angApp.controller("player_help", function($scope, $window, $location) {
     $('footer').hide() ;
     console.log('Player help controller') ;
 
@@ -54,6 +64,24 @@ angApp.controller("player_help", function($scope, $window) {
     $scope.$on('$destroy', function() {
         $('footer').show() ;
     }) ;
+    $scope.goTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+        // $scope.$apply() ;
+    } ;
+    var last_click = 0;
+    $scope.goToPukana = function(url) {
+
+        var this_click = new Date().getTime() ;
+        if(this_click - last_click < 400) {
+            console.log('Double click detected');
+            console.log("Going to: " + url);
+            $location.path(url);
+        }
+        else {
+            last_click = this_click ;
+        }
+    } ;
     console.log("outer_height: " + outer_height) ;
     $('li > img').height(outer_height * .05) ;
     $('div.title > img').height(outer_height * .05) ;
@@ -125,6 +153,37 @@ angApp.controller("player_help", function($scope, $window) {
 
     $('footer .navigation_bar').show() ;
 
+    // var last_header_click = 0;
+    // $('#easter_egg').click(function() {
+    //     var this_click = new Date().getTime() ;
+    //     if(this_click - last_header_click < 400) {
+    //         console.log('Double click detected') ;
+    //         $scope.goTo("pukana.html") ;
+    //         // navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
+    //         //     function(buttonIndex) {
+    //         //         console.log('Index of pressed button: ' + buttonIndex) ;
+    //         //         if(buttonIndex = 1) {
+    //         //             console.log("Warnings and help reset confirmed") ;
+    //         //             console.log('Home double clicked. Prompting to remove flags from local storage') ;
+    //         //             var app_flags = [ "player_help", "home_help", "other_help" ] ;
+    //         //             $.each(app_flags, function(index, value) {
+    //         //                 console.log('Flag ' + index + ", value " + value) ;
+    //         //                 if(window.localStorage.getItem(value)) {
+    //         //                     window.localStorage.removeItem(value) ;
+    //         //                 }
+    //         //             }) ;
+    //         //         }
+    //         //         else {
+    //         //             console.log("Reset warnings and help cancelled") ;
+    //         //         }
+    //         //     }, 'Reset Warnings?',
+    //         //     ['OK','Cancel']
+    //         // ) ;
+    //     }
+    //     else {
+    //         last_header_click = this_click ;
+    //     }
+    // });
     setTimeout(function() {
 
         var title_height = $('h1.title').outerHeight(true) ;

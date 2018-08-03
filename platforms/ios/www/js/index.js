@@ -31,6 +31,7 @@ angApp.config(function($routeProvider) {
         .when("/ka_tukituki.html", { templateUrl: "ka_tukituki.html", controller: "player2" })
         .when("/kikiki_kakaka.html", { templateUrl: "kikiki_kakaka.html", controller: "player2" })
         .when("/tau_mai_e_kapiti.html", { templateUrl: "tau_mai_e_kapiti.html", controller: "player2" })
+        .when("/tau_mai_e_kapiti_2.html", { templateUrl: "tau_mai_e_kapiti_2.html", controller: "player2" })
         .when("/whakatauki.html", { templateUrl: "whakatauki2.html", controller: "whakatauki_player" })
         .when("/takapuwahia.html", { templateUrl: "takapuwahia.html", controller: "player2" })
         .when("/hongoeka.html", { templateUrl: "hongoeka.html", controller: "player2" })
@@ -577,6 +578,7 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
     $scope.song_title = $(".song_title") ;
     $window.plugins.insomnia.keepAwake() ;
     $scope.lyric_panel = $(".lyric_panel") ;
+    console.log('Start of player2 controller. lyric_panel_height: ' + $scope.lyric_panel.height()) ;
     $scope.navigation_bar = $('.navigation_bar') ;
     $scope.goTo = function(url) {
         console.log("Going to: " + url) ;
@@ -584,6 +586,12 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         $scope.$apply() ;
         return null ;
     } ;
+    $scope.quickGoTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+        return null ;
+    } ;
+
     $("#header_image").css("display","none") ;
     $('body').removeClass('background') ;
     $scope.player_all = function() {
@@ -888,6 +896,34 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         }
     } ;
 
+
+    //
+    // doToggle for Tau Mai E Kapiti function adds or removes the unselected_phrase class
+    // from a phrase.
+    $scope.doTmekToggle = function(val) {
+        var myEl = $("ul.ng-scope > li").eq(val) ;
+        if(myEl.text() === '-----') {
+            console.log('Spacer') ;
+        }
+        else {
+            if(myEl.hasClass("unselected_phrase")) {
+                console.log("Selected element has unselected class so removing ...") ;
+                myEl.removeClass("unselected_phrase") ;
+            }
+            else {
+                myEl.addClass("unselected_phrase") ;
+                console.log("Selected element does not have unselected class so adding ...") ;
+            }
+            if(!$scope.nowPlaying) {
+                $scope.setSourceToFirst() ;
+            }
+            else {
+                console.log("currently playing so need to set OTHER audio src") ;
+                $scope.setSourceToNext($scope.nowPlaying.attr('src')) ;
+            }
+        }
+    } ;
+
     //
     // doToggle function adds or removes the unselected_phrase class
     // from a phrase.
@@ -1044,10 +1080,15 @@ angApp.controller("player2", function($scope, $http, $window, $location) {
         // var content_panel_height = $scope.viewport_size - $scope.footer.outerHeight(true) ;
         // $('#content_panel').css('min-height', content_panel_height).css('max-height', content_panel_height) ;
 
+        // now resize the icon in the title
+        var i_height = $('#navigate_home').height() ;
+        console.log('Setting title icon height to ' + i_height) ;
+        $('#title_icon').height(i_height).show() ;
         //
         // vertical centre, but give the phrases a chance to render first
         setTimeout(function() {
             $scope.centre_phrases() ;
+
         }, 300) ;
     }, function(v) {
         console.log("error: " + v);
