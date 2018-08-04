@@ -12,9 +12,10 @@
     <preference name="android-minSdkVersion" value="23" />
     <preference name="orientation" value="portrait" />
     <preference name="AllowInlineMediaPlayback" value="true" />
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="FadeSplashScreenDuration" value="0" />
+    <preference name="SplashScreenDelay" value="5" />
+    <preference name="FadeSplashScreenDuration" value="3" />
     <preference name="BackupWebStorage" value="local" />
+    <preference name="SplashScreen" value="res/screen/master/ngatitoa.png" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/toa-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/toa-mdpi-icon.png" />
@@ -98,5 +99,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="android" spec="^7.1.0" />
-    <engine name="ios" spec="^4.5.4" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>

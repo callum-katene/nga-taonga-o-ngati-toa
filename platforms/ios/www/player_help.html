@@ -7,19 +7,30 @@
     p, li, h1, h2, hr {
         color: white ;
     }
-    .title {
-        display: inline ;
-    }
+    /*.title {*/
+        /*display: inline ;*/
+    /*}*/
     img, h1 {
         vertical-align: middle ;
+    }
+    h1 {
+        position: absolute;
+        top: 0 ;
     }
     .navigation_bar {
         background-size: cover;
         background: rgba(32,32,32, 0.8) url("img/header-background.png") no-repeat;
     }
+    #resetWarnings {
+        font-size: small ;
+        font-style: italic ;
+        text-decoration: underline ;
+        text-align: center ;
+    }
 </style>
 <div id="main">
-    <div class="title"><H1 class="title" >Help</H1></div>
+    <!--<div class="title"><H1 class="title" >Help</H1></div>-->
+    <H1 class="title" >Help</H1>
     <div id="help" class="help" >
         <p>The player shows a list of all the phrases that make up the item you have selected. The
             player page has the name of the selected item at the top, with the phrases ordered in
@@ -40,7 +51,8 @@
 
         <p>The control panel / tool bar at the bottom of the page provides the following functions:
         <ul>
-            <li><img src="img/icon/home.png" alt="HOME"> takes you to the main page</li>
+        <!--<li><img id="easter_egg" src="img/icon/home.png" alt="HOME" ng-click="goTo('pukana.html')"> takes you to the main page</li>-->
+        <li><img id="easter_egg" src="img/icon/home.png" alt="HOME"> takes you to the main page</li>
             <li><img src="img/icon/back.png" alt="HOME"> takes you back one page</li>
             <li><img src="img/icon/all.png" alt="HOME"> selects all phrases</li>
             <li><img src="img/icon/none.png" alt="HOME"> de-selects all phrases</li>
@@ -49,6 +61,8 @@
             <li><img src="img/icon/help.png" alt="HOME"> View the help pages</li>
         </ul>
         </p>
+        <hr width="70%" >
+        <p id="resetWarnings">To reset all warnings, touch here</p>
     </div>
     <hr>
 </div>

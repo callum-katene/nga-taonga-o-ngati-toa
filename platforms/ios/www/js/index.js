@@ -38,10 +38,22 @@ angApp.config(function($routeProvider) {
         .when("/p_help.html", { templateUrl: "player_help.html", controller: "player_help" })
         .when("/koata.html", { templateUrl: "koata.html", controller: "player2" })
         .when("/wairau.html", { templateUrl: "wairau.html", controller: "player2" })
+        .when("/pukana.html", { templateUrl: "pukana.html", controller: "pukana"})
         .otherwise({  redirectTo: '/' }) ;
 }) ;
 
-angApp.controller("player_help", function($scope, $window) {
+angApp.controller("pukana", function($scope, $window, $location) {
+    console.log("Pūkana!!") ;
+
+    $("video.easter_egg").on("ended", function() {
+        console.log("Easter egg ended") ;
+        $location.path("/") ;
+        $scope.$apply() ;
+        // $window.history.back(1) ;
+    }) ;
+}) ;
+
+angApp.controller("player_help", function($scope, $window, $location) {
     $('footer').hide() ;
     console.log('Player help controller') ;
 
@@ -54,6 +66,79 @@ angApp.controller("player_help", function($scope, $window) {
     $scope.$on('$destroy', function() {
         $('footer').show() ;
     }) ;
+    $scope.goTo = function(url) {
+        console.log("Going to: " + url) ;
+        $location.path(url) ;
+        // $scope.$apply() ;
+    } ;
+    var last_click = 0;
+    $scope.goToPukana = function(url) {
+        console.log("at goToPukana()") ;
+        var this_click = new Date().getTime() ;
+        if(this_click - last_click > 1000 && this_click - last_click < 2000) {
+            console.log('Double click detected');
+            console.log("Going to: " + url);
+            $location.path(url);
+            $scope.$apply() ;
+        }
+        else {
+            console.log('Pūkana! Single click') ;
+            last_click = this_click ;
+        }
+    } ;
+    // $scope.resetWarnings = function() {
+    //     console.log("Reset warnings") ;
+    //     navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
+    //         function(buttonIndex) {
+    //             console.log('Index of pressed button: ' + buttonIndex) ;
+    //             if(buttonIndex = 1) {
+    //                 console.log("Warnings and help reset confirmed") ;
+    //                 var app_flags = [ "player_help", "home_help", "other_help" ] ;
+    //                 $.each(app_flags, function(index, value) {
+    //                     console.log('Flag ' + index + ", value " + value) ;
+    //                     if(window.localStorage.getItem(value)) {
+    //                         window.localStorage.removeItem(value) ;
+    //                     }
+    //                 }) ;
+    //                 $scope.goTo('/') ;
+    //                 $scope.$apply() ;
+    //             }
+    //             else {
+    //                 console.log("Reset warnings and help cancelled") ;
+    //             }
+    //         }, 'Reset Warnings?',
+    //         ['OK','Cancel']
+    //     ) ;
+    // } ;
+    $('#resetWarnings').click(function() {
+        console.log("Reset warnings") ;
+        navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
+            function(buttonIndex) {
+                console.log('Index of pressed button: ' + buttonIndex) ;
+                if(buttonIndex === 1 ) {
+                    console.log("Warnings and help reset confirmed") ;
+                    var app_flags = [ "player_help", "home_help", "other_help" ] ;
+                    $.each(app_flags, function(index, value) {
+                        console.log('Flag ' + index + ", value " + value) ;
+                        if(window.localStorage.getItem(value)) {
+                            window.localStorage.removeItem(value) ;
+                        }
+                    }) ;
+                    $scope.goTo('/') ;
+                    $scope.$apply() ;
+                }
+                else {
+                    console.log("Reset warnings and help cancelled") ;
+                }
+            }, 'Reset Warnings?',
+            ['OK','Cancel']
+        ) ;
+    } ) ;
+
+    $('#easter_egg').click(function() {
+        $scope.goToPukana('/pukana.html') ;
+    }) ;
+
     console.log("outer_height: " + outer_height) ;
     $('li > img').height(outer_height * .05) ;
     $('div.title > img').height(outer_height * .05) ;
@@ -145,8 +230,11 @@ angApp.controller("player_help", function($scope, $window) {
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
         // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
         console.log('max_panel_height: ' + max_panel_height) ;
-        $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
-    }, 500) ;
+
+        // $('#content_panel').css('position','absolute').css('top', 0) ;
+        // $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
+        $('div#help.help').css('position','absolute').css('max-height', max_panel_height).css('height', max_panel_height).css('top', title_height + title_offset);
+    }, 50) ;
 
 
 }) ;

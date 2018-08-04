@@ -42,17 +42,15 @@ angApp.config(function($routeProvider) {
         .otherwise({  redirectTo: '/' }) ;
 }) ;
 
-angApp.controller("pukana", function($scope, $window) {
+angApp.controller("pukana", function($scope, $window, $location) {
     console.log("Pūkana!!") ;
-    function init_easter_egg() {
-        console.log("Init easter egg!") ;
-    }
 
     $("video.easter_egg").on("ended", function() {
         console.log("Easter egg ended") ;
-        $window.history.back(1) ;
+        $location.path("/") ;
+        $scope.$apply() ;
+        // $window.history.back(1) ;
     }) ;
-    // $("div.content_panel").css("object-fit", "fill") ;
 }) ;
 
 angApp.controller("player_help", function($scope, $window, $location) {
@@ -81,11 +79,66 @@ angApp.controller("player_help", function($scope, $window, $location) {
             console.log('Double click detected');
             console.log("Going to: " + url);
             $location.path(url);
+            $scope.$apply() ;
         }
         else {
+            console.log('Pūkana! Single click') ;
             last_click = this_click ;
         }
     } ;
+    // $scope.resetWarnings = function() {
+    //     console.log("Reset warnings") ;
+    //     navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
+    //         function(buttonIndex) {
+    //             console.log('Index of pressed button: ' + buttonIndex) ;
+    //             if(buttonIndex = 1) {
+    //                 console.log("Warnings and help reset confirmed") ;
+    //                 var app_flags = [ "player_help", "home_help", "other_help" ] ;
+    //                 $.each(app_flags, function(index, value) {
+    //                     console.log('Flag ' + index + ", value " + value) ;
+    //                     if(window.localStorage.getItem(value)) {
+    //                         window.localStorage.removeItem(value) ;
+    //                     }
+    //                 }) ;
+    //                 $scope.goTo('/') ;
+    //                 $scope.$apply() ;
+    //             }
+    //             else {
+    //                 console.log("Reset warnings and help cancelled") ;
+    //             }
+    //         }, 'Reset Warnings?',
+    //         ['OK','Cancel']
+    //     ) ;
+    // } ;
+    $('#resetWarnings').click(function() {
+        console.log("Reset warnings") ;
+        navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
+            function(buttonIndex) {
+                console.log('Index of pressed button: ' + buttonIndex) ;
+                if(buttonIndex === 1 ) {
+                    console.log("Warnings and help reset confirmed") ;
+                    var app_flags = [ "player_help", "home_help", "other_help" ] ;
+                    $.each(app_flags, function(index, value) {
+                        console.log('Flag ' + index + ", value " + value) ;
+                        if(window.localStorage.getItem(value)) {
+                            window.localStorage.removeItem(value) ;
+                        }
+                    }) ;
+                    $scope.goTo('/') ;
+                    $scope.$apply() ;
+                }
+                else {
+                    console.log("Reset warnings and help cancelled") ;
+                }
+            }, 'Reset Warnings?',
+            ['OK','Cancel']
+        ) ;
+    } ) ;
+
+    $('#easter_egg').click(function() {
+        $scope.goToPukana('/pukana.html') ;
+    }) ;
+
     console.log("outer_height: " + outer_height) ;
     $('li > img').height(outer_height * .05) ;
     $('div.title > img').height(outer_height * .05) ;
@@ -157,37 +210,6 @@ angApp.controller("player_help", function($scope, $window, $location) {
 
     $('footer .navigation_bar').show() ;
 
-    // var last_header_click = 0;
-    // $('#easter_egg').click(function() {
-    //     var this_click = new Date().getTime() ;
-    //     if(this_click - last_header_click < 400) {
-    //         console.log('Double click detected') ;
-    //         $scope.goTo("pukana.html") ;
-    //         // navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
-    //         //     function(buttonIndex) {
-    //         //         console.log('Index of pressed button: ' + buttonIndex) ;
-    //         //         if(buttonIndex = 1) {
-    //         //             console.log("Warnings and help reset confirmed") ;
-    //         //             console.log('Home double clicked. Prompting to remove flags from local storage') ;
-    //         //             var app_flags = [ "player_help", "home_help", "other_help" ] ;
-    //         //             $.each(app_flags, function(index, value) {
-    //         //                 console.log('Flag ' + index + ", value " + value) ;
-    //         //                 if(window.localStorage.getItem(value)) {
-    //         //                     window.localStorage.removeItem(value) ;
-    //         //                 }
-    //         //             }) ;
-    //         //         }
-    //         //         else {
-    //         //             console.log("Reset warnings and help cancelled") ;
-    //         //         }
-    //         //     }, 'Reset Warnings?',
-    //         //     ['OK','Cancel']
-    //         // ) ;
-    //     }
-    //     else {
-    //         last_header_click = this_click ;
-    //     }
-    // });
     setTimeout(function() {
 
         var title_height = $('h1.title').outerHeight(true) ;
@@ -208,8 +230,11 @@ angApp.controller("player_help", function($scope, $window, $location) {
         // $scope.max_lyric_panel_height = footer_position.top - $scope.song_title.outerHeight(true) ;
         // console.log("Setting max lyric panel height to: " + $scope.max_lyric_panel_height) ;
         console.log('max_panel_height: ' + max_panel_height) ;
-        $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
-    }, 500) ;
+
+        // $('#content_panel').css('position','absolute').css('top', 0) ;
+        // $('div#help.help').css('position','absolute').css('top', title_height + title_offset).css('max-height', max_panel_height).css('height', max_panel_height);
+        $('div#help.help').css('position','absolute').css('max-height', max_panel_height).css('height', max_panel_height).css('top', title_height + title_offset);
+    }, 50) ;
 
 
 }) ;

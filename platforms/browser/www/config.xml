@@ -19,7 +19,8 @@
     <preference name="android-minSdkVersion" value="23" />
     <preference name="orientation" value="portrait" />
     <preference name="AllowInlineMediaPlayback" value="true" />
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="FadeSplashScreenDuration" value="0" />
+    <preference name="SplashScreenDelay" value="5" />
+    <preference name="FadeSplashScreenDuration" value="3" />
     <preference name="BackupWebStorage" value="local" />
+    <preference name="SplashScreen" value="res/screen/master/ngatitoa.png" />
 </widget>

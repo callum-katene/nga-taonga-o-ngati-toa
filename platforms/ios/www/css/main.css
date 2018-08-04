@@ -10,6 +10,19 @@ body {
     background-image: url("../img/background1.png");
 }
 
+
+video.overlay_content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+}
 header {
     width:100% ;
 }
@@ -109,6 +122,7 @@ footer > p.listening {
     display: -webkit-flex;
     justify-content: space-around ;
     -webkit-justify-content: space-around;
+
 }
 .navigation_entry {
     /*font-family: Verdana, Geneva, sans-serif;*/
