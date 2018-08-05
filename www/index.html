@@ -95,39 +95,15 @@ routeProvider in the controller defined in the accompanying javascript file
         $("#navigate_home").click(function() {
             window.location.href = 'index.html' ;
         }) ;
-        // var last_header_click = 0;
-        // $('#header_image').click(function() {
-        //     var this_click = new Date().getTime() ;
-        //     if(this_click - last_header_click < 400) {
-        //         console.log('Double click detected') ;
-        //         navigator.notification.confirm("Would you like to reset all warnings and help prompts?",
-        //         function(buttonIndex) {
-        //             console.log('Index of pressed button: ' + buttonIndex) ;
-        //          if(buttonIndex = 1) {
-        //             console.log("Warnings and help reset confirmed") ;
-        //             console.log('Home double clicked. Prompting to remove flags from local storage') ;
-        //             var app_flags = [ "player_help", "home_help", "other_help" ] ;
-        //             $.each(app_flags, function(index, value) {
-        //                 console.log('Flag ' + index + ", value " + value) ;
-        //                 if(window.localStorage.getItem(value)) {
-        //                     window.localStorage.removeItem(value) ;
-        //                 }
-        //             }) ;
-        //         }
-        //         else {
-        //             console.log("Reset warnings and help cancelled") ;
-        //         }
-        //         }, 'Reset Warnings?',
-        //             ['OK','Cancel']
-        //         ) ;
-        //     }
-        //     else {
-        //         last_header_click = this_click ;
-        //     }
-        // });
+
         $("#navigate_back").click(function() {
             window.location.href = 'javascript: window.history.back() ' ;
         });
+
+        document.addEventListener("backbutton", function() {
+            console.log("Back button disabled") ;
+        }, false);
+
 
     </script>
 
